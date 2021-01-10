@@ -25,6 +25,7 @@ void Auto_Ctrl(Gr_t *Gr,u8 box)
 		if(Gr->state[0] != 4){
 			UPLIFT(&Gr->GraspMotor[0],Gr->vL53L0,10.0f,1);		//夹取前抬升准备
 			if(Gr->GraspMotor[0].state == Finish){
+				Gr->GraspMotor[4].ResetFlag=DisFinish;  //1.10 9:26 
 				Auto_One_Box(Gr);
 			}
 		}
@@ -414,8 +415,8 @@ static void Auto_Two_Box(Gr_t *Gr)
 
 
 
-
-/**
+#if 0 
+/**1/10 重新测试，这次用两个电机 filp+堵转
  * @description: 夹取失败一键复位回到刚初始化的状态   1/9 
  * @param {Gr_t} *Gr
  * @return {*}
@@ -423,23 +424,23 @@ static void Auto_Two_Box(Gr_t *Gr)
  */
 void ResetAction(Gr_t *Gr) {
 	static int16_t clock=0;
-	/*一般来说都是前翻打到了箱子:抬升和翻转--那复位翻转是否还需要保持抬升的高度?*/ 
-	if(Gr->GraspMotor[4].state==DisFinish) {
-		Gr->GraspMotor[4].ExpRadian -=0.4f;
+	static int16_t lock ; 
+	/*一般来说都是前翻打到了箱子:抬升和翻转*/ 
+	if(Gr->GraspMotor[4].ResetFlag==DisFinish) {
+		Gr->GraspMotor[4].ExpRadian = (Gr->GraspMotor[4].Encoder->Total_Radian -8);   //应该是这里 
 		if(Gr->GraspMotor[4].Encoder->Speed[1] <=10 && Gr->GraspMotor[4].Encoder->Speed[1] >=-10  )
 		{
 			clock++ ;
-			if(clock >=10){
+			if(clock >=40){
 				clock=0;
-				// [1]
-				Gr->GraspMotor[4].ExpRadian= Gr->GraspMotor[4].Encoder->Total_Radian; 
-				//[2] 直接输出为0 
+				Gr->GraspMotor[4].ResetFlag=Finish;
+				Gr->GraspMotor[4].ExpRadian = Gr->GraspMotor[4].Encoder->Total_Radian;
 			}
 		}
-	
+		
 	}
 	
-	PID_DEAL(&Gr->GraspMotor[4].PPID,Gr->GraspMotor[4].ExpRadian,Gr->GraspMotor[4].Encoder->Total_Radian);
+	PID_DEAL(&Gr->GraspMotor[4].PPID,Gr->GraspMotor[4].ExpRadian,Gr->GraspMotor[4].Encoder->Radian);
 	PID_DEAL(&Gr->GraspMotor[4].SPID,Gr->GraspMotor[4].PPID.Out,Gr->GraspMotor[4].Encoder->Speed[1]);
 	
 	if(Gr->GraspMotor[0].state==Finish) {
@@ -451,3 +452,54 @@ void ResetAction(Gr_t *Gr) {
 	Gr->Can_Send_Grasp_2(MotorOutput_205_208);
 
 }	
+#endif 
+
+void ResetAction(Gr_t *Gr) {
+
+	filpReset(&Gr->GraspMotor[4],&Gr->GraspMotor[5],2,20) ;
+
+	if(Gr->GraspMotor[0].state==Finish) {
+		PID_DEAL(&Gr->GraspMotor[0].PPID,Gr->GraspMotor[0].Encoder->Lock_Radian,Gr->GraspMotor[0].Encoder->Total_Radian);										//外环
+		PID_DEAL(&Gr->GraspMotor[0].SPID,Gr->GraspMotor[0].PPID.Out,Gr->GraspMotor[0].Encoder->Speed[0]);		
+	}
+
+	PID_DEAL(&Gr->GraspMotor[4].PPID,Gr->GraspMotor[4].ExpRadian,Gr->GraspMotor[4].Encoder->Total_Radian);
+	PID_DEAL(&Gr->GraspMotor[5].PPID,Gr->GraspMotor[5].ExpRadian,Gr->GraspMotor[5].Encoder->Total_Radian);
+	PID_DEAL(&Gr->GraspMotor[4].SPID,Gr->GraspMotor[4].PPID.Out,Gr->GraspMotor[4].Encoder->Speed[1]);
+	PID_DEAL(&Gr->GraspMotor[5].SPID,Gr->GraspMotor[5].PPID.Out,Gr->GraspMotor[5].Encoder->Speed[1]);
+	
+	Gr->Can_Send_Grasp_1(MotorOutput_201_204);
+	Gr->Can_Send_Grasp_2(MotorOutput_205_208);
+
+}
+
+static void filpReset(Motor_t *  filp1 , Motor_t *filp2 , u8 dire ,float limit ) {
+	static int16_t clock[2] = {0,0} ;
+
+	if(filp1->ResetFlag == DisFinish) {
+		filp1->ExpRadian -=0.4f ;
+		filp2->ExpRadian +=0.4f; 
+
+		/*完成标志*/
+		if(float_abs(filp1->Encoder->Total_Radian - filp1->Encoder->Init_Radian) <= limit){ 
+			clock[0] ++;
+		}
+		if(float_abs(filp2->Encoder->Total_Radian - filp2->Encoder->Init_Radian) <= limit){     
+			clock[1] ++;
+		}
+		if(clock[0] >= 10 && clock[1] >= 10){
+			filp1->ExpRadian = filp1->Encoder->Total_Radian;    
+			filp2->ExpRadian = filp2->Encoder->Total_Radian;  
+			filp1->ResetFlag = Finish;
+			filp2->ResetFlag= Finish;
+			clock[0] = 0;
+			clock[1] = 0;
+		}
+	}
+	else {
+		filp1->ExpRadian = filp1->Encoder->Total_Radian;
+		filp2->ExpRadian = filp2->Encoder->Total_Radian;
+	}
+
+
+}

@@ -47,5 +47,5 @@ void MotorValZero(Motor_t *motor)
 		PID_INIT(&motor->PPID,0,0,0,0,0);
 		EncoderValZero(motor->Encoder);
 		motor->MotorType = CURRENCY_M;
-		motor->flag=0 ;
+		motor->ResetFlag =0;
 }

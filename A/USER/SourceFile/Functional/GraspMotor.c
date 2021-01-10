@@ -50,6 +50,7 @@ void Grasp_Motor_Init(Gr_t *Gr)
 				Gr->GraspMotor[i].Encoder->Lock_Radian 	= Gr->GraspMotor[i].Encoder->Radian;	    			//初始化上锁角度
 				Gr->GraspMotor[i].Encoder->Total_Radian = Gr->GraspMotor[i].Encoder->Radian;	    			//初始化总角度
 				Gr->GraspMotor[i].Radio = 19;																														//初始化夹取电机减速比
+				Gr->GraspMotor[i].ResetFlag =DisFinish ;
 		}
 				PID_INIT(&Gr->GraspMotor[2].PPID,Ppid[2][0],Ppid[2][1],Ppid[2][2],0,14700);							//位置环初始化
 				PID_INIT(&Gr->GraspMotor[6].PPID,Ppid[6][0],Ppid[6][1],Ppid[6][2],0,14700);							//位置环初始化
@@ -59,7 +60,7 @@ void Grasp_Motor_Init(Gr_t *Gr)
 				Gr->GraspMotor[3].Radio = 27;																														//初始化夹取电机减速比
 				Gr->GraspMotor[6].Radio = 36;																														//初始化补弹电机减速比
 				
-				Gr->GraspMotor[0].flag=0;
+			
 		
 				/*状态值初始化*/
 				Gr->state[0] = Gr->state[1] = Gr->state[2] = Gr->state[3] = DisFinish;

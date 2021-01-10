@@ -37,7 +37,7 @@ typedef __packed struct
 	PID_t 	PPID;					//位置环PID
 	Encoder_t*Encoder;		//码盘
 	MotorType_e MotorType;//电机种类
-	uint8_t flag;
+	uint8_t ResetFlag;
 }Motor_t;
 
 
