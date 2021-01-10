@@ -405,44 +405,49 @@ static void Auto_Two_Box(Gr_t *Gr)
 				Gr->state[1] = 4;
 			}
 			break;
-			break;
 		}
-		default:
-		{
+		default:		
 			break;
-		}
+
 	}
 }
+
+
+
 
 /**
  * @description: 夹取失败一键复位回到刚初始化的状态   1/9 
  * @param {Gr_t} *Gr
  * @return {*}
- * @说明备注： 1.箱子锁解锁 2.难点：翻转的角度 和 状态的还原 
+ * @说明备注： 1.箱子锁解锁 2.难点：翻转的角度 和 状态的还原  关于翻转回去后和继续夹取的模式切换  翻转完成之后就 
  */
 void ResetAction(Gr_t *Gr) {
-	static int16_t clock[7]={0,0,0,0,0,0,0} ;
-	/*抬升:直接放下来*/
-	Gr->GraspMotor[0].SPID.Out=0;
-	Gr->GraspMotor[0].state=DisFinish;
-
-	switch(Gr->state[0]) {
-		case 0 : 	{
-			/*只完成了抬升--前翻*/
-			if(Gr->GraspMotor[4].state==Finish && Gr->GraspMotor[5].state==Finish) {
-			FLIP(&Gr->GraspMotor[4],&Gr->GraspMotor[5],0,0,2); 
-			break;
-		}
-		case 1 :{
-			//完成了前翻
-			FLIP(&Gr->GraspMotor[4],&Gr->GraspMotor[5],0,0,2); 
-			if(Gr->GraspMotor[4].state==Finish && Gr->GraspMotor[5].state==Finish) {
-				Gr->GraspMotor[4].state=DisFinish;
-				Gr->GraspMotor[5].state=DisFinish;
+	static int16_t clock=0;
+	/*一般来说都是前翻打到了箱子:抬升和翻转--那复位翻转是否还需要保持抬升的高度?*/ 
+	if(Gr->GraspMotor[4].state==DisFinish) {
+		Gr->GraspMotor[4].ExpRadian -=0.4f;
+		if(Gr->GraspMotor[4].Encoder->Speed[1] <=10 && Gr->GraspMotor[4].Encoder->Speed[1] >=-10  )
+		{
+			clock++ ;
+			if(clock >=10){
+				clock=0;
+				// [1]
+				Gr->GraspMotor[4].ExpRadian= Gr->GraspMotor[4].Encoder->Total_Radian; 
+				//[2] 直接输出为0 
 			}
-			break; 
 		}
+	
 	}
-}
+	
+	PID_DEAL(&Gr->GraspMotor[4].PPID,Gr->GraspMotor[4].ExpRadian,Gr->GraspMotor[4].Encoder->Total_Radian);
+	PID_DEAL(&Gr->GraspMotor[4].SPID,Gr->GraspMotor[4].PPID.Out,Gr->GraspMotor[4].Encoder->Speed[1]);
+	
+	if(Gr->GraspMotor[0].state==Finish) {
+		PID_DEAL(&Gr->GraspMotor[0].PPID,Gr->GraspMotor[0].Encoder->Lock_Radian,Gr->GraspMotor[0].Encoder->Total_Radian);										//外环
+		PID_DEAL(&Gr->GraspMotor[0].SPID,Gr->GraspMotor[0].PPID.Out,Gr->GraspMotor[0].Encoder->Speed[0]);		
+	}
 
-}
+	Gr->Can_Send_Grasp_1(MotorOutput_201_204);
+	Gr->Can_Send_Grasp_2(MotorOutput_205_208);
+
+}	
