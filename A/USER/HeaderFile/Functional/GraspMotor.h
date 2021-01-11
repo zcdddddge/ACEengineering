@@ -13,8 +13,12 @@
 #define Update_VL53L0_Val				VL53L0_Data_Deal
 
 /****************************发送电机数值*****************************************/
-#define MotorOutput_201_204		Gr->GraspMotor[0].SPID.Out,Gr->GraspMotor[1].SPID.Out,Gr->GraspMotor[2].SPID.Out,Gr->GraspMotor[3].SPID.Out
-#define MotorOutput_205_208		Gr->GraspMotor[4].SPID.Out,Gr->GraspMotor[5].SPID.Out,0,0
+//#define MotorOutput_201_204		Gr->GraspMotor[0].SPID.Out,Gr->GraspMotor[1].SPID.Out,Gr->GraspMotor[2].SPID.Out,Gr->GraspMotor[3].SPID.Out
+//#define MotorOutput_205_208		Gr->GraspMotor[4].SPID.Out,Gr->GraspMotor[5].SPID.Out,0,0
+
+
+#define MotorOutput_201_204		0,0,0,0
+#define MotorOutput_205_208		0,0,0,0
 
 /*状态*/
 static const u8 Finish 		= 1;
