@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-01-13 09:46:09
+ * @LastEditTime: 2021-01-13 10:07:34
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \PROJECTd:\RMware\A\USER\SourceFile\Task\Detect_Task.c
+ */
 #include "Detect_Task.h"
 #include "FreeRTOS.h"
 #include "task.h"
@@ -8,7 +16,7 @@
 extern Test_t Text;
 #define right 7
 static int16_t feed = 0;
-#endif
+#endif 
 
 void Detect_Task(void *pvParameters)
 {

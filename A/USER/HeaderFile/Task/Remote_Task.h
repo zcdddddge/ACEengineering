@@ -1,3 +1,4 @@
+
 #ifndef __REMOTE_TASK_H_
 #define __REMOTE_TASK_H_
 #include "RemoteDeal.h"
@@ -6,12 +7,12 @@
 #include "RobotAction.h"
 
 /*************************模式切换 置1双机通信************************************/
-#define RC_SWITCH 1
-
+#define RC_SWITCH 0
+/**************Can通信,主从版**********************/
 #if RC_SWITCH
 	#define CAN_RC
 #endif
-
+/***********串口通信*****************************/
 #if (RC_SWITCH == 0)
 	#define UART_RC
 #endif
