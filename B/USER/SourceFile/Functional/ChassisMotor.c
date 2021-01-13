@@ -1,39 +1,40 @@
+/*
+ *                        _oo0oo_
+ *                       o8888888o
+ *                       88" . "88
+ *                       (| -_- |)
+ *                       0\  =  /0
+ *                     ___/`---'\___
+ *                   .' \\|     |// '.
+ *                  / \\|||  :  |||// \
+ *                 / _||||| -:- |||||- \
+ *                |   | \\\  - /// |   |
+ *                | \_|  ''\---/''  |_/ |
+ *                \  .-\__  '-'  ___/-. /
+ *              ___'. .'  /--.--\  `. .'___
+ *           ."" '<  `.___\_<|>_/___.' >' "".
+ *          | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+ *          \  \ `_.   \_ __\ /__ _/   .-` /  /
+ *      =====`-.____`.___ \_____/___.-`___.-'=====
+ *                        `=---='
+ *      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *            佛祖保佑       永不宕机     永无BUG
+ * 
+ * @Author: your name
+ * @Date: 2021-01-09 15:32:34
+ * @LastEditTime: 2021-01-11 15:32:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+RC_X-->ch1
+RC_Y-->ch0
+RC_Z-->ch2
+ */
+
 #include "ChassisMotor.h"
 #include "MathLib.h"
 
-//#define Wheel_Output	 C->WheelMotor[0].SPID.Out,C->WheelMotor[1].SPID.Out,C->WheelMotor[2].SPID.Out,C->WheelMotor[3].SPID.Out
-//#define Rescue_Output	 C->RescueMotor.SPID.Out,0,0,0
 
 
-
-#define Wheel_Output	 0,0,0,0
-#define Rescue_Output	 C->RescueMotor.SPID.Out,0,0,0
-
-/*底盘轮子速度环参数*/
-#define WHEEL_MOTOR1_P   	4.0f
-#define WHEEL_MOTOR1_I   	0.0f
-#define WHEEL_MOTOR1_D   0.02f
-#define WHEEL_MOTOR2_P  	4.0f
-#define	WHEEL_MOTOR2_I   	0.0f
-#define WHEEL_MOTOR2_D   0.02f
-#define WHEEL_MOTOR3_P   	4.0f
-#define WHEEL_MOTOR3_I   	0.0f
-#define WHEEL_MOTOR3_D   0.02f
-#define WHEEL_MOTOR4_P   	4.0f
-#define WHEEL_MOTOR4_I   	0.0f
-#define WHEEL_MOTOR4_D   0.02f
-/*底盘救援电机参数*/
-	/*救援*/
-#define  RESCUE_S_P   4.0f
-#define  RESCUE_S_I   0.0f
-#define  RESCUE_S_D   1.0f
-#define  RESCUE_P_P   0.0f
-#define  RESCUE_P_I   0.0f
-#define  RESCUE_P_D   0.0f
-/*Yaw闭环pid*/
-#define Yaw_P					40.0f
-#define Yaw_I					0.0f
-#define Yaw_D					10.0f
 
 /*************************************************************************************************
 *名称:	Wheel_Motor_Init
@@ -66,11 +67,11 @@ void Wheel_Motor_Init(C_t *C)
 	
 		for(CMi = 0;CMi < 4;CMi ++)
 		{
-				C->WheelMotor[CMi].ID = CMi + 1;
-				C->WheelMotor[CMi].Encoder	=	C->Get_Encoder(CMi+1);
-				PID_INIT(&C->WheelMotor[CMi].SPID,Spid[CMi][0],Spid[CMi][1],Spid[CMi][2],15000,16000);	//速度环初始化
-				C->WheelMotor[CMi].MotorType = CHASSIS_M;																								//初始化电机种类
-				C->WheelMotor[CMi].Radio = 19;																													//初始化底盘电机减速比
+			C->WheelMotor[CMi].ID = CMi + 1;
+			C->WheelMotor[CMi].Encoder	=	C->Get_Encoder(CMi+1);
+			PID_INIT(&C->WheelMotor[CMi].SPID,Spid[CMi][0],Spid[CMi][1],Spid[CMi][2],15000,16000);	//速度环初始化
+			C->WheelMotor[CMi].MotorType = CHASSIS_M;																								//初始化电机种类
+			C->WheelMotor[CMi].Radio = 19;																													//初始化底盘电机减速比
 		}
 		
 		/*获取底盘陀螺仪数据*/
@@ -78,20 +79,6 @@ void Wheel_Motor_Init(C_t *C)
 		
 		/*初始化底盘Yaw轴pid*/
 		PID_INIT(&C->Yaw_Pid,Yaw_P,Yaw_I,Yaw_D,0,660);
-}
-
-
-
-/*************************************************************************************************
-*名称:	CHASSIS_TEXT_DRIVE
-*功能:	驱动底盘电机测试模式
-*形参: 	C_t *C
-*返回:	无
-*说明:	无
-*************************************************************************************************/
-void Chassis_Text_Drive(C_t *C)
-{
-	
 }
 
 
@@ -111,12 +98,12 @@ void Chassis_Indepen_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN,int16_t ExpRe
 		float SPID_OUT[4];
 		
 		if(Z_IN == 0 && ( (X_IN != 0) || (Y_IN != 0) ) )
-		{
-			Z_IN = PID_DEAL(&C->Yaw_Pid,0,(-C->gyro->Yaw_Var) );
+		{   
+			Z_IN = PID_DEAL(&C->Yaw_Pid,0,(-C->gyro->Yaw_Var)); // set=0 ref=-C->gyro->Yaw_Var  
 		}
 		else
 		{
-			C->gyro->Yaw_Lock = C->gyro->Yaw;
+			C->gyro->Yaw_Lock = C->gyro->Yaw; 
 		}
 		
 		/*底盘远动分解*/
@@ -183,7 +170,7 @@ void Chassis_Indepen_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN,int16_t ExpRe
 *功能:	底盘扭腰模式
 *形参: 	C_t *C,float X_IN,float Y_IN,float Z_IN
 *返回:	无
-*说明:	无
+*说明:	扭腰模式也可以控制它运动  
 *************************************************************************************************/
 void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN)
 {
@@ -217,7 +204,9 @@ void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN)
 			C->gyro->Yaw_Lock = C->gyro->Yaw;
 		}
 		
-		/*底盘远动分解*/
+		#if 0  
+		/*底盘远动分解使用库函数和弧度 |  弧度= 角度*PI/180*=============*/
+		
 		if(X_IN != 0)
 		{
 			X_IN = X_IN * float_abs(cosf(-(C->gyro->Yaw_Var)/180*3.14159216f));
@@ -226,6 +215,18 @@ void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN)
 		{
 			Y_IN = Y_IN * float_abs(sinf(-(C->gyro->Yaw_Var)/180*3.14159216f));
 		}
+		#endif 
+		
+		//用查表法 
+		if(X_IN != 0)
+		{
+			X_IN = X_IN * float_abs(cosf(-(C->gyro->Yaw_Var)/180*3.14159216f));
+		}
+		if(Y_IN != 0)
+		{
+			Y_IN = Y_IN * float_abs(sinf(-(C->gyro->Yaw_Var)/180*3.14159216f));
+		}
+		
 		
 		
 		C->WheelMotor[0].ExpSpeed = 	(X_IN*10 + Y_IN*10 + Z_IN*2);		
@@ -348,24 +349,44 @@ void Rescue_Motor_Init(C_t *C)
 }
 
 
-/*************************************************************************************************
-*名称:	Rescue_Ctrl
-*功能:	救援电机驱动
-*形参: 	C_t *C,int8_t choice
-*返回:	无
-*说明:	无
-*************************************************************************************************/
-void Rescue_Ctrl(C_t *C,int8_t choice)
+
+/**
+ * @description: 底盘救援电机  s1=2  s2=1   救援卡前伸 s1=2  s2=2 	救援卡后缩
+ * @param {C_t} *C
+ * @param {int16_t} dire -1对应前伸  1对应后缩 对应电机速度的正负：往前伸速度小于0 
+ * @return {*}
+ * 说明:2020-11-19第二版：增加缩回去的功能，形参判断
+ *               本函数只做堵转和速度环处理，由形参决定方向  
+ */
+void Chassis_Rescue(C_t *C ,int16_t dire) 
 {
-	if(choice)
-	{
-		
-		
-	}
-	else
-	{
-		
-	}
+	static int16_t clock =0;
+	static int8_t  lock =1; 
+	static int8_t  last_dire= 0; 
+	if( (dire!=-1) && (dire!=1))
+		return ;
 	
-	C->Can_Send_Rescue(C->RescueMotor.SPID.Out,0,0,0);
+	if(last_dire==0) {
+		last_dire = dire ;
+	}
+	if(last_dire != dire) {  //当前要求方向和上一次方向不同，状态值复位 
+		lock 	=1; 
+		clock =0;
+		last_dire = dire;
+	}
+	C->RescueMotor.ExpSpeed = dire * Rescue_Speed; 
+	if(C->RescueMotor.Encoder->Speed[1]<=100 &&C->RescueMotor.Encoder->Speed[1]>=-100)  
+	{
+		clock++;
+		if(clock>=50){
+			lock=2;  
+		}
+	}
+	if(lock==2){
+		  C->RescueMotor.SPID.Out = 0; // 直接让他停下来 
+	}
+	else if(lock==1){
+		PID_DEAL(&C->RescueMotor.SPID,C->RescueMotor.ExpSpeed,C->RescueMotor.Encoder->Speed[1] ) ;
+	}
+	C->Can_Send_Rescue(Rescue_Output);
 }

@@ -25,6 +25,7 @@ static void Chassis_Init(void)
 	Chassis.Indepen										= Chassis_Indepen_Drive;
 	Chassis.Wiggle										=	Chassis_Wiggle_Drive;
 	Chassis.Poweroff									= Chassis_Poweroff_Drive;
+	Chassis.Rescue                    = Chassis_Rescue;
 	
 	/*数据初始化*/
 	Chassis.RC = Return_RemoteDeal_Point();										//Chassis的获取Remote数据指针
@@ -37,7 +38,7 @@ static void Chassis_Init(void)
 
 void Chassis_Task(void *pvParameters)
 {
-	vTaskDelay(500);
+	//vTaskDelay(500);
 	Chassis_Init();
 
 	

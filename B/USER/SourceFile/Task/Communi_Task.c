@@ -13,7 +13,7 @@ static void Communi_Init(void)
 
 void Communi_Task(void *pvParameters)
 {
-	vTaskDelay(500);
+	//vTaskDelay(500);
 	Communi_Init();
 	
 	while(1)

@@ -1,9 +1,14 @@
+/*
+ * @Author: your name
+ * @Date: 2021-01-09 15:32:34
+ * @LastEditTime: 2021-01-12 14:35:44
+ * @LastEditors: Please set LastEditors
+ * @Description: 定义PC键盘,遥控结构体,键盘结构体
+ */
 #ifndef __REMOTEDEAL_H_
 #define __REMOTEDEAL_H_
 #include "REMOTE_ISR.h"
 #include "FilterLib.h"
-
-
 
 /* ----------------------- PC Key Definition-------------------------------- */
 #define KEY_PRESSED_OFFSET_W ((uint16_t)0x01<<0) 														
@@ -24,7 +29,7 @@
 #define KEY_PRESSED_OFFSET_B ((uint16_t)0x01<<15)
 /* ----------------------- PC Key Definition-------------------------------- */
 
-/*键盘控制状态结构体*/
+/****************键盘控制状态结构体**************************/
 typedef __packed struct
 {
 	unsigned char Electromagnet : 1;

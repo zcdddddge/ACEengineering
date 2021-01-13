@@ -4,17 +4,21 @@
 #include "GraspMotor.h"
 #include "BoardCommuni.h"
 #include "RobotAction.h"
+
+/*************************模式切换 置1双机通信************************************/
 #define RC_SWITCH 1
+
 #if RC_SWITCH
 	#define CAN_RC
 #endif
+
 #if (RC_SWITCH == 0)
 	#define UART_RC
 #endif
 
 typedef __packed struct
 {
-	/*数据变量*/
+	
 	Gr_t Gr;
 #ifdef UART_RC
 	REMOTE_t*Remote;
@@ -22,7 +26,7 @@ typedef __packed struct
 #ifdef CAN_RC
 	Board_Communi_t *Can2_RC;
 #endif
-}Text_t;
+}Test_t;
 
 void Remote_Task(void *pvParameters);
 

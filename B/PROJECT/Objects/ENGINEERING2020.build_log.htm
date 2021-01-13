@@ -21,13 +21,37 @@ Target DLL:      Segger\JL2CM3.dll V2.99.15.0
 Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
-D:\新建文件夹\rm\工程2021\新新架构\B\PROJECT\engineering.uvprojx
-Project File Date:  01/07/2021
+D:\RMware\B\PROJECT\engineering.uvprojx
+Project File Date:  01/12/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-".\Objects\ENGINEERING2020.axf" - 0 Error(s), 0 Warning(s).
+compiling Chassis_Fsm.c...
+compiling TaskInit.c...
+compiling Detect_Task.c...
+compiling ChassisMotor.c...
+..\USER\HeaderFile\Lib\math.h(28): warning:  #47-D: incompatible redefinition of macro "__ARMCLIB_VERSION"  (declared at line 12 of "E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h")
+  #define __ARMCLIB_VERSION 5050157
+..\USER\SourceFile\Functional\ChassisMotor.c: 1 warning, 0 errors
+compiling Chassis_Task.c...
+..\USER\SourceFile\Task\Chassis_Task.c(7): warning:  #177-D: variable "Chassis_Wheel_Follow"  was declared but never referenced
+  static u8 Chassis_Wheel_Follow 		= 1;
+..\USER\SourceFile\Task\Chassis_Task.c(8): warning:  #177-D: variable "Chassis_Wheel_Indepen"  was declared but never referenced
+  static u8 Chassis_Wheel_Indepen 	= 2;
+..\USER\SourceFile\Task\Chassis_Task.c(9): warning:  #177-D: variable "Chassis_Wheel_Wiggle"  was declared but never referenced
+  static u8 Chassis_Wheel_Wiggle		= 3;
+..\USER\SourceFile\Task\Chassis_Task.c(10): warning:  #177-D: variable "Chassis_Wheel_Off"  was declared but never referenced
+  static u8 Chassis_Wheel_Off 			= 4;
+..\USER\SourceFile\Task\Chassis_Task.c(11): warning:  #177-D: variable "Chassis_Key"  was declared but never referenced
+  static u8 Chassis_Key							= 5;
+..\USER\SourceFile\Task\Chassis_Task.c(12): warning:  #177-D: variable "Last_ChassisWheelState"  was declared but never referenced
+  static u8 Last_ChassisWheelState	= 255;
+..\USER\SourceFile\Task\Chassis_Task.c: 6 warnings, 0 errors
+linking...
+Program Size: Code=22416 RO-data=1272 RW-data=220 ZI-data=81044  
+FromELF: creating hex file...
+".\Objects\ENGINEERING2020.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -40,7 +64,7 @@ Package Vendor: Keil
   E:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

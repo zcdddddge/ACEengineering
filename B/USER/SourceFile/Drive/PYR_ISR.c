@@ -30,8 +30,8 @@ static void PYR_Deal(u8 num)
 				return;
 					
 				//PYR.Pitch = ((PYR.data[n+3]<< 8) | PYR.data[n+2])/32768.0*180;
-				//PYR.Roll = ((PYR.data[n+5]<< 8) | PYR.data[n+4])/32768.0*180;
-				PYR.Yaw = ((PYR.data[n+7]<< 8) | PYR.data[n+6])/32768.0*180;
+				//PYR.Roll = ((PYR.data[n+5]<< 8) | PYR.data[n+4])/32768.0*180; 
+				PYR.Yaw = ((PYR.data[n+7]<< 8) | PYR.data[n+6])/32768.0*180;  // ½ÇËÙ¶È¼ÆËã|Æ«º½½Ç(zÖá) 
 				PYR.Yaw_Var = PYR.Yaw - PYR.Yaw_Lock;
 				if(PYR.Yaw_Var > 300)
 				{

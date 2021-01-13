@@ -2,8 +2,8 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-extern Text_t Text;
-Text_t Text;
+extern Test_t Text;
+Test_t Text;
 static u8 lock = 1;
 
 /*测试时使用的任务*/
@@ -51,7 +51,6 @@ void Remote_Task(void *pvParameters)
 			Poweroff_Ctrl(&Text.Gr);
 		}
 #endif
-	// JSCOPE_Debug( &Text.Gr);
 	if(Text.Can2_RC->Can_RC.s1 == 3 && Text.Can2_RC->Can_RC.s2==3) 
 		{
 			if(lock == 1)
@@ -66,7 +65,7 @@ void Remote_Task(void *pvParameters)
 		}
 		else if(Text.Can2_RC->Can_RC.s1 == 3 && Text.Can2_RC->Can_RC.s2 == 2)
 		{
- 			ResetAction(&Text.Gr);
+ 			ResetGrasp(&Text.Gr);
 		}
 		else
 		{

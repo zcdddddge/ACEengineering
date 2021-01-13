@@ -13,16 +13,18 @@
 #define Update_VL53L0_Val				VL53L0_Data_Deal
 
 /****************************发送电机数值*****************************************/
-//#define MotorOutput_201_204		Gr->GraspMotor[0].SPID.Out,Gr->GraspMotor[1].SPID.Out,Gr->GraspMotor[2].SPID.Out,Gr->GraspMotor[3].SPID.Out
-//#define MotorOutput_205_208		Gr->GraspMotor[4].SPID.Out,Gr->GraspMotor[5].SPID.Out,0,0
+#define MotorOutput_201_204		Gr->GraspMotor[0].SPID.Out,Gr->GraspMotor[1].SPID.Out,Gr->GraspMotor[2].SPID.Out,Gr->GraspMotor[3].SPID.Out
+#define MotorOutput_205_208		Gr->GraspMotor[4].SPID.Out,Gr->GraspMotor[5].SPID.Out,0,0
 
 
-#define MotorOutput_201_204		0,0,0,0
-#define MotorOutput_205_208		0,0,0,0
+//#define MotorOutput_201_204		0,0,0,0
+//#define MotorOutput_205_208		0,0,0,0
 
-/*状态*/
+/********************************电机状态************************************************/
 static const u8 Finish 		= 1;
 static const u8 DisFinish = 0;
+
+/*******************************电机pid***********************************************/
 /*翻转*/
 #define GRASP_SWING_S_P   	4.0f
 #define GRASP_SWING_S_I   	0.0f
@@ -66,6 +68,15 @@ static const u8 DisFinish = 0;
 #define  GRASP_SUPPLY_P_I   0.0f
 #define  GRASP_SUPPLY_P_D   0.1f
 
+/*旋转*/
+#define GRASP_ROTATE_S_P  	1.22f
+#define	GRASP_ROTATE_S_I   	0.0f
+#define GRASP_ROTATE_S_D   	0.2f
+#define GRASP_ROTATE_P_P   	100.0f
+#define GRASP_ROTATE_P_I   	0.0f
+#define GRASP_ROTATE_P_D   	0.0f
+
+/****************************电机速度定义*****************************************/
 
 /*夹子速度值*/
 static const int16_t Cilp_Speed 				= 5500;
@@ -97,8 +108,6 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc);
 
 /*断电控制*/
 void Poweroff_Ctrl(Gr_t *Gr);
-
-
 
 /*复位夹取*/
 u8 ResetGrasp(Gr_t *Gr);

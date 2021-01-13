@@ -3,22 +3,22 @@
 #include "stm32f4xx.h"
 
 
-/*¼üÊó*/
+/**************??&??*************************************/
 typedef __packed struct
 {
-	int16_t x;
-	int16_t y;
-	int16_t z;
+	int16_t x;              //????
+	int16_t y;				//????
+	int16_t z; 
 	int16_t kv0;
 	int16_t kv1;
 	int16_t kv2;
-	int16_t kv3;
-	uint8_t press_l;
-	uint8_t press_r;
+	int16_t kv3;        
+	uint8_t press_l;       //????
+	uint8_t press_r;       //????
 	uint16_t key;
 }Key_Mouse_t;
 
-/*RC*/
+/************RC??????******************************/
 typedef __packed struct
 {
 	int16_t ch0;

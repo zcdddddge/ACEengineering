@@ -1,3 +1,10 @@
+/*
+ * @Author: your name
+ * @Date: 2021-01-09 15:32:34
+ * @LastEditTime: 2021-01-12 11:19:43
+ * @LastEditors: Please set LastEditors
+ * @Description: 定义了遥控数值初始化,清零,键盘处理，遥控处理,模式切换处理的函数
+ */
 #include "RemoteDeal.h"
 #include "MathLib.h"
 
@@ -134,9 +141,9 @@ static void Key_Mouse_Deal(void)
 			REMOTE.RC_ctrl->KV.kv1 = 0;
 		}
 		
-		/*************************************Y轴************************************/
+		/*************************************鼠标X轴************************************/
 		REMOTE.RC_ctrl->KV.kv3 = (float)REMOTE.RC_ctrl->KV.x * 5.0f;
-		/**************************************P轴***********************************/
+  		/**************************************鼠标Y轴***********************************/
 		REMOTE.RC_ctrl->KV.kv2 = (float)REMOTE.RC_ctrl->KV.y * 5.0f;
 		/****************************************************************************/
 		switch  (key)
@@ -194,9 +201,9 @@ static void Key_Mouse_Deal(void)
 		REMOTE.RC_ctrl->KV.kv2 = limit(REMOTE.RC_ctrl->KV.kv2,660,-660);
 		REMOTE.RC_ctrl->KV.kv3 = limit(REMOTE.RC_ctrl->KV.kv3,660,-660);
 		/*滤波处理*/
-		First_Order(&REMOTE.KM_X,REMOTE.RC_ctrl->KV.kv1);
-		First_Order(&REMOTE.KM_Y,REMOTE.RC_ctrl->KV.kv0);
-		First_Order(&REMOTE.KM_Z,REMOTE.RC_ctrl->KV.kv3);
+		First_Order(&REMOTE.KM_X,REMOTE.RC_ctrl->KV.kv1);     //底盘左右 
+		First_Order(&REMOTE.KM_Y,REMOTE.RC_ctrl->KV.kv0);     //底盘前后
+		First_Order(&REMOTE.KM_Z,REMOTE.RC_ctrl->KV.kv3);     // 鼠标x轴 
 		
 }
 

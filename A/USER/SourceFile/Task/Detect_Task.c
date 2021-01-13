@@ -5,7 +5,7 @@
 #include "Remote_Task.h"
 
 #ifdef UART_RC
-extern Text_t Text;
+extern Test_t Text;
 #define right 7
 static int16_t feed = 0;
 #endif

@@ -843,6 +843,11 @@
               <FileType>5</FileType>
               <FilePath>..\USER\HeaderFile\Lib\math.h</FilePath>
             </File>
+            <File>
+              <FileName>triangle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\SourceFile\Lib\triangle.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

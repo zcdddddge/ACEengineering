@@ -17,6 +17,7 @@ typedef __packed struct
 	void (*Rescue_Init)(C_t *C);												//¾ÈÔ®µç»ú³õÊ¼»¯
 	void (*Indepen)(C_t*,float ,float ,float ,int16_t);	//µ×ÅÌ¸úËæ
 	void (*Wiggle)(C_t*,float ,float ,float);						//µ×ÅÌÒ¡°Ú
+	void (*Rescue)(C_t *,int16_t );                     //¾ÈÔ®µç»ú¾ÈÔ® 
 	void (*Poweroff)(C_t*);															//µ×ÅÌ¶Ïµç
 }Chassis_t;
 

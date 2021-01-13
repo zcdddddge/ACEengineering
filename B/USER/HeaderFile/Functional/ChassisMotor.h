@@ -1,7 +1,47 @@
+/*
+ * @Author: your name
+ * @Date: 2021-01-09 15:32:34
+ * @LastEditTime: 2021-01-11 15:33:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \PROJECTd:\RMware\B\USER\HeaderFile\Functional\ChassisMotor.h
+ */
 #ifndef __CHASSISMOTOR_H_
 #define __CHASSISMOTOR_H_
 #include "motor.h"
 #include "PYR_ISR.h"
+
+/**********************************Can发送数值************************************************/
+//#define Wheel_Output	 C->WheelMotor[0].SPID.Out,C->WheelMotor[1].SPID.Out,C->WheelMotor[2].SPID.Out,C->WheelMotor[3].SPID.Out
+#define Rescue_Output	 C->RescueMotor.SPID.Out,0,0,0
+#define Wheel_Output	 0,0,0,0
+/*********************************底盘电机pid**************************************************/
+/*底盘轮子速度环参数*/
+#define WHEEL_MOTOR1_P   	4.0f
+#define WHEEL_MOTOR1_I   	0.0f
+#define WHEEL_MOTOR1_D   0.02f
+#define WHEEL_MOTOR2_P  	4.0f
+#define	WHEEL_MOTOR2_I   	0.0f
+#define WHEEL_MOTOR2_D   0.02f
+#define WHEEL_MOTOR3_P   	4.0f
+#define WHEEL_MOTOR3_I   	0.0f
+#define WHEEL_MOTOR3_D   0.02f
+#define WHEEL_MOTOR4_P   	4.0f
+#define WHEEL_MOTOR4_I   	0.0f
+#define WHEEL_MOTOR4_D   0.02f
+/*底盘救援电机参数*/
+#define  RESCUE_S_P   4.0f
+#define  RESCUE_S_I   0.0f
+#define  RESCUE_S_D   1.0f
+#define  RESCUE_P_P   0.0f
+#define  RESCUE_P_I   0.0f
+#define  RESCUE_P_D   0.0f
+/*Yaw闭环pid*/
+#define Yaw_P					40.0f
+#define Yaw_I					0.0f
+#define Yaw_D					10.0f
+/**************************************************速度定义**********************************/
+static const int16_t Rescue_Speed    =5000 ;   //救援电机速度
 
 /*底盘结构体*/
 typedef __packed struct
@@ -44,10 +84,7 @@ void Chassis_Poweroff_Drive(C_t *C);
 
 /*救援电机初始化*/
 void Rescue_Motor_Init(C_t *C);
-
-
-/*驱动救援电机*/
-void Rescue_Ctrl(C_t *C,int8_t choice);
 	
-
+/*驱动救援电机*/
+void Chassis_Rescue(C_t *C ,int16_t dire) ;
 #endif

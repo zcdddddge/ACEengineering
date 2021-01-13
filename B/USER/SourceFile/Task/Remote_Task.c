@@ -5,7 +5,7 @@
 
 void Remote_Task(void *pvParameters)
 {
-	vTaskDelay(500);
+	//vTaskDelay(500);
 	Remote_Data_Init();
 	while(1)
 	{

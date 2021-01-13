@@ -23,6 +23,6 @@ static void Auto_Two_Box(Gr_t *Gr);
 /*×Ô¶¯¿ØÖÆ*/
 void Auto_Ctrl(Gr_t *Gr,u8 box);
 void ResetAction(Gr_t *Gr);
-static void filpReset(Motor_t *  filp1 , Motor_t *filp2 , u8 dire ,float limit );
+static void filpReset(Motor_t *  filp1 , Motor_t *filp2 ,float limit );
 
 #endif

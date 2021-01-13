@@ -10,7 +10,7 @@ static int16_t feed = 0;
 
 void Detect_Task(void *pvParameters)
 {
-	vTaskDelay(500);
+	//vTaskDelay(200);
 	while(1)
 	{
 		if(Chassis.RC->RC_ctrl->ch0 >= -660 && Chassis.RC->RC_ctrl->ch0 <= 660)

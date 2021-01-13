@@ -12,6 +12,7 @@ State_t INDEPEN;				/*独立模式*/
 State_t WIGGLE;					/*扭腰模式*/
 State_t KEYBOARD;				/*键盘模式*/
 State_t CTRL_GRASP;			/*控制夹取模式*/
+State_t RESCUE;           /*救援模式*/
 State_t Chassis_State_Table[State_Line][State_Column];			/*状态参数表*/
 
 /***************************OFFLINE******************************/
@@ -35,6 +36,10 @@ static void KeyBoard_Prepare(void);			/*KEYBOARD状态准备函数*/
 static void CTRL_GRASP_State(void);				/*控制夹取状态处理*/
 static void GRASP_RC_bhv(void);						/*遥控控制夹取行为函数*/
 static void CTRL_GRASP_Prepare(void);			/*CTRL_GRASP状态准备函数*/
+/****************************RESCUE-2020-11-18-author:wingchi-leung*********************/ 
+static void Rescue_State(void);            /*救援状态处理*/
+static void Rescue_Prepare(void); 				/*救援状态准备*/
+static void Rescue_bhv(void) ;  					/*救援行为函数*/
 /****************************************************************/
 
 /*返回底盘状态机控制指针*/
@@ -72,19 +77,41 @@ void Chassis_FSM_Init(void)
 		CTRL_GRASP.Behavior_Process 	= NULL;
 		CTRL_GRASP.State_Process			= CTRL_GRASP_State;
 		CTRL_GRASP.State_Prepare			= CTRL_GRASP_Prepare;
+		/*RESCUE状态初始化*/ 
+		RESCUE.Behavior_Process   =	NULL ;
+		RESCUE.State_Process      = Rescue_State;
+		RESCUE.State_Prepare			= Rescue_Prepare; 
+		
 	
 		/*底盘状态机初始化*/
-		Chassis_State_Table[0][0] = INDEPEN;
-		Chassis_State_Table[0][2] = WIGGLE;
-		Chassis_State_Table[0][1] = OFFLINE;
-		Chassis_State_Table[1][0] = OFFLINE;
-		Chassis_State_Table[1][1] = OFFLINE;
-		Chassis_State_Table[1][2] = OFFLINE;
-		Chassis_State_Table[2][0] = KEYBOARD;
-		Chassis_State_Table[2][1] = CTRL_GRASP;   //s1 =3 ;  s2=2  
-		Chassis_State_Table[2][2] = CTRL_GRASP;   //3      3  
+		Chassis_State_Table[0][0] = INDEPEN;     //s1=1 ,s2=1 底盘独立
+		Chassis_State_Table[0][2] = WIGGLE;      //s1=1  s2=3 扭腰
+		Chassis_State_Table[0][1] = OFFLINE;     //s1=1  s2=2 离线 
+		Chassis_State_Table[1][0] = RESCUE;      //s1=2  s2=1 救援卡前伸
+		Chassis_State_Table[1][1] = RESCUE;      //s1=2  s2=2 救援卡后缩
+		Chassis_State_Table[1][2] = OFFLINE;     //s3=2  s2=3 离线
+		Chassis_State_Table[2][0] = KEYBOARD;    //s1=3 s2=1  键盘
+		Chassis_State_Table[2][1] = OFFLINE;     //s1=3 s2=2  离线
+		Chassis_State_Table[2][2] = CTRL_GRASP;  //s1=3 s2=3  自动夹取
 }
 
+
+/********************************RESCUE**********************************************/
+static void Rescue_State(void)
+{
+	Chassis_FSM.Current_State->Behavior_Process = Rescue_bhv;
+}
+
+static void Rescue_Prepare(void) 
+{
+	
+}
+static void Rescue_bhv(void) 
+{
+	Chassis.Indepen(&Chassis.C,0,0,0,0);
+	
+	Chassis.Rescue(&Chassis.C, (Chassis.RC->RC_ctrl->s2 * 2 -3)); 
+}
 
 /***************************************OFFLINE**************************************/
 /*OFFLINE状态执行函数*/
@@ -152,6 +179,7 @@ static void Wiggle_Prepare(void)
 /*键盘状态处理*/
 static void KeyBoard_State(void)
 {
+  /************模式选择*****************************************/
 	if(Chassis.RC->state.Auto_Clamp == 4)
 	{
 		Chassis_FSM.Current_State->Behavior_Process = KeyBoard_Grasp_bhv;
