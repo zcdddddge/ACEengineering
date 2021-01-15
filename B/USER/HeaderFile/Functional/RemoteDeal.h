@@ -35,7 +35,8 @@ typedef __packed struct
 	unsigned char Electromagnet : 1;
 	unsigned char RFID : 1;
 	unsigned char Magazine : 1;
-	unsigned char Auto_Clamp : 5;
+	unsigned char Clip     :1 ;
+	unsigned char Auto_Clamp : 1;
 }KeyBoard_State_t;
 
 /*Remote½á¹¹Ìå*/

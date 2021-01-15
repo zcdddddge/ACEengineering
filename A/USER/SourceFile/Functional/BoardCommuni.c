@@ -21,7 +21,7 @@ void Board_Communi_Updata(void)
 		Board_Communi.Rc[16] = 0;
 		clock[0] = 0;
 	}
-	else
+	else if(Board_Communi.Rc[16] ==0 )
 	{
 		clock[0] ++;
 		if(clock[0] >= 500)
@@ -29,6 +29,7 @@ void Board_Communi_Updata(void)
 			Board_Communi.Can_RC.ch0 = Board_Communi.Can_RC.ch1 = Board_Communi.Can_RC.ch2 = Board_Communi.Can_RC.ch3 = 0;
 		}
 	}
+	
 	
 	if(Board_Communi.Rc[17] == 1)
 	{
@@ -39,7 +40,7 @@ void Board_Communi_Updata(void)
 		Board_Communi.Rc[17] = 0;
 		clock[1] = 0;
 	}
-	else
+	else if(Board_Communi.Rc[17]==0 ) 
 	{
 		clock[1] ++;
 		if(clock[1] >= 500)
@@ -49,6 +50,19 @@ void Board_Communi_Updata(void)
 			Board_Communi.Can_RC.s1 = Board_Communi.Can_RC.s2 = 0;
 		}
 	}
+	else if(Board_Communi.Rc[17] == 2 ) 
+	{
+		Board_Communi.state.Auto_Clamp = Board_Communi.Rc[0]; //夹取
+		Board_Communi.state.Magazine= 1 + Board_Communi.Rc[1];//弹仓
+		#if 0 
+		if(Board_Communi.state.Auto_Clamp==1) {
+					Board_Communi.Can_RC.s1 =3 ;  //这里直接赋值,实际上不太好,用于测试 
+					Board_Communi.Can_RC.s2 =3 ; 
+		}
+		#endif 
+	
+	}
+	 
 }
 
 

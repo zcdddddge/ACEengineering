@@ -78,7 +78,7 @@ void CAN1_RX0_IRQHandler(void)
 			{
 				can1_201_208_buffer[12] = (RxMessage.Data[0] << 8) | RxMessage.Data[1];
 				can1_201_208_buffer[13] = (RxMessage.Data[2] << 8) | RxMessage.Data[3];
-				CAN_DATA_Encoder_Deal(96,can1_201_208_buffer[12],can1_201_208_buffer[13],&can1_encoder_207);
+				CAN_DATA_Encoder_Deal(36,can1_201_208_buffer[12],can1_201_208_buffer[13],&can1_encoder_207);
 				break;	
 			}	
 			case 0x208:        

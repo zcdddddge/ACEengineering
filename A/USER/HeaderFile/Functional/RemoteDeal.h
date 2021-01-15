@@ -35,10 +35,6 @@ typedef __packed struct
 	First_Order_t KM_X;
 	First_Order_t KM_Y;
 	First_Order_t KM_Z;
-	u8 ChassisWheelState;
-	u8 ChassisRescueState;
-	u8 GimbalPYState;
-	u8 GimbalAmmunitiState;
 	RC_ctrl_t* (*Get_Remote_Point)(void);
 }REMOTE_t;
 

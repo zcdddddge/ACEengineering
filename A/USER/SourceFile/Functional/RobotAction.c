@@ -38,7 +38,7 @@ void Auto_Ctrl(Gr_t *Gr,u8 box)
 				Gr->GraspMotor[3].ExpSpeed = 0;
 				box_lock = 1;
 				boxs = 0;
-				Gr->state[0] = 0;
+				Gr->state[0] = 0;   
 			}
 		}
 	}
@@ -468,3 +468,4 @@ static void filpReset(Motor_t *  filp1 , Motor_t *filp2 ,float limit ) {
 
 
 }
+

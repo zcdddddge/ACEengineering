@@ -37,9 +37,7 @@ void Remote_Data_Init(void)
 	  REMOTE.RC_ctrl->KV.x = REMOTE.RC_ctrl->KV.y = REMOTE.RC_ctrl->KV.z = 0;
 		REMOTE.RC_ctrl->KV.key = REMOTE.RC_ctrl->KV.press_l = REMOTE.RC_ctrl->KV.press_r = 0;
 		
-		/*状态初始化*/
-		REMOTE.ChassisWheelState = REMOTE.ChassisRescueState = 0;
-		REMOTE.GimbalPYState = REMOTE.GimbalAmmunitiState = 0;
+	
 	
 	  /*低通滤波初始化*/
 		First_Order_Init(&REMOTE.RC_X,0.08);

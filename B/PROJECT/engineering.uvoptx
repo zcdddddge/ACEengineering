@@ -1296,8 +1296,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\USER\SourceFile\Lib\triangle.c</PathWithFileName>
-      <FilenameWithoutPath>triangle.c</FilenameWithoutPath>
+      <PathWithFileName>..\USER\SourceFile\Lib\Triangles.c</PathWithFileName>
+      <FilenameWithoutPath>Triangles.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

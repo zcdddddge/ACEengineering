@@ -25,7 +25,7 @@
  * 
  * @Author: your name
  * @Date: 2020-12-01 09:06:59
- * @LastEditTime: 2021-01-06 11:50:05
+ * @LastEditTime: 2021-01-13 18:02:09
  * @LastEditors: Please set LastEditors
  * @Description: None 
  */
@@ -48,4 +48,5 @@ void MotorValZero(Motor_t *motor)
 		EncoderValZero(motor->Encoder);
 		motor->MotorType = CURRENCY_M;
 		motor->ResetFlag =0;
+		motor->clock = motor->lock = motor->dire=0 ;
 }

@@ -178,6 +178,7 @@ void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN)
 		int16_t Val[4] = {0,0,0,0};
 		int16_t MAX = 0;
 		static u8 dir = 0;
+		static float CurYaw =0 ;
 		float SPID_OUT[4];
 			
 		if(Z_IN == 0.0f)
@@ -205,7 +206,7 @@ void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN)
 		}
 		
 		#if 0  
-		/*底盘远动分解使用库函数和弧度 |  弧度= 角度*PI/180*=============*/
+		/*使用库函数 |  弧度= 角度*PI/180*=============*/
 		
 		if(X_IN != 0)
 		{
@@ -213,19 +214,26 @@ void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN)
 		}
 		if(Y_IN != 0)
 		{
-			Y_IN = Y_IN * float_abs(sinf(-(C->gyro->Yaw_Var)/180*3.14159216f));
+			Y_IN = Y_IN * float_abs(cosf(-(C->gyro->Yaw_Var)/180*3.14159216f)); //改成cosf 
 		}
 		#endif 
 		
+	  #if 1
 		//用查表法 
 		if(X_IN != 0)
 		{
-			X_IN = X_IN * float_abs(cosf(-(C->gyro->Yaw_Var)/180*3.14159216f));
+			X_IN = X_IN * float_abs( cos_calculate(-(C->gyro->Yaw_Var))  );
+			CurYaw = C->gyro->Yaw_Var ; //当前的角度
+			 
 		}
 		if(Y_IN != 0)
 		{
-			Y_IN = Y_IN * float_abs(sinf(-(C->gyro->Yaw_Var)/180*3.14159216f));
+			Y_IN = Y_IN * float_abs( cos_calculate (-(C->gyro->Yaw_Var)));
 		}
+		#endif 
+		
+		
+		/************1.13/12:04 ***********************************/
 		
 		
 		
@@ -378,7 +386,7 @@ void Chassis_Rescue(C_t *C ,int16_t dire)
 	if(C->RescueMotor.Encoder->Speed[1]<=100 &&C->RescueMotor.Encoder->Speed[1]>=-100)  
 	{
 		clock++;
-		if(clock>=50){
+		if(clock>=60){
 			lock=2;  
 		}
 	}

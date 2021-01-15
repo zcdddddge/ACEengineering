@@ -163,7 +163,7 @@ static void Key_Mouse_Deal(void)
 			{
 				if(lock)
 				{
-					REMOTE.state.Magazine = 1 - REMOTE.state.Electromagnet;
+					REMOTE.state.RFID = 1 - REMOTE.state.RFID;
 					lock = 0;
 				}
 				break;
@@ -173,7 +173,7 @@ static void Key_Mouse_Deal(void)
 			{
 				if(lock)
 				{
-					REMOTE.state.Auto_Clamp = 4;
+					REMOTE.state.Auto_Clamp = 1-REMOTE.state.Auto_Clamp ;
 					lock = 0;
 				}
 				break;
@@ -188,9 +188,18 @@ static void Key_Mouse_Deal(void)
 				}
 				break;
 			}
+			/********************************A∞Â********************************/
+			case KEY_PRESSED_OFFSET_B :
+			{
+				if(lock) {
+					REMOTE.state.Clip    =1-REMOTE.state.Clip ;
+					lock=0 ;
+				}
+				break; 
+			}
 			default:
 			{
-				REMOTE.state.Auto_Clamp = 0;
+//				REMOTE.state.Auto_Clamp = 0;
 				lock = 1;
 				break;
 			}
@@ -201,8 +210,8 @@ static void Key_Mouse_Deal(void)
 		REMOTE.RC_ctrl->KV.kv2 = limit(REMOTE.RC_ctrl->KV.kv2,660,-660);
 		REMOTE.RC_ctrl->KV.kv3 = limit(REMOTE.RC_ctrl->KV.kv3,660,-660);
 		/*¬À≤®¥¶¿Ì*/
-		First_Order(&REMOTE.KM_X,REMOTE.RC_ctrl->KV.kv1);     //µ◊≈Ã◊Û”“ 
-		First_Order(&REMOTE.KM_Y,REMOTE.RC_ctrl->KV.kv0);     //µ◊≈Ã«∞∫Û
+		First_Order(&REMOTE.KM_X,REMOTE.RC_ctrl->KV.kv0);     //µ◊≈Ã◊Û”“ 
+		First_Order(&REMOTE.KM_Y,REMOTE.RC_ctrl->KV.kv1);     //µ◊≈Ã«∞∫Û
 		First_Order(&REMOTE.KM_Z,REMOTE.RC_ctrl->KV.kv3);     //  Û±Íx÷· 
 		
 }

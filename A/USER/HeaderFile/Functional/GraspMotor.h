@@ -13,13 +13,16 @@
 #define Update_VL53L0_Val				VL53L0_Data_Deal
 
 /****************************发送电机数值*****************************************/
+#if 1
 #define MotorOutput_201_204		Gr->GraspMotor[0].SPID.Out,Gr->GraspMotor[1].SPID.Out,Gr->GraspMotor[2].SPID.Out,Gr->GraspMotor[3].SPID.Out
-#define MotorOutput_205_208		Gr->GraspMotor[4].SPID.Out,Gr->GraspMotor[5].SPID.Out,0,0
+#define MotorOutput_205_208		Gr->GraspMotor[4].SPID.Out,Gr->GraspMotor[5].SPID.Out,Gr->GraspMotor[6].SPID.Out,Gr->GraspMotor[6].SPID.Out
+#endif 
 
 
-//#define MotorOutput_201_204		0,0,0,0
-//#define MotorOutput_205_208		0,0,0,0
-
+#if 0
+#define MotorOutput_201_204		0,0,0,0
+#define MotorOutput_205_208		0,0,0,0
+#endif 
 /********************************电机状态************************************************/
 static const u8 Finish 		= 1;
 static const u8 DisFinish = 0;
@@ -83,6 +86,7 @@ static const int16_t Cilp_Speed 				= 5500;
 static const int16_t Rall_Speed 				= 1000;
 static const int16_t UpLift_Speed 			= 3000;
 static const int16_t Telescoping_Speed	= 1000;
+static const int16_t Supply_Speed	      = 1500;
 /*夹取结构体*/
 typedef __packed struct
 {
@@ -111,5 +115,9 @@ void Poweroff_Ctrl(Gr_t *Gr);
 
 /*复位夹取*/
 u8 ResetGrasp(Gr_t *Gr);
+
+/*弹丸*/
+void bulletSupply (Gr_t *Gr,Motor_t *Supply,int8_t  dire); 
+
 
 #endif

@@ -81,7 +81,7 @@
 ".\objects\fsm.o"
 ".\objects\filterlib.o"
 ".\objects\mathlib.o"
-".\objects\triangle.o"
+".\objects\triangles.o"
 --library_type=microlib --strict --scatter ".\Objects\ENGINEERING2020.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

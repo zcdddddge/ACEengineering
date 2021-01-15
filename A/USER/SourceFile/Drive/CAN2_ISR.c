@@ -43,6 +43,15 @@ void CAN2_RX0_IRQHandler(void)
 				can2_board_buffer_first[17] = 1;
 				break;
 			}
+			/****1/13 增加夹取 **************/
+			case 0x403 :
+			{
+				if(RxMessage.Data[0] == 0x0A  && RxMessage.Data[7] == 0xCE ) { 
+						can2_board_buffer_first[0] = RxMessage.Data[1] ;  //箱子数 boxs 
+						can2_board_buffer_first[1] = RxMessage.Data[2] ;  //弹仓   Magazine
+						can2_board_buffer_first[17]= 2; 
+				}
+			}
 			default:
 				break;
 		}			

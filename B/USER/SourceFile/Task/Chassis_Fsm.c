@@ -5,6 +5,9 @@
 extern Chassis_t Chassis;		/*底盘控制总结构体*/
 #define Electromagnet_On					GPIO_SetBits(GPIOC,GPIO_Pin_3)
 #define Electromagnet_Off					GPIO_ResetBits(GPIOC,GPIO_Pin_3)
+#define Rifd_ForWard              Chassis.Rescue(&Chassis.C, -1);   
+#define Rifd_BackWard             Chassis.Rescue(&Chassis.C, 1);   
+
 
 FSM_t Chassis_FSM;			/*底盘状态机*/
 State_t OFFLINE;				/*断电模式*/
@@ -89,7 +92,7 @@ void Chassis_FSM_Init(void)
 		Chassis_State_Table[0][1] = OFFLINE;     //s1=1  s2=2 离线 
 		Chassis_State_Table[1][0] = RESCUE;      //s1=2  s2=1 救援卡前伸
 		Chassis_State_Table[1][1] = RESCUE;      //s1=2  s2=2 救援卡后缩
-		Chassis_State_Table[1][2] = OFFLINE;     //s3=2  s2=3 离线
+		Chassis_State_Table[1][2] = CTRL_GRASP;  //s1=2  s2=3 离线
 		Chassis_State_Table[2][0] = KEYBOARD;    //s1=3 s2=1  键盘
 		Chassis_State_Table[2][1] = OFFLINE;     //s1=3 s2=2  离线
 		Chassis_State_Table[2][2] = CTRL_GRASP;  //s1=3 s2=3  自动夹取
@@ -180,7 +183,7 @@ static void Wiggle_Prepare(void)
 static void KeyBoard_State(void)
 {
   /************模式选择*****************************************/
-	if(Chassis.RC->state.Auto_Clamp == 4)
+	if(Chassis.RC->state.Clip) 
 	{
 		Chassis_FSM.Current_State->Behavior_Process = KeyBoard_Grasp_bhv;
 	}
@@ -193,19 +196,23 @@ static void KeyBoard_State(void)
 /*键盘控制底盘行为函数*/
 static void KeyBoard_Chassis_bhv(void)
 {
+	static int16_t dire=-1 ; 
 	Chassis.Indepen(&Chassis.C,Chassis.RC->KM_X.Output,Chassis.RC->KM_Y.Output,Chassis.RC->KM_Z.Output,0);
-	if(Chassis.RC->state.Electromagnet)
-	{
+	/*电磁铁*/
+	if(Chassis.RC->state.Electromagnet){
 		Electromagnet_On;
 	}
-	else
-	{
+	else{
 		Electromagnet_Off;
 	}
+	/*救援卡*/ 
 	if(Chassis.RC->state.RFID)
 	{
-		
+			Rifd_ForWard; 
+	}else {
+	    Rifd_BackWard;
 	}
+	
 }
 
 /*键盘控制夹取行为函数*/

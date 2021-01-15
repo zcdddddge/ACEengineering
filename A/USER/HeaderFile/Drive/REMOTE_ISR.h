@@ -2,7 +2,6 @@
 #define __REMOTE_ISR_H_
 #include "stm32f4xx.h"
 
-
 /*¼üÊó*/
 typedef __packed struct
 {

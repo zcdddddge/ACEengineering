@@ -6,8 +6,17 @@
 #include "BoardCommuni.h"
 #include "RobotAction.h"
 
-/*************************模式切换 置1双机通信************************************/
-#define RC_SWITCH 0
+
+#define SupplyOpen           bulletSupply(&Clip.Gr,&Clip.Gr.GraspMotor[6],-1);	 
+#define SupplyClose          bulletSupply(&Clip.Gr , &Clip.Gr.GraspMotor[6],1);	 
+/**
+ * RC_SWITCH置0,使用串口通信,直接接收遥控数据(用于测试)
+ * RC_SWITCH置1,使用can通信,遥控数据由底盘板发送(实际使用)
+ * 改代码只要改RC_SWITCH即可
+ **/ 
+
+
+#define RC_SWITCH 1
 /**************Can通信,主从版**********************/
 #if RC_SWITCH
 	#define CAN_RC
@@ -16,6 +25,9 @@
 #if (RC_SWITCH == 0)
 	#define UART_RC
 #endif
+
+
+
 
 typedef __packed struct
 {
@@ -26,9 +38,9 @@ typedef __packed struct
 #endif
 #ifdef CAN_RC
 	Board_Communi_t *Can2_RC;
+	
 #endif
-}Test_t;
+}Clip_t;
 
 void Remote_Task(void *pvParameters);
-
 #endif

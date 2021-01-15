@@ -45,5 +45,9 @@ void Send_Ctrl_To_Board(unsigned char boxs,unsigned char Magazine)
 	temp[5] = 0;
 	temp[6] = 0;
 	temp[7] = 0xCE;
-	CAN2_To_Board(temp,0x0401);
+	//CAN2_To_Board(temp,0x0401); // ÐÞ¸Ä 
+	CAN2_To_Board(temp,0x0403);
 }
+
+
+

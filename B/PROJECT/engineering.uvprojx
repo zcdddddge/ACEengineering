@@ -844,9 +844,9 @@
               <FilePath>..\USER\HeaderFile\Lib\math.h</FilePath>
             </File>
             <File>
-              <FileName>triangle.c</FileName>
+              <FileName>Triangles.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\USER\SourceFile\Lib\triangle.c</FilePath>
+              <FilePath>..\USER\SourceFile\Lib\Triangles.c</FilePath>
             </File>
           </Files>
         </Group>

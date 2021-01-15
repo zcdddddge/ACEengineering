@@ -4,20 +4,13 @@
 #include "Remote_Task.h"
 #include "Data_Task.h"
 
-/*底盘任务*/
-TaskHandle_t 					Chassis_Handler;
-#define Chassis_Size	256
-#define Chassis_Prio	6
+
 	
 /*遥控任务*/
 TaskHandle_t 					Remote_Handler;
 #define Remote_Size		256
 #define Remote_Prio		8
 
-/*云台任务*/
-TaskHandle_t 					Gimbal_Handler;
-#define Gimbal_Size		256
-#define Gimbal_Prio		7
 
 /*检测任务*/
 TaskHandle_t 					Detect_Handler;
@@ -45,33 +38,6 @@ void TaskInit(void)
 			(void*          )NULL,                          
 			(UBaseType_t    )Remote_Prio,               
 			(TaskHandle_t*  )&Remote_Handler);
-		#endif
-			
-		#if 0
-		xTaskCreate((TaskFunction_t )Chassis_Task,            	
-			(const char*    )"Chassis_Task",                  
-			(uint16_t       )Chassis_Size,                           
-			(void*          )NULL,                          
-			(UBaseType_t    )Chassis_Prio,               
-			(TaskHandle_t*  )&Chassis_Handler);
-		#endif
-			
-		#if 0
-		xTaskCreate((TaskFunction_t )Gimbal_Task,			
-			(const char*    )"Gimbal_Task",                  
-			(uint16_t       )Gimbal_Size,                           
-			(void*          )NULL,                          
-			(UBaseType_t    )Gimbal_Prio,               
-			(TaskHandle_t*  )&Gimbal_Handler);
-		#endif
-		
-		#if 0
-		xTaskCreate((TaskFunction_t )Grasp_Task,            	
-			(const char*    )"Grasp_Task",                  
-			(uint16_t       )Grasp_Size,                           
-			(void*          )NULL,                          
-			(UBaseType_t    )Grasp_Prio,               
-			(TaskHandle_t*  )&Grasp_Handler);
 		#endif
 			
 		#if 1
