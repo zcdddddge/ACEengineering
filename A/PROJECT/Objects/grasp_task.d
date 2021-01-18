@@ -46,6 +46,9 @@
 .\objects\grasp_task.o: ..\USER\HeaderFile\Drive\vL53L0.h
 .\objects\grasp_task.o: ..\USER\HeaderFile\Lib\MathLib.h
 .\objects\grasp_task.o: ..\USER\HeaderFile\Lib\FilterLib.h
+.\objects\grasp_task.o: ..\USER\HeaderFile\Task\Grasp_Fsm.h
+.\objects\grasp_task.o: ..\USER\HeaderFile\Task\fsm.h
+.\objects\grasp_task.o: ..\USER\HeaderFile\Functional\RobotAction.h
 .\objects\grasp_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\grasp_task.o: ..\FreeRTOS\include\FreeRTOS.h
 .\objects\grasp_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

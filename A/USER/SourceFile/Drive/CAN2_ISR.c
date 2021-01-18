@@ -52,6 +52,30 @@ void CAN2_RX0_IRQHandler(void)
 						can2_board_buffer_first[17]= 2; 
 				}
 			}
+			/****************1-17增加键盘控制夹取***/
+			case 0x404: 
+			{
+				if(RxMessage.Data[7]==0x77) 
+				{
+					can2_board_buffer_first[0] = RxMessage.Data[0];
+					can2_board_buffer_first[1] = RxMessage.Data[1];
+					can2_board_buffer_first[2] = RxMessage.Data[2];
+					can2_board_buffer_first[3] = RxMessage.Data[3];
+					can2_board_buffer_first[4] = RxMessage.Data[4];
+					can2_board_buffer_first[5] = RxMessage.Data[5];
+					can2_board_buffer_first[6] = RxMessage.Data[6];
+					can2_board_buffer_first[7] = RxMessage.Data[7];
+				}
+			}
+			case 0x405 :
+			{
+				if(RxMessage.Data[6]==0xAC && RxMessage.Data[7]==0xCE) 
+				{
+					can2_board_buffer_first[0] = RxMessage.Data[0];
+					can2_board_buffer_first[1] = RxMessage.Data[1];
+				}
+			}
+			
 			default:
 				break;
 		}			

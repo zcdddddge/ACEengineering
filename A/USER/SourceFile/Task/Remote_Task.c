@@ -1,95 +1,66 @@
 #include "Remote_Task.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "Grasp_Task.h"
 
-extern Clip_t Clip;
-Clip_t Clip;
-static u8 lock = 1;
+extern Grasp_t Grasp;
 static u8 keyBoardLock =1 ; 
 
 void Remote_Task(void *pvParameters)
 {
 	vTaskDelay(500);
-	Grasp_Motor_Init(&Clip.Gr);
-#ifdef CAN_RC
-	Clip.Can2_RC = Return_Board_Communi();
-#endif 
-#ifdef UART_RC
-	Remote_Data_Init();
-	Clip.Remote = Return_RemoteDeal_Point();
-#endif
 	
+	Grasp.Can2_RC = Return_Board_Communi();
 	while(1)
 	{
-#ifdef UART_RC
-		Remote_Data_Deal();
-		if(Clip.Remote->RC_ctrl->s1 == 1 && Clip.Remote->RC_ctrl->s2 == 1){
-			if(lock == 1){
-				Auto_Ctrl(&Clip.Gr,2);
-				lock = 2;
-			}
-			else{
-				Auto_Ctrl(&Clip.Gr,0);
-			}
-		}
-		else if(Clip.Remote->RC_ctrl->s1 == 1 && Clip.Remote->RC_ctrl->s2 == 3){
-			RC_Ctrl(&Clip.Gr,Clip.Remote->RC_ctrl);
-			/*复位值初始化*/
-			Clip.Gr.reset[0] = Clip.Gr.reset[1] = Clip.Gr.reset[2] = Clip.Gr.reset[3] \
-				= Clip.Gr.reset[4] = Clip.Gr.reset[5] = Clip.Gr.reset[6] = 0;	
-		}
-		else if(Clip.Remote->RC_ctrl->s1 == 1 && Clip.Remote->RC_ctrl->s2 == 2){
-			ResetGrasp(&Clip.Gr);
-		}
-		else{
-			lock = 1;
-			Poweroff_Ctrl(&Clip.Gr);
-		}
-	}
-#endif
-		
-#ifdef CAN_RC
+	
     /*****************遥控控制夹取************************************/
-		if(Clip.Can2_RC->Can_RC.s1 == 3 && Clip.Can2_RC->Can_RC.s2==3) {
+		#if 0 
+		if(Grasp.Can2_RC->Can_RC.s1 == 3 && Grasp.Can2_RC->Can_RC.s2==3) {
 			if(lock == 1){
-				Auto_Ctrl(&Clip.Gr,1);
+				Auto_Ctrl(&Grasp.Gr,1);  // 没有锁可能是拼命夹,下午验证猜想
 				lock = 2;
 			}
 			else{
-				Auto_Ctrl(&Clip.Gr,0);
+				Auto_Ctrl(&Grasp.Gr,0);
 			}
 		}
-		else if(Clip.Can2_RC->Can_RC.s1 == 3 && Clip.Can2_RC->Can_RC.s2 == 2){
- 			ResetGrasp(&Clip.Gr);
+		else if(Grasp.Can2_RC->Can_RC.s1 == 3 && Grasp.Can2_RC->Can_RC.s2 == 2){
+ 			ResetGrasp(&Grasp.Gr);
 		}
 		else{
 			lock = 1;
-			Poweroff_Ctrl(&Clip.Gr);
+			Poweroff_Ctrl(&Grasp.Gr);
 		}
+		#endif 
+		
+		 
     /****************键盘控制弹仓**********************************/ 
 		#if 0 
-		if(Clip.Can2_RC->state.Magazine==2) {
+		if(Grasp.Can2_RC->state.Magazine==2) {
 				SupplyOpen;
-		}else if(Clip.Can2_RC->state.Magazine==1){
+		}else if(Grasp.Can2_RC->state.Magazine==1){
 				SupplyClose;
 		}
 		#endif 
 		
+		#if 0 
 		/**************键盘控制夹取***********************************/ 
-		if(Clip.Can2_RC->state.Auto_Clamp) 
+		if(Grasp.Can2_RC->state.Auto_Clamp) 
 		{
 			if(keyBoardLock == 1){
-				Auto_Ctrl(&Clip.Gr,1);
+				Auto_Ctrl(&Grasp.Gr,1);
 				keyBoardLock = 2;
 			}else{
-				Auto_Ctrl(&Clip.Gr,0);
+				Auto_Ctrl(&Grasp.Gr,0);
 			}
 		}
 		else{
 			keyBoardLock = 1;
-			Poweroff_Ctrl(&Clip.Gr);
+			Poweroff_Ctrl(&Grasp.Gr);
 		}
+		#endif 
 		vTaskDelay(2);
 	}
-#endif 
 }
+

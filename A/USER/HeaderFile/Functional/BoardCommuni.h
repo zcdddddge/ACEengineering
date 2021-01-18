@@ -3,6 +3,14 @@
 #include "stm32f4xx.h"
 #include "REMOTE_ISR.h"
 
+#define AUTO_GRASP_S1     3
+#define AUTO_GRASP_S2     3 
+
+#define KOFFLINE 1 
+
+
+
+
 typedef __packed struct 
 {
 	unsigned char Magazine : 2;
@@ -19,4 +27,6 @@ typedef __packed struct
 void Board_Communi_Init(void);
 void Board_Communi_Updata(void);
 Board_Communi_t* Return_Board_Communi(void);
+void Send_Crtl_To_Board(int16_t ch0);
+
 #endif

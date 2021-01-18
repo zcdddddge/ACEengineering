@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-01-09 15:32:31
- * @LastEditTime: 2021-01-10 10:43:42
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \PROJECTd:\RMware\A\USER\HeaderFile\Functional\RobotAction.h
- */
 #ifndef __ROBOTACTION_H_
 #define __ROBOTACTION_H_
 

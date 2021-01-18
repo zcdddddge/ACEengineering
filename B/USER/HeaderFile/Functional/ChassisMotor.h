@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-01-09 15:32:34
- * @LastEditTime: 2021-01-11 15:33:01
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \PROJECTd:\RMware\B\USER\HeaderFile\Functional\ChassisMotor.h
- */
 #ifndef __CHASSISMOTOR_H_
 #define __CHASSISMOTOR_H_
 #include "motor.h"

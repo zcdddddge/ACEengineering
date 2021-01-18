@@ -71,6 +71,8 @@
 ".\objects\grasp_task.o"
 ".\objects\remote_task.o"
 ".\objects\data_task.o"
+".\objects\grasp_fsm.o"
+".\objects\fms.o"
 ".\objects\filterlib.o"
 ".\objects\mathlib.o"
 --library_type=microlib --strict --scatter ".\Objects\ENGINEERING2020.sct"

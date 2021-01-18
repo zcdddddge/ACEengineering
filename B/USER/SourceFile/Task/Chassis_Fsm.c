@@ -92,7 +92,7 @@ void Chassis_FSM_Init(void)
 		Chassis_State_Table[0][1] = OFFLINE;     //s1=1  s2=2 离线 
 		Chassis_State_Table[1][0] = RESCUE;      //s1=2  s2=1 救援卡前伸
 		Chassis_State_Table[1][1] = RESCUE;      //s1=2  s2=2 救援卡后缩
-		Chassis_State_Table[1][2] = CTRL_GRASP;  //s1=2  s2=3 离线
+		Chassis_State_Table[1][2] = CTRL_GRASP;  //s1=2  s2=3 遥控夹取
 		Chassis_State_Table[2][0] = KEYBOARD;    //s1=3 s2=1  键盘
 		Chassis_State_Table[2][1] = OFFLINE;     //s1=3 s2=2  离线
 		Chassis_State_Table[2][2] = CTRL_GRASP;  //s1=3 s2=3  自动夹取
@@ -182,7 +182,7 @@ static void Wiggle_Prepare(void)
 /*键盘状态处理*/
 static void KeyBoard_State(void)
 {
-  /************模式选择*****************************************/
+  /************键盘B键-->模式选择*****************************************/
 	if(Chassis.RC->state.Clip) 
 	{
 		Chassis_FSM.Current_State->Behavior_Process = KeyBoard_Grasp_bhv;
@@ -234,14 +234,18 @@ static void KeyBoard_Prepare(void)
 static void CTRL_GRASP_State(void)				
 {
 	Chassis_FSM.Current_State->Behavior_Process = GRASP_RC_bhv;
+	
 }
 
 /*遥控控制夹取行为函数*/
 static void GRASP_RC_bhv(void)
 {
-	
-	Send_RC_To_Board();												//发送遥控数据
-	Chassis.Indepen(&Chassis.C,0,0,0,0);			//底盘速度为0
+//	int16_t speed=0 ;
+//	Chassis.BoardCommuni_Update(&speed);
+	Send_RC_To_Board();		//发送遥控数据
+	Chassis.Indepen(&Chassis.C,0,0,0,0);
+
+
 }
 
 /*CTRL_GRASP状态准备函数*/

@@ -9,7 +9,7 @@
 /*遥控任务*/
 TaskHandle_t 					Remote_Handler;
 #define Remote_Size		256
-#define Remote_Prio		8
+#define Remote_Prio		7
 
 
 /*检测任务*/
@@ -20,7 +20,7 @@ TaskHandle_t 					Detect_Handler;
 /*夹取任务*/
 TaskHandle_t 					Grasp_Handler;
 #define Grasp_Size		256
-#define Grasp_Prio		7
+#define Grasp_Prio		8
 
 /*数据任务*/
 TaskHandle_t 					Data_Handler;
@@ -57,4 +57,14 @@ void TaskInit(void)
 			(UBaseType_t    )Data_Prio,               
 			(TaskHandle_t*  )&Data_Handler);
 		#endif
+		
+		#if 1
+		xTaskCreate((TaskFunction_t )Grasp_Task,            	
+			(const char*    )"Grasp_Task",                  
+			(uint16_t       )Grasp_Size,                           
+			(void*          )NULL,                          
+			(UBaseType_t    )Grasp_Prio,               
+			(TaskHandle_t*  )&Grasp_Handler);
+		#endif
+		
 }

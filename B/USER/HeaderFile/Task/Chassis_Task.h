@@ -18,7 +18,8 @@ typedef __packed struct
 	void (*Indepen)(C_t*,float ,float ,float ,int16_t);	//µ×ÅÌ¸úËæ
 	void (*Wiggle)(C_t*,float ,float ,float);						//µ×ÅÌÒ¡°Ú
 	void (*Rescue)(C_t *,int16_t );                     //¾ÈÔ®µç»ú¾ÈÔ® 
-	void (*Poweroff)(C_t*);															//µ×ÅÌ¶Ïµç
+	void (*Poweroff)(C_t*);	                          	//µ×ÅÌ¶Ïµç
+	void (*BoardCommuni_Update)(int16_t *speed);                  //¼ĞÈ¡¿ØÖÆµ×ÅÌ
 }Chassis_t;
 
 void Chassis_Task(void *pvParameters);

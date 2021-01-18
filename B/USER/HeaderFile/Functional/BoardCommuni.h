@@ -3,6 +3,9 @@
 #include "stm32f4xx.h"
 #include "REMOTE_ISR.h"
 
+
+
+
 /*板间通信初始化*/
 void BoardCommuni_Init(void);
 
@@ -11,4 +14,7 @@ void Send_RC_To_Board(void);
 
 /*发送控制指令至板子*/
 void Send_Ctrl_To_Board(unsigned char boxs,unsigned char Magazine);
+
+/*底盘接收夹取控制指令*/
+void  BoardCommuni_DataUpdate(int16_t *speed) ;
 #endif

@@ -1,11 +1,9 @@
 #include "CAN2_ISR.h"
 
-/*数据接收缓冲区*/
-int16_t can2_201_204_buffer[8];
-int16_t can2_205_208_buffer[8];
+
 
 /*反馈数据区*/
-u8 can2_board_buffer[8];
+uint8_t can2_board_buffer[8];
 
 /*码盘值结构体*/
 Encoder_t can2_encoder_205;
@@ -25,75 +23,25 @@ void CAN2_RX0_IRQHandler(void)
 	if (CAN_GetITStatus(CAN2,CAN_IT_FMP0)!= RESET){	
 		CAN_ClearITPendingBit(CAN2, CAN_IT_FMP0);		
 		CAN_Receive(CAN2, CAN_FIFO0, &RxMessage);
+		if(RxMessage.StdId ==0x11) 
+		{
+				can2_board_buffer[0]= RxMessage.Data[0] ;  //ch0 
+				can2_board_buffer[1]= RxMessage.Data[1] ;
+				can2_board_buffer[2]= RxMessage.Data[2] ;
+				can2_board_buffer[3]= RxMessage.Data[3] ;
+				can2_board_buffer[4]= RxMessage.Data[4] ;
+				can2_board_buffer[5]= RxMessage.Data[5] ;
+				can2_board_buffer[6]= RxMessage.Data[6] ;
+				can2_board_buffer[7]= RxMessage.Data[7] ;
+		}
+		else
+		{
 		
-		switch(RxMessage.StdId){
-			case 0x201:
-			{
-				can2_201_204_buffer[0] =(RxMessage.Data[0]<<8)+RxMessage.Data[1];      
-				can2_201_204_buffer[1] =(RxMessage.Data[2]<<8)+RxMessage.Data[3];
-				break;
-			}
-			case 0x202:
-			{
-				can2_201_204_buffer[2] =(RxMessage.Data[0]<<8)+RxMessage.Data[1];      
-				can2_201_204_buffer[3] =(RxMessage.Data[2]<<8)+RxMessage.Data[3];
-				break;
-			}
-			case 0x203:
-			{
-				can2_201_204_buffer[4] =(RxMessage.Data[0]<<8)+RxMessage.Data[1];      
-				can2_201_204_buffer[5] =(RxMessage.Data[2]<<8)+RxMessage.Data[3];
-				break;
-			}			
-			case 0x204:
-			{
-				can2_201_204_buffer[6] =(RxMessage.Data[0]<<8)+RxMessage.Data[1];      
-				can2_201_204_buffer[7] =(RxMessage.Data[2]<<8)+RxMessage.Data[3];
-				break;
-			}
-			case 0x205:
-			{
-				can2_205_208_buffer[0] = (RxMessage.Data[0] << 8) | RxMessage.Data[1];
-				can2_205_208_buffer[1] = (RxMessage.Data[2] << 8) | RxMessage.Data[3];
-				CAN_DATA_Encoder_Deal(19,can2_205_208_buffer[0],can2_205_208_buffer[1],&can2_encoder_205);
-				break;	
-			}	
-			case 0x206:        
-			{
-				can2_205_208_buffer[2] = (RxMessage.Data[0] << 8) | RxMessage.Data[1];
-				can2_205_208_buffer[3] = (RxMessage.Data[2] << 8) | RxMessage.Data[3];
-				CAN_DATA_Encoder_Deal(19,can2_205_208_buffer[2],can2_205_208_buffer[3],&can2_encoder_206);
-				break;
-			}	
-			case 0x207:
-			{
-				can2_205_208_buffer[4] = (RxMessage.Data[0] << 8) | RxMessage.Data[1];
-				can2_205_208_buffer[5] = (RxMessage.Data[2] << 8) | RxMessage.Data[3];
-				CAN_DATA_Speed_Deal(can2_205_208_buffer[5],&can2_encoder_207);
-				break;	
-			}	
-			case 0x208:        
-			{
-				can2_205_208_buffer[6] = (RxMessage.Data[0] << 8) | RxMessage.Data[1];
-				can2_205_208_buffer[7] = (RxMessage.Data[2] << 8) | RxMessage.Data[3];
-				break;
-			}	
-			case 0x111:
-			{
-				can2_board_buffer[0] = RxMessage.Data[0];
-				can2_board_buffer[1] = RxMessage.Data[1];
-				can2_board_buffer[2] = RxMessage.Data[2];
-				can2_board_buffer[3] = RxMessage.Data[3];
-				can2_board_buffer[4] = RxMessage.Data[4];
-				can2_board_buffer[5] = RxMessage.Data[5];
-				can2_board_buffer[6] = RxMessage.Data[6];
-				can2_board_buffer[7] = RxMessage.Data[7];
-				break;
-			}
-			default:
-				break;
-		}			
-	}
+		}
+		
+			
+	}			
+	
 }
 
 
@@ -205,7 +153,7 @@ void CAN2_To_Board(u8*CAN_DATA,int16_t stdid)
 *返回:	无
 *说明:	返回夹取板子的状态值
 *************************************************************************************************/
-u8 *Return_CAN2_Board_Data(void)
+uint8_t  *Return_CAN2_Board_Data(void)
 {
 		return can2_board_buffer;
 }

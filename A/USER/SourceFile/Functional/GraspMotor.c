@@ -92,20 +92,16 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 	static int8_t dire = 0;
 	static int8_t lock = 1;
 
-
-	
-
-	Gr->GraspMotor[0].ExpSpeed   = ((float)(rc->ch1) * 10.0f);
+	//Gr->GraspMotor[0].ExpSpeed   = ((float)(rc->ch1) * 10.0f);
 	Gr->GraspMotor[1].ExpSpeed   = ((float)(rc->ch0) * 10.0f);
 	Gr->GraspMotor[2].ExpSpeed   = ((float)(rc->ch3) * 10.0f);
-//Gr->GraspMotor[3].ExpSpeed   = ((float)(rc->ch2) * 10.0f);
+  Gr->GraspMotor[3].ExpSpeed   = ((float)(rc->ch2) * 10.0f);
 	Gr->GraspMotor[4].ExpRadian += ((float)(rc->sw) / 800.0f);
 	Gr->GraspMotor[5].ExpRadian += ((float)(-rc->sw) / 800.0f);
-	Gr->GraspMotor[6].ExpSpeed  = ((float)(rc->ch2) * 10.0f);
+	Gr->GraspMotor[6].ExpSpeed  = ((float)(rc->ch1) * 10.0f);
 	
 	
-	/**抬升**/
-//	/*外环*/
+	/****************************抬升***************************/
 	if(Gr->GraspMotor[0].ExpSpeed == 0)
 	{
 		/*外环*/
@@ -119,9 +115,7 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 			Gr->GraspMotor[0].Encoder->Init_Radian = Gr->GraspMotor[0].Encoder->Total_Radian;
 	}
 	
-	/**平移**/
-//	/*外环*/
-
+	/***************************平移**************************/
 	if(Gr->GraspMotor[1].ExpSpeed == 0)
 	{
 		/*外环*/
@@ -135,7 +129,7 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 			Gr->GraspMotor[1].Encoder->Init_Radian = Gr->GraspMotor[1].Encoder->Total_Radian;
 	}
 	
-	/**伸缩**/
+	/***************************伸缩**************************/
 	if(Gr->GraspMotor[2].ExpSpeed == 0)
 	{
 		/*外环*/
@@ -147,10 +141,8 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 	{
 			PID_DEAL(&Gr->GraspMotor[2].SPID,Gr->GraspMotor[2].ExpSpeed,Gr->GraspMotor[2].Encoder->Speed[1]);
 			Gr->GraspMotor[2].Encoder->Init_Radian = Gr->GraspMotor[2].Encoder->Total_Radian;
-	}
-	
-	
-	/*弹仓*/
+	}	
+	/************************弹仓*******************************/
 	if(Gr->GraspMotor[6].ExpSpeed == 0)
 	{
 		/*外环*/
@@ -163,6 +155,7 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 		PID_DEAL(&Gr->GraspMotor[6].SPID,Gr->GraspMotor[6].ExpSpeed,Gr->GraspMotor[6].Encoder->Speed[1]);
 		Gr->GraspMotor[6].Encoder->Init_Radian = Gr->GraspMotor[6].Encoder->Total_Radian;
 	}
+
 	#if 0 
 	if((Gr->GraspMotor[6].Encoder->Speed[1] <= 100) && (Gr->GraspMotor[6].Encoder->Speed[1] >= -100) && (Gr->GraspMotor[6].ExpSpeed != 0)){
 		Gr->GraspMotor[6].clock++ ;
@@ -193,6 +186,7 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 		PID_DEAL(&Gr->GraspMotor[6].SPID,Gr->GraspMotor[6].ExpSpeed,Gr->GraspMotor[6].Encoder->Speed[1]);
 	}
 	#endif 
+	
 	
 	
 	
@@ -243,7 +237,7 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 	/*内环*/
 	PID_DEAL(&Gr->GraspMotor[5].SPID,Gr->GraspMotor[5].PPID.Out,Gr->GraspMotor[5].Encoder->Speed[1]);
 	
-	
+	Gr->GraspMotor[4].SPID.Out=0;
 	Gr->Can_Send_Grasp_1(MotorOutput_201_204);
 	Gr->Can_Send_Grasp_2(MotorOutput_205_208);
 }
@@ -257,7 +251,7 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 *说明:	201-抬升	202-平移	203-伸缩	204-夹子	205-翻转	206-翻转	207-弹仓
 				临时测试，实际上可能不可取：复位后直接发0
 *************************************************************************************************/
-u8 ResetGrasp(Gr_t *Gr)
+void ResetGrasp(Gr_t *Gr)
 {
 	static int16_t clock[7] = {0,0,0,0,0,0,0};
 	/*抬升电机复位*/
@@ -357,16 +351,16 @@ u8 ResetGrasp(Gr_t *Gr)
 		  Gr->reset[7] = DisFinish;
 			Gr->Can_Send_Grasp_1(0,0,0,0);						
 			Gr->Can_Send_Grasp_2(0,0,0,0);
-			return 1;
+			
 	}
 	
 	Gr->Can_Send_Grasp_1(MotorOutput_201_204);
 	Gr->Can_Send_Grasp_2(MotorOutput_205_208);
 
-	return 0;
+	
 }
 
- void bulletSupply (Gr_t *Gr,Motor_t *Supply,int8_t dire) {
+void bulletSupply (Gr_t *Gr,Motor_t *Supply,int8_t dire) {
 	static int8_t last_dire = 0; 
 	if( (dire!=-1) && (dire!=1)) return ; 
 	if(last_dire==0) 
@@ -385,7 +379,7 @@ u8 ResetGrasp(Gr_t *Gr)
 	/*结束标记*/
 	if(int16_t_abs(Supply->Encoder->Speed[1]) <= 20){
 		Supply->clock ++ ;
-		if(Supply->clock>100) {
+		if(Supply->clock>40) {
 			Supply->state =Finish; 
 		}
 	}

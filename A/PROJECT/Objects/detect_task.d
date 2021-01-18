@@ -60,3 +60,4 @@
 .\objects\detect_task.o: ..\USER\HeaderFile\Lib\MathLib.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Functional\RobotAction.h
+.\objects\detect_task.o: ..\USER\HeaderFile\Task\fsm.h

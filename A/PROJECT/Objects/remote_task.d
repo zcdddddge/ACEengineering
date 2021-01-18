@@ -49,6 +49,7 @@
 .\objects\remote_task.o: ..\USER\HeaderFile\Lib\MathLib.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Functional\RobotAction.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Task\fsm.h
 .\objects\remote_task.o: ..\FreeRTOS\include\FreeRTOS.h
 .\objects\remote_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\remote_task.o: ..\FreeRTOS\include\FreeRTOSConfig.h
@@ -59,3 +60,5 @@
 .\objects\remote_task.o: ..\FreeRTOS\include\mpu_wrappers.h
 .\objects\remote_task.o: ..\FreeRTOS\include\task.h
 .\objects\remote_task.o: ..\FreeRTOS\include\list.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Task\Grasp_Task.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Task\Grasp_Fsm.h

@@ -58,8 +58,10 @@
 .\objects\taskinit.o: ..\USER\HeaderFile\Drive\vL53L0.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Lib\MathLib.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Lib\FilterLib.h
+.\objects\taskinit.o: ..\USER\HeaderFile\Task\Grasp_Fsm.h
+.\objects\taskinit.o: ..\USER\HeaderFile\Task\fsm.h
+.\objects\taskinit.o: ..\USER\HeaderFile\Functional\RobotAction.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Task\Remote_Task.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
-.\objects\taskinit.o: ..\USER\HeaderFile\Functional\RobotAction.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Task\Data_Task.h

@@ -1,10 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-01-09 15:32:34
- * @LastEditTime: 2021-01-12 11:19:43
- * @LastEditors: Please set LastEditors
- * @Description: 定义了遥控数值初始化,清零,键盘处理，遥控处理,模式切换处理的函数
- */
 #include "RemoteDeal.h"
 #include "MathLib.h"
 

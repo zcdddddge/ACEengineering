@@ -2,19 +2,69 @@
 #include "CAN2_ISR.h"
 
 RC_ctrl_t *rc;
-u8 temp[8];
+/*板间通信缓冲区--B板到A板*/
+u8 temp[8];  //uint8_t 
+
+
+/*板间通信缓冲区A板到B板*/
+uint8_t *Can2_temp; 
+
+
 
 /*板间通信初始化*/
 void BoardCommuni_Init(void)
 {
 	rc = Return_Remote_Point();
+	Can2_temp = Return_CAN2_Board_Data(); 
 }
+
+
+
+void  BoardCommuni_DataUpdate(int16_t *speed) 
+{
+	
+	if(Can2_temp[0]==0xAC && Can2_temp[7] ==0xCE)
+	{
+		 *speed=(int16_t)(Can2_temp[1]|(Can2_temp[2]<<8)); 
+	}
+	else {
+		*speed=0;
+	}	
+
+}
+
+
+/*新增--未测试*/
+void Send_KeyBoard_TO_Board(void)
+{
+	temp[0] =  rc->KV.x;
+	temp[1] = (rc->KV.x>>8);
+	temp[2] =  rc->KV.y;
+	temp[3] = (rc->KV.y>>8);
+	temp[4] =  rc->KV.press_l; 
+	temp[5] =  rc->KV.kv0;
+	temp[6] = (rc->KV.kv0>>8);
+	temp[7] =  0x77; 
+	CAN2_To_Board(temp,0x0404);
+	
+	temp[0] = rc->KV.kv1;
+	temp[1] =(rc->KV.kv1>>8);
+	temp[2] =0;
+	temp[3] =0;
+	temp[4] =0;
+	temp[5] =0;
+	temp[6] =0xAC; 
+	temp[7] =0xCE;
+	CAN2_To_Board(temp,0x0405);
+}
+
+
 
 /*发送遥控数据*/
 void Send_RC_To_Board(void)
 {
-	temp[0] = rc->ch0;
-	temp[1] = (rc->ch0>>8);
+	temp[0] = rc->ch0;     // ch0 低8位
+	temp[1] = (rc->ch0>>8); //ch0 高8位
 	temp[2] = rc->ch1;
 	temp[3] = (rc->ch1>>8);
 	temp[4] = rc->ch2;
@@ -34,6 +84,9 @@ void Send_RC_To_Board(void)
 	CAN2_To_Board(temp,0x0402);
 }
 
+
+
+
 /*发送控制指令至板子*/
 void Send_Ctrl_To_Board(unsigned char boxs,unsigned char Magazine)
 {
@@ -45,7 +98,6 @@ void Send_Ctrl_To_Board(unsigned char boxs,unsigned char Magazine)
 	temp[5] = 0;
 	temp[6] = 0;
 	temp[7] = 0xCE;
-	//CAN2_To_Board(temp,0x0401); // 修改 
 	CAN2_To_Board(temp,0x0403);
 }
 

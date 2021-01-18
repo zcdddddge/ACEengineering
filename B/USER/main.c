@@ -20,7 +20,6 @@ static void Start_Task(void *pvParameters)
 int main()
 {
 	HardwareInit();
-//while(1);
 	xTaskCreate((TaskFunction_t )Start_Task,            	//任务函数
 			(const char*    )"Start_Task",                    //任务名称
 			(uint16_t       )256,                  						//任务堆栈大小

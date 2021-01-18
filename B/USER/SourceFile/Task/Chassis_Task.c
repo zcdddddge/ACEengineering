@@ -26,6 +26,7 @@ static void Chassis_Init(void)
 	Chassis.Wiggle										=	Chassis_Wiggle_Drive;
 	Chassis.Poweroff									= Chassis_Poweroff_Drive;
 	Chassis.Rescue                    = Chassis_Rescue;
+	Chassis.BoardCommuni_Update       = BoardCommuni_DataUpdate;
 	
 	/*数据初始化*/
 	Chassis.RC = Return_RemoteDeal_Point();										//Chassis的获取Remote数据指针
@@ -33,7 +34,7 @@ static void Chassis_Init(void)
 	Chassis.Rescue_Init(&Chassis.C);													//Chassis的救援初始化
 	Chassis.Fsm	= Return_Chassis_FSM();												//Chassis获取状态机数据指针
 	Chassis.Fsm_Init();																				//底盘状态机初始化
-	BoardCommuni_Init();
+	BoardCommuni_Init();  
 }
 
 void Chassis_Task(void *pvParameters)
