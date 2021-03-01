@@ -20,6 +20,7 @@ typedef __packed struct
 	void (*Rescue)(C_t *,int16_t );                     //¾ÈÔ®µç»ú¾ÈÔ® 
 	void (*Poweroff)(C_t*);	                          	//µ×ÅÌ¶Ïµç
 	void (*BoardCommuni_Update)(int16_t *speed);                  //¼ÐÈ¡¿ØÖÆµ×ÅÌ
+	void (*Straight_Drive) (C_t *,int16_t ) ; 
 }Chassis_t;
 
 void Chassis_Task(void *pvParameters);

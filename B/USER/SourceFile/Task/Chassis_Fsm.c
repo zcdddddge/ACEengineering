@@ -92,10 +92,10 @@ void Chassis_FSM_Init(void)
 		Chassis_State_Table[0][1] = OFFLINE;     //s1=1  s2=2 离线 
 		Chassis_State_Table[1][0] = RESCUE;      //s1=2  s2=1 救援卡前伸
 		Chassis_State_Table[1][1] = RESCUE;      //s1=2  s2=2 救援卡后缩
-		Chassis_State_Table[1][2] = CTRL_GRASP;  //s1=2  s2=3 遥控夹取
+		Chassis_State_Table[1][2] = CTRL_GRASP;  //s1=2  s2=3 夹取
 		Chassis_State_Table[2][0] = KEYBOARD;    //s1=3 s2=1  键盘
 		Chassis_State_Table[2][1] = OFFLINE;     //s1=3 s2=2  离线
-		Chassis_State_Table[2][2] = CTRL_GRASP;  //s1=3 s2=3  自动夹取
+		Chassis_State_Table[2][2] = CTRL_GRASP;  //s1=3 s2=3  夹取
 }
 
 
@@ -142,12 +142,14 @@ static void PowerOff_bhv(void)
 /*独立状态处理*/
 static void Indepen_State(void)				
 {
+
 	Chassis_FSM.Current_State->Behavior_Process = Chassis_Normal_bhv;
 }
 
 /*底盘正常运动行为函数*/
 static void Chassis_Normal_bhv(void)
 {
+	Electromagnet_On;
 	Chassis.Indepen(&Chassis.C,Chassis.RC->RC_X.Output,Chassis.RC->RC_Y.Output,Chassis.RC->RC_Z.Output,0);
 }
 
@@ -168,7 +170,8 @@ static void Wiggle_State(void)
 /*正常扭腰运动行为函数*/
 static void Wiggle_Normal_bhv(void)
 {
-	Chassis.Wiggle(&Chassis.C,Chassis.RC->RC_X.Output,Chassis.RC->RC_Y.Output,0.0f);
+	Chassis.Straight_Drive(&Chassis.C,500) ;
+	//Chassis.Wiggle(&Chassis.C,Chassis.RC->RC_X.Output,Chassis.RC->RC_Y.Output,0.0f);
 }	
 
 /*Wiggle状态准备函数*/
@@ -196,18 +199,16 @@ static void KeyBoard_State(void)
 /*键盘控制底盘行为函数*/
 static void KeyBoard_Chassis_bhv(void)
 {
-	static int16_t dire=-1 ; 
+	
 	Chassis.Indepen(&Chassis.C,Chassis.RC->KM_X.Output,Chassis.RC->KM_Y.Output,Chassis.RC->KM_Z.Output,0);
-	/*电磁铁*/
-	if(Chassis.RC->state.Electromagnet){
+	if(Chassis.RC->state.Electromagnet){ //电磁铁 
 		Electromagnet_On;
 	}
 	else{
 		Electromagnet_Off;
 	}
-	/*救援卡*/ 
-	if(Chassis.RC->state.RFID)
-	{
+	//救援卡
+	if(Chassis.RC->state.RFID){
 			Rifd_ForWard; 
 	}else {
 	    Rifd_BackWard;
@@ -218,8 +219,11 @@ static void KeyBoard_Chassis_bhv(void)
 /*键盘控制夹取行为函数*/
 static void KeyBoard_Grasp_bhv(void)	 
 {
+	/*发送两个标志位给夹取*/
 	Send_Ctrl_To_Board(Chassis.RC->state.Auto_Clamp,Chassis.RC->state.Magazine);
-	Chassis.Indepen(&Chassis.C,0,0,0,0);
+	/*键盘控制底盘*/
+	Chassis.Indepen(&Chassis.C,Chassis.RC->KM_X.Output,Chassis.RC->KM_Y.Output,Chassis.RC->KM_Z.Output,0);
+
 }
 
 /*KEYBOARD状态准备函数*/
@@ -240,8 +244,7 @@ static void CTRL_GRASP_State(void)
 /*遥控控制夹取行为函数*/
 static void GRASP_RC_bhv(void)
 {
-//	int16_t speed=0 ;
-//	Chassis.BoardCommuni_Update(&speed);
+
 	Send_RC_To_Board();		//发送遥控数据
 	Chassis.Indepen(&Chassis.C,0,0,0,0);
 

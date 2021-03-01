@@ -20,11 +20,6 @@
  *      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *            佛祖保佑       永不宕机     永无BUG
  * 
- * @Author: your name
- * @Date: 2021-01-09 15:32:34
- * @LastEditTime: 2021-01-11 15:32:52
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
 RC_X-->ch1
 RC_Y-->ch0
 RC_Z-->ch2
@@ -290,7 +285,7 @@ void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN)
 *功能:	底盘直走模式
 *形参: 	C_t *C,int16_t speed
 *返回:	无
-*说明:	无
+*说明:	应该是左右的--未测试 
 *************************************************************************************************/
 void Chassis_Straight_Drive(C_t *C,int16_t speed)
 {

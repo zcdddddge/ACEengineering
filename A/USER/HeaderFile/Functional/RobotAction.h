@@ -3,6 +3,16 @@
 
 #include "GraspMotor.h"
 
+typedef __packed  struct 
+{
+		
+}
+
+typedef __packed  struct 
+{
+	
+}
+
 /*¾²Ì¬º¯Êý*/
 static void UPLIFT(Motor_t *uplift,VL53L0_t *vl53l0,float dis,u8 dire);
 static void RAIL(Motor_t *rall,Sensor_t*val,u8 dire);

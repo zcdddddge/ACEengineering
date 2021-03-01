@@ -92,13 +92,13 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 	static int8_t dire = 0;
 	static int8_t lock = 1;
 
-	//Gr->GraspMotor[0].ExpSpeed   = ((float)(rc->ch1) * 10.0f);
+	Gr->GraspMotor[0].ExpSpeed   = ((float)(rc->ch1) * 10.0f);
 	Gr->GraspMotor[1].ExpSpeed   = ((float)(rc->ch0) * 10.0f);
-	Gr->GraspMotor[2].ExpSpeed   = ((float)(rc->ch3) * 10.0f);
+	//Gr->GraspMotor[2].ExpSpeed   = ((float)(rc->ch3) * 10.0f);
   Gr->GraspMotor[3].ExpSpeed   = ((float)(rc->ch2) * 10.0f);
 	Gr->GraspMotor[4].ExpRadian += ((float)(rc->sw) / 800.0f);
 	Gr->GraspMotor[5].ExpRadian += ((float)(-rc->sw) / 800.0f);
-	Gr->GraspMotor[6].ExpSpeed  = ((float)(rc->ch1) * 10.0f);
+	Gr->GraspMotor[6].ExpSpeed  = ((float)(rc->ch3) * 10.0f);
 	
 	
 	/****************************抬升***************************/
@@ -155,41 +155,6 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 		PID_DEAL(&Gr->GraspMotor[6].SPID,Gr->GraspMotor[6].ExpSpeed,Gr->GraspMotor[6].Encoder->Speed[1]);
 		Gr->GraspMotor[6].Encoder->Init_Radian = Gr->GraspMotor[6].Encoder->Total_Radian;
 	}
-
-	#if 0 
-	if((Gr->GraspMotor[6].Encoder->Speed[1] <= 100) && (Gr->GraspMotor[6].Encoder->Speed[1] >= -100) && (Gr->GraspMotor[6].ExpSpeed != 0)){
-		Gr->GraspMotor[6].clock++ ;
-		if(Gr->GraspMotor[6].clock>=50) {
-			if(Gr->GraspMotor[6].clock == 50) {
-				Gr->GraspMotor[6].lock=2 ;
-				if(Gr->GraspMotor[6].ExpSpeed > 0) 
-				{
-					 Gr->GraspMotor[6].dire=1 ;
-				}
-				else 
-				{
-					Gr->GraspMotor[6].dire =-1 ;
-				}
-			}
-			if((Gr->GraspMotor[6].dire == 1 && Gr->GraspMotor[3].ExpSpeed < 0) || (Gr->GraspMotor[6].dire == -1 && Gr->GraspMotor[6].ExpSpeed > 0) )								//期望值相反，停止堵转处理
-			{
-				Gr->GraspMotor[6].clock = 0;																																																				//主动停止，堵转判断心跳归0
-				Gr->GraspMotor[6].lock= 1;
-			}
-
-		}
-	}
-	
-	if(Gr->GraspMotor[6].lock==2) {
-		Gr->GraspMotor[6].SPID.Out=0 ;
-	}else {
-		PID_DEAL(&Gr->GraspMotor[6].SPID,Gr->GraspMotor[6].ExpSpeed,Gr->GraspMotor[6].Encoder->Speed[1]);
-	}
-	#endif 
-	
-	
-	
-	
 	
 	/**夹子**/
 	/*设定值不为0，但是速度小于50(堵转)*/
@@ -362,31 +327,40 @@ void ResetGrasp(Gr_t *Gr)
 
 void bulletSupply (Gr_t *Gr,Motor_t *Supply,int8_t dire) {
 	static int8_t last_dire = 0; 
+	static uint8_t clock = 0 ;  
+	static uint8_t  lock =1 ;
+	
 	if( (dire!=-1) && (dire!=1)) return ; 
+	
 	if(last_dire==0) 
 	{
 		last_dire=dire ; //第一次赋值 
 	}
+	
 	if(last_dire!=dire)
 	{
-		Supply->clock=0;
-		Supply->state=DisFinish; 
+		clock=0; 
+		lock=1 ; // 解锁
 		last_dire = dire ;
-		Supply->dire= dire ;
 	}
 	
 	Supply->ExpSpeed= Supply_Speed *dire ; 
 	/*结束标记*/
-	if(int16_t_abs(Supply->Encoder->Speed[1]) <= 20){
-		Supply->clock ++ ;
-		if(Supply->clock>40) {
-			Supply->state =Finish; 
+	if(int16_t_abs(Supply->Encoder->Speed[1]) <= 30){
+		clock ++ ;
+		if(clock>20) {
+			lock = 2 ; //上锁 
 		}
 	}
 	
-	if(Supply->state ==DisFinish) 
-		PID_DEAL(&Supply->SPID,Supply->ExpSpeed,Supply->Encoder->Speed[1]) ;
-	else Supply->SPID.Out=0 ;
+	if(lock ==2) 
+			Supply->SPID.Out=0 ;
+	
+	else if(lock==1 )
+	{
+			PID_DEAL(&Supply->SPID,Supply->ExpSpeed,Supply->Encoder->Speed[1]) ;
+
+	}
 	Gr->Can_Send_Grasp_2(MotorOutput_205_208);
 }
 

@@ -86,7 +86,7 @@ static const int16_t Cilp_Speed 				= 5500;
 static const int16_t Rall_Speed 				= 1000;
 static const int16_t UpLift_Speed 			= 3000;
 static const int16_t Telescoping_Speed	= 1000;
-static const int16_t Supply_Speed	      = 2000;
+static const int16_t Supply_Speed	      = 1000;
 /*夹取结构体*/
 typedef __packed struct
 {

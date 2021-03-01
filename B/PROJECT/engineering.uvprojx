@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER,A_BOARD,TextMode,RcMode,ContextMode</Define>
               <Undefine></Undefine>
-              <IncludePath>..\FWLIB\inc;..\CMSIS;..\USER;..\FreeRTOS\portable\RVDS\ARM_CM4F;..\FreeRTOS\include;..\USER\HeaderFile\Hardware;..\USER\HeaderFile\Drive;..\USER\HeaderFile\INIT;..\USER\HeaderFile\Functional;..\USER\HeaderFile\Task;..\USER\HeaderFile\Lib</IncludePath>
+              <IncludePath>..\FWLIB\inc;..\CMSIS;..\USER;..\FreeRTOS\portable\RVDS\ARM_CM4F;..\FreeRTOS\include;..\USER\HeaderFile\Hardware;..\USER\HeaderFile\Drive;..\USER\HeaderFile\INIT;..\USER\HeaderFile\Functional;..\USER\HeaderFile\Task;..\USER\HeaderFile\Lib;..\USER\REFEREE</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -714,16 +714,6 @@
               <FilePath>..\USER\SourceFile\Drive\GYRO_ISR.c</FilePath>
             </File>
             <File>
-              <FileName>REFEREE_ISR.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\USER\SourceFile\Drive\REFEREE_ISR.c</FilePath>
-            </File>
-            <File>
-              <FileName>crc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\USER\SourceFile\Drive\crc.c</FilePath>
-            </File>
-            <File>
               <FileName>REMOTE_ISR.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\SourceFile\Drive\REMOTE_ISR.c</FilePath>
@@ -742,6 +732,16 @@
               <FileName>PYR_ISR.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\SourceFile\Drive\PYR_ISR.c</FilePath>
+            </File>
+            <File>
+              <FileName>REFEREE_ISR.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\SourceFile\Drive\REFEREE_ISR.c</FilePath>
+            </File>
+            <File>
+              <FileName>crc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\SourceFile\Drive\crc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -859,5 +859,14 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>engineering</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

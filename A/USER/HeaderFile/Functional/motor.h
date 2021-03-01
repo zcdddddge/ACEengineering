@@ -35,9 +35,7 @@ typedef enum
 /*电机结构体*/
 typedef __packed struct
 {
-	uint16_t clock;
-	uint8_t lock;
-	int8_t  dire ;
+
 	uint8_t ID;						//电机ID号
 	uint8_t Pos_Lock;			//位置锁
 	int16_t Radio;				//减速比

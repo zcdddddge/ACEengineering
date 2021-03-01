@@ -61,10 +61,10 @@ void Auto_Ctrl(Gr_t *Gr,u8 box)
 				Gr->GraspMotor[3].state = DisFinish;
 				Gr->GraspMotor[4].state = DisFinish;
 				Gr->GraspMotor[5].state = DisFinish;
-				box_lock = 1;
+				box_lock = 1;                             // 箱子解锁 
 				boxs = 0;
 				Gr->state[1] = 0;
-				Gr->state[3] = 7;														 //临时用于判断结束
+				//Gr->state[3] = 7;														 //临时用于判断结束
 			}
 		}
 	}
@@ -309,7 +309,6 @@ static void Auto_One_Box(Gr_t *Gr)
 			CLIP(&Gr->GraspMotor[3],Cilp_Speed,1);
 			if(Gr->GraspMotor[3].state == Finish)
 			{
-				
 				Gr->GraspMotor[4].state = DisFinish;					//翻转标记为未完成
 				Gr->GraspMotor[5].state = DisFinish;
 				Gr->state[0] = 2;

@@ -24,8 +24,7 @@ static void KeyBoard_bhv(void);
 static void KeyBoard_Prepare(void) ;
 /*****************供弹*****************************/
 static void Supply_State(void) ;
-static void Supply_Open_bhv(void);
-static void Supply_Close_bhv(void);
+static void Supply_bhv(void);
 static void Supply_Prepare(void) ;
 /*****************离线*****************************/
 static void Offline_State(void) ;
@@ -75,9 +74,9 @@ void Chassis_FSM_Init(void)
     Grasp_State_Table[0][0] = OFFLINE;      //s1=1 ,s2=1 离线
     Grasp_State_Table[0][2] = OFFLINE;      //s1=1  s2=3 离线
     Grasp_State_Table[0][1] = OFFLINE;      //s1=1  s2=2 离线
-    Grasp_State_Table[1][0] = OFFLINE;      //s1=2  s2=1 弹仓
-    Grasp_State_Table[1][1] = OFFLINE;      //s1=2  s2=2 弹仓
-    Grasp_State_Table[1][2] = REMOTEG;      //s1=2  s2=3 遥控夹取
+    Grasp_State_Table[1][0] = OFFLINE;      //s1=2  s2=1 离线
+    Grasp_State_Table[1][1] = OFFLINE;      //s1=2  s2=2 离线
+    Grasp_State_Table[1][2] = REMOTEG;      //s1=2  s2=3  遥控夹取
     Grasp_State_Table[2][0] = KEYBOARD;     //s1=3 s2=1  键盘 
     Grasp_State_Table[2][1] = OFFLINE;      //s1=3 s2=2  离线
     Grasp_State_Table[2][2] = AUTOGRASP;    //s1=3 s2=3  自动夹取 
@@ -96,20 +95,12 @@ static void AutoGrasp_State(void)
 }
 static void AutoGrasp_bhv(void)
 {
-	#if 0 
 		if(lock==1) {
 			Grasp.Auto_Grasp(&Grasp.Gr,1) ;
 			lock=2 ;  //上锁
 		}else {
 			Grasp.Auto_Grasp(&Grasp.Gr,0) ;
 		}	
-		
-	#endif 
-	
-	
-	Grasp.Send_Crtl(3000) ;
-	
-	
 }
 static void AtuoGrasp_Prepare(void) 
 {}
@@ -131,28 +122,19 @@ static void Offline_Prepare(void) {
 /*******************************Supply***************************************************/
 static void Supply_State(void) 
 {
-	if(Grasp.Can2_RC->Can_RC.s2 ==1) 
-	{
-		Grasp_Fsm.Current_State->Behavior_Process= Supply_Open_bhv; 
-	}
-	else if(Grasp.Can2_RC->Can_RC.s2==2) 
-	{
-		Grasp_Fsm.Current_State->Behavior_Process= Supply_Close_bhv; 
-	}
-	
+	Grasp_Fsm.Current_State->Behavior_Process= Supply_bhv; 
 }
-static void Supply_Open_bhv(void)
+static void Supply_bhv(void)
 {
-	MAZAGINE_OPEN;
+	if(Grasp.Can2_RC->Can_RC.s1==3) 
+			MAZAGINE_OPEN;
+	else if(Grasp.Can2_RC->Can_RC.s1==2) 
+		MAZAGINE_CLOSE; 
 }
 
-static void Supply_Close_bhv(void)
-{
-	MAZAGINE_CLOSE;
-}
+
 static void Supply_Prepare(void) 
 {
-	
 }
 
 /*******************************Remote******************************************************/
@@ -173,8 +155,6 @@ static void KeyBoard_State(void) {
 }
 static void KeyBoard_bhv(void){
 		static uint8_t graspLock=1 ; 
-		
-		
 		if(Grasp.Can2_RC->state.Magazine) 
 		{
 			MAZAGINE_OPEN;
@@ -183,7 +163,8 @@ static void KeyBoard_bhv(void){
 		{
 			MAZAGINE_CLOSE ;
 		}
-		
+	
+#if 0 	
 	if(Grasp.Can2_RC->state.Auto_Clamp) 
 	{
 		if(graspLock==1){
@@ -195,7 +176,7 @@ static void KeyBoard_bhv(void){
 	}else {
 			graspLock=1; //解锁
 	}
-		
+#endif 
 } 
 static void KeyBoard_Prepare(void) {}
 

@@ -26,6 +26,8 @@ static void Chassis_Init(void)
 	Chassis.Wiggle										=	Chassis_Wiggle_Drive;
 	Chassis.Poweroff									= Chassis_Poweroff_Drive;
 	Chassis.Rescue                    = Chassis_Rescue;
+	/*新增功能*/
+	Chassis.Straight_Drive            = Chassis_Straight_Drive; 
 	Chassis.BoardCommuni_Update       = BoardCommuni_DataUpdate;
 	
 	/*数据初始化*/
