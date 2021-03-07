@@ -42,3 +42,4 @@
 .\objects\motoraction.o: ..\USER\HeaderFile\Functional\pid.h
 .\objects\motoraction.o: ..\USER\HeaderFile\Lib\MathLib.h
 .\objects\motoraction.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\motoraction.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h

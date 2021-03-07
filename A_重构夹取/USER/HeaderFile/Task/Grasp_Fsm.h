@@ -7,6 +7,14 @@
 #define MAZAGINE_OPEN     Grasp.Bullet_Supply(&Grasp.Gr, &Grasp.Gr.GraspMotor[6],1) 
 
 
+#define BULLY_SUPLY       0      //Ò£¿Ø¿ØÖÆµ¯²Ö
+
+
+
+
+
+
+
 
 
 void Chassis_FSM_Init(void);

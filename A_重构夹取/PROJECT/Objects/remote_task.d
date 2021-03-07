@@ -63,3 +63,4 @@
 .\objects\remote_task.o: ..\FreeRTOS\include\list.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Task\Grasp_Task.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Task\Grasp_Fsm.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Functional\getGold.h

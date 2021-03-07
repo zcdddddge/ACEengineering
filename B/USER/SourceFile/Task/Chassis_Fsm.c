@@ -2,12 +2,16 @@
 #include "Chassis_Task.h"
 #include "BoardCommuni.h"
 
-extern Chassis_t Chassis;		/*底盘控制总结构体*/
+/*底盘控制总结构体*/
+extern Chassis_t Chassis;		
+/*电机动作宏定义*/
 #define Electromagnet_On					GPIO_SetBits(GPIOC,GPIO_Pin_3)
 #define Electromagnet_Off					GPIO_ResetBits(GPIOC,GPIO_Pin_3)
 #define Rifd_ForWard              Chassis.Rescue(&Chassis.C, -1);   
 #define Rifd_BackWard             Chassis.Rescue(&Chassis.C, 1);   
 
+#define Barrier_Up  							2
+#define Barrier_Down    					3
 
 FSM_t Chassis_FSM;			/*底盘状态机*/
 State_t OFFLINE;				/*断电模式*/
@@ -58,7 +62,7 @@ void Chassis_FSM_Init(void)
     Chassis_FSM.State_Table      = Chassis_State_Table;
     Chassis_FSM.Last_State       = NULL;
     Chassis_FSM.Current_State    = NULL;
-		Chassis_FSM.State_Change 		 = StateChange;	//状态机状态变更函数
+	Chassis_FSM.State_Change 	 = StateChange;	//状态机状态变更函数
 	
 		/*OFFLINE状态初始化*/
 		OFFLINE.Behavior_Process 	= NULL;
@@ -87,14 +91,14 @@ void Chassis_FSM_Init(void)
 		
 	
 		/*底盘状态机初始化*/
-		Chassis_State_Table[0][0] = INDEPEN;     //s1=1 ,s2=1 底盘独立
-		Chassis_State_Table[0][2] = WIGGLE;      //s1=1  s2=3 扭腰
+		Chassis_State_Table[0][0] = OFFLINE;     //s1=1 ,s2=1 底盘独立INDEPEN
+		Chassis_State_Table[0][2] = OFFLINE;      //s1=1  s2=3 扭腰WIGGLE
 		Chassis_State_Table[0][1] = OFFLINE;     //s1=1  s2=2 离线 
-		Chassis_State_Table[1][0] = RESCUE;      //s1=2  s2=1 救援卡前伸
-		Chassis_State_Table[1][1] = RESCUE;      //s1=2  s2=2 救援卡后缩
+		Chassis_State_Table[1][0] = OFFLINE;      //s1=2  s2=1 救援卡前伸
+		Chassis_State_Table[1][1] = OFFLINE;      //s1=2  s2=2 救援卡后缩
 		Chassis_State_Table[1][2] = CTRL_GRASP;  //s1=2  s2=3 夹取
 		Chassis_State_Table[2][0] = KEYBOARD;    //s1=3 s2=1  键盘
-		Chassis_State_Table[2][1] = OFFLINE;     //s1=3 s2=2  离线
+		Chassis_State_Table[2][1] = CTRL_GRASP;  //s1=3 s2=2  夹取
 		Chassis_State_Table[2][2] = CTRL_GRASP;  //s1=3 s2=3  夹取
 }
 
@@ -201,7 +205,8 @@ static void KeyBoard_Chassis_bhv(void)
 {
 	
 	Chassis.Indepen(&Chassis.C,Chassis.RC->KM_X.Output,Chassis.RC->KM_Y.Output,Chassis.RC->KM_Z.Output,0);
-	if(Chassis.RC->state.Electromagnet){ //电磁铁 
+	//电磁铁 
+	if(Chassis.RC->state.Electromagnet){ 
 		Electromagnet_On;
 	}
 	else{
@@ -209,9 +214,14 @@ static void KeyBoard_Chassis_bhv(void)
 	}
 	//救援卡
 	if(Chassis.RC->state.RFID){
-			Rifd_ForWard; 
+		Rifd_ForWard; 
 	}else {
-	    Rifd_BackWard;
+	   Rifd_BackWard;
+	}
+	//障碍块
+	if(!Chassis.RC->state.Barrier)
+	{
+		
 	}
 	
 }
@@ -244,11 +254,8 @@ static void CTRL_GRASP_State(void)
 /*遥控控制夹取行为函数*/
 static void GRASP_RC_bhv(void)
 {
-
 	Send_RC_To_Board();		//发送遥控数据
 	Chassis.Indepen(&Chassis.C,0,0,0,0);
-
-
 }
 
 /*CTRL_GRASP状态准备函数*/

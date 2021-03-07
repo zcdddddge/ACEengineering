@@ -37,6 +37,7 @@ typedef __packed struct
 	unsigned char Magazine : 1;
 	unsigned char Clip     :1 ;
 	unsigned char Auto_Clamp : 1;
+	unsigned char Barrier    :1 ; 
 }KeyBoard_State_t;
 
 /*Remote½á¹¹Ìå*/

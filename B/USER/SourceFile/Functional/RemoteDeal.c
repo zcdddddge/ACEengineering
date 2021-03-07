@@ -181,6 +181,16 @@ static void Key_Mouse_Deal(void)
 				}
 				break;
 			}
+			/*************************************ÕÏ°­¿é*****************************/
+			case KEY_PRESSED_OFFSET_E :
+			{
+				if(lock) 
+				{	
+					REMOTE.state.Barrier  = 1- REMOTE.state.Barrier ;
+					lock=0 ;
+				}
+				break ;
+			}
 			/********************************A°å********************************/
 			case KEY_PRESSED_OFFSET_B :
 			{
@@ -190,9 +200,9 @@ static void Key_Mouse_Deal(void)
 				}
 				break; 
 			}
+			
 			default:
 			{
-//				REMOTE.state.Auto_Clamp = 0;
 				lock = 1;
 				break;
 			}

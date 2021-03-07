@@ -2,16 +2,18 @@
 #include "Grasp_Task.h" 
 
 extern Grasp_t Grasp;
-static u8 lock=1 ;
-FSM_t Grasp_Fsm ;
-State_t AUTOGRASP;
-State_t KEYBOARD;
-State_t SUPPLY;
-State_t OFFLINE;
+static u8 lock=1 	;
+FSM_t Grasp_Fsm 	;
+State_t AUTOGRASP	;
+State_t KEYBOARD	;
+State_t SUPPLY		;
+State_t OFFLINE		;
 State_t GRASPRESET;    /*夹取复位*/
-State_t REMOTEG;  
+State_t REMOTEG		;  
+State_t GETGOLD		;
 
 State_t Grasp_State_Table[State_Line][State_Column];
+
 
 /******************自动夹取**************************/
 static void AutoGrasp_State(void) ;
@@ -21,10 +23,12 @@ static void AtuoGrasp_Prepare(void) ;
 static void KeyBoard_State(void) ;
 static void KeyBoard_bhv(void);
 static void KeyBoard_Prepare(void) ;
+#if BULLY_SUPLY
 /*****************供弹*****************************/
 static void Supply_State(void) ;
 static void Supply_bhv(void);
 static void Supply_Prepare(void) ;
+#endif 
 /*****************离线*****************************/
 static void Offline_State(void) ;
 static void Offline_bhv(void);
@@ -37,6 +41,10 @@ static void Reset_Prepare(void) ;
 static void Remote_State(void) ;
 static void Remote_bhv(void);
 static void Remote_Prepare(void) ;
+/****************金币*****************************/
+static void Gold_State(void) ;
+static void Gold_bhv(void);
+static void Gold_Prepare(void) ;
 
 void Chassis_FSM_Init(void) 
 {
@@ -53,10 +61,11 @@ void Chassis_FSM_Init(void)
     KEYBOARD.State_Prepare    = KeyBoard_State ;
     KEYBOARD.State_Process    = KeyBoard_Prepare;
 
+#if BULLY_SUPLY
     SUPPLY.Behavior_Process = NULL ;
     SUPPLY.State_Prepare    = Supply_State ;
     SUPPLY.State_Process    = Supply_Prepare; 
-
+#endif 
     OFFLINE.Behavior_Process = NULL ;
     OFFLINE.State_Prepare    = Offline_State ;
     OFFLINE.State_Process    = Offline_Prepare;
@@ -65,19 +74,24 @@ void Chassis_FSM_Init(void)
     GRASPRESET.State_Prepare    = Reset_State ;
     GRASPRESET.State_Process    = Reset_Prepare;
 		
-	REMOTEG.Behavior_Process = NULL ;
+		REMOTEG.Behavior_Process = NULL ;
     REMOTEG.State_Prepare    = Remote_State ;
     REMOTEG.State_Process    = Remote_Prepare;
-
-    /*底盘状态机初始化*/
+   
+	 	GETGOLD.Behavior_Process = NULL ;
+    GETGOLD.State_Prepare    = Gold_State ;
+    GETGOLD.State_Process    = Gold_Prepare;
+	  
+    
+		/*底盘状态机初始化*/
     Grasp_State_Table[0][0] = OFFLINE;      //s1=1 ,s2=1 离线
     Grasp_State_Table[0][2] = OFFLINE;      //s1=1  s2=3 离线
     Grasp_State_Table[0][1] = OFFLINE;      //s1=1  s2=2 离线
     Grasp_State_Table[1][0] = OFFLINE;      //s1=2  s2=1 离线
     Grasp_State_Table[1][1] = OFFLINE;      //s1=2  s2=2 离线
-    Grasp_State_Table[1][2] = REMOTEG;      //s1=2  s2=3  遥控夹取
+    Grasp_State_Table[1][2] = REMOTEG;      //s1=2  s2=3 遥控夹取
     Grasp_State_Table[2][0] = KEYBOARD;     //s1=3 s2=1  键盘 
-    Grasp_State_Table[2][1] = OFFLINE;      //s1=3 s2=2  离线
+    Grasp_State_Table[2][1] = GETGOLD;      //s1=3 s2=2  兑换金币
     Grasp_State_Table[2][2] = AUTOGRASP;    //s1=3 s2=3  自动夹取 
 		
 }
@@ -118,6 +132,8 @@ static void Offline_Prepare(void) {
 
 }
 
+
+#if BULLY_SUPLY
 /*******************************Supply***************************************************/
 static void Supply_State(void) 
 {
@@ -131,10 +147,10 @@ static void Supply_bhv(void)
 			MAZAGINE_CLOSE; 
 }
 
-
 static void Supply_Prepare(void) 
 {
 }
+#endif 
 
 /*******************************Remote******************************************************/
 static void Remote_State(void) 
@@ -155,6 +171,7 @@ static void KeyBoard_State(void) {
 static void KeyBoard_bhv(void){
 		static uint8_t graspLock=1 ; 
 		
+		/*救援卡*/
 		if(Grasp.Can2_RC->state.Magazine) 
 		{
 			MAZAGINE_OPEN;
@@ -164,6 +181,7 @@ static void KeyBoard_bhv(void){
 			MAZAGINE_CLOSE ;
 		}
 	
+	/**夹取一箱**/
 #if 1 	
 	if(Grasp.Can2_RC->state.Auto_Clamp) 
 	{
@@ -185,6 +203,14 @@ static void Reset_State(void){}
 static void Reset_bhv(void){}
 static void Reset_Prepare(void) {}
 
-
-
+/*****************Gold*******************************/
+static void Gold_State(void) 
+{
+	Grasp_Fsm.Current_State->Behavior_Process = Gold_bhv;
+}
+static void Gold_bhv(void) 
+{
+	Grasp.Get_Gold(&Grasp.Gr);
+}
+static void Gold_Prepare(void) {}
 

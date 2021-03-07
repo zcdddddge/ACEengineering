@@ -6,7 +6,6 @@
 #define AUTO_GRASP_S1     3
 #define AUTO_GRASP_S2     3 
 
-#define KOFFLINE 1 
 
 
 

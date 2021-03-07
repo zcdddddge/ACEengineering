@@ -63,6 +63,7 @@
 .\objects\taskinit.o: ..\USER\HeaderFile\Functional\RobotAction.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Functional\MotorAction.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
+.\objects\taskinit.o: ..\USER\HeaderFile\Functional\getGold.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Task\Remote_Task.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Task\Data_Task.h

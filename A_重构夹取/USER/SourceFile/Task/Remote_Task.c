@@ -26,7 +26,7 @@ void Remote_Task(void *pvParameters)
 			}
 		}
 		else if(Grasp.Can2_RC->Can_RC.s1 == 3 && Grasp.Can2_RC->Can_RC.s2 == 2){
- 			ResetGrasp(&Grasp.Gr);
+ 			Reset_Grasp(&Grasp.Gr);
 		}
 		else{
 			lock = 1;

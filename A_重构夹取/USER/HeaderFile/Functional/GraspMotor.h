@@ -15,7 +15,7 @@
 /****************************发送电机数值*****************************************/
 #if 1
 #define MotorOutput_201_204		Gr->GraspMotor[0].SPID.Out,Gr->GraspMotor[1].SPID.Out,Gr->GraspMotor[2].SPID.Out,Gr->GraspMotor[3].SPID.Out
-#define MotorOutput_205_208		0,Gr->GraspMotor[5].SPID.Out,Gr->GraspMotor[6].SPID.Out,0
+#define MotorOutput_205_208		0,Gr->GraspMotor[5].SPID.Out,Gr->GraspMotor[6].SPID.Out,Gr->GraspMotor[7].SPID.Out
 #endif 
 
 
@@ -84,7 +84,7 @@ static const int16_t Supply_Speed	      = 1000;
 /*夹取结构体*/
 typedef __packed struct
 {
-	Motor_t GraspMotor[7];
+	Motor_t GraspMotor[8];
 	Sensor_t *sensor;
 	VL53L0_t *vL53L0;
 	u8 state[4];
@@ -108,10 +108,13 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc);
 void Poweroff_Ctrl(Gr_t *Gr);
 
 /*复位夹取*/
-void ResetGrasp(Gr_t *Gr);
+void Reset_Grasp(Gr_t *Gr);
 
 /*弹丸*/
-void bulletSupply (Gr_t *Gr,Motor_t *Supply,int8_t  dire); 
+void bullet_Supply (Gr_t *Gr,Motor_t *Supply,int8_t  dire); 
+
+/*计算函数（util）有待优化*/
+void pid_Cala(Gr_t *Gr);
 
 
 #endif

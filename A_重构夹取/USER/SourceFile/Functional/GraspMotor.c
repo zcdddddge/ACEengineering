@@ -18,23 +18,25 @@
 void Grasp_Motor_Init(Gr_t *Gr)
 {		
 		u8 i = 0;
-		float Spid[7][3] = {
+		float Spid[8][3] = {
 			{GRASP_SLIDE_S_P,GRASP_SLIDE_S_I,GRASP_SLIDE_S_D},
 			{GRASP_SMOOTH_S_P,GRASP_SMOOTH_S_I,GRASP_SMOOTH_S_D},
 			{GRASP_TRANS_S_P,GRASP_TRANS_S_I,GRASP_TRANS_S_D},
 			{GRASP_CLAMP_S_P,GRASP_CLAMP_S_I,GRASP_CLAMP_S_D},			
 			{GRASP_SWING_S_P,GRASP_SWING_S_I,GRASP_SWING_S_D},  
-		  {GRASP_SWING_S_P,GRASP_SWING_S_I,GRASP_SWING_S_D},
-			{GRASP_SUPPLY_S_P,GRASP_SUPPLY_S_I,GRASP_SUPPLY_S_D}
+		    {GRASP_SWING_S_P,GRASP_SWING_S_I,GRASP_SWING_S_D},
+			{GRASP_SUPPLY_S_P,GRASP_SUPPLY_S_I,GRASP_SUPPLY_S_D},
+			{GRASP_ROTATE_S_P,GRASP_ROTATE_S_I,GRASP_ROTATE_S_D}
 		};
-		float Ppid[7][3] = {
+		float Ppid[8][3] = {
 			{GRASP_SLIDE_P_P,GRASP_SLIDE_P_I,GRASP_SLIDE_P_D},
 			{GRASP_SMOOTH_P_P,GRASP_SMOOTH_S_I,GRASP_SMOOTH_P_D},
 			{GRASP_TRANS_P_P,GRASP_TRANS_P_I,GRASP_TRANS_P_D},
 			{GRASP_CLAMP_P_P,GRASP_CLAMP_P_I,GRASP_CLAMP_P_D},			
 			{GRASP_SWING_P_P,GRASP_SWING_P_I,GRASP_SWING_P_D},  
 		  {GRASP_SWING_P_P,GRASP_SWING_P_I,GRASP_SWING_P_D},
-			{GRASP_SUPPLY_P_P,GRASP_SUPPLY_P_I,GRASP_SUPPLY_P_D}
+			{GRASP_SUPPLY_P_P,GRASP_SUPPLY_P_I,GRASP_SUPPLY_P_D},
+			{GRASP_ROTATE_P_P,GRASP_ROTATE_P_I,GRASP_ROTATE_P_D}
    };
 		
 		/*函数映射*/
@@ -44,7 +46,7 @@ void Grasp_Motor_Init(Gr_t *Gr)
 		Gr->Get_Sensor_t					= Return_Sensor_t;
 	  Gr->Get_VL53L0_t					= Return_VL53L0_t;
 		
-		for(i = 0;i < 7;i ++)
+		for(i = 0;i < 8;i ++)
 		{	
 				/*清零处理*/
 				MotorValZero(&Gr->GraspMotor[i]);
@@ -68,7 +70,7 @@ void Grasp_Motor_Init(Gr_t *Gr)
 				Gr->GraspMotor[2].Radio = 36;																														//初始化伸缩电机减速比
 				Gr->GraspMotor[3].Radio = 27;																														//初始化夹取电机减速比
 				Gr->GraspMotor[6].Radio = 36;																														//初始化补弹电机减速比
-				
+				Gr->GraspMotor[7].Radio = 36;				
 			
 		
 				/*状态值初始化*/
@@ -88,13 +90,13 @@ void Grasp_Motor_Init(Gr_t *Gr)
 
 
 
-/*************************************************************************************************
-*名称:	RC_Ctrl
-*功能:	遥控控制
-*形参: 	Gr_t *Gr,RC_ctrl_t *rc
-*返回:	无
-*说明:	201-抬升	202-平移	203-伸缩	204-夹子	205-翻转	206-翻转	207-弹仓
-*************************************************************************************************/
+/**
+ * @description: 遥控控制
+ * @param {Gr_t} *Gr
+ * @param {RC_ctrl_t} *rc
+ * @return {*}
+ * @note 201-抬升	202-平移	203-伸缩	204-夹子	205-翻转	206-翻转	207-弹仓
+ */
 void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 {
 	static int16_t clock = 0; 
@@ -217,15 +219,15 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 }
 
 
-/*************************************************************************************************
-*名称:	ResetGrasp
-*功能:	复位夹取
-*形参: 	Gr_t *Gr
-*返回:	无
-*说明:	201-抬升	202-平移	203-伸缩	204-夹子	205-翻转	206-翻转	207-弹仓
+
+/**
+ * @description: 复位夹取
+ * @param {Gr_t} *Gr
+ * @return {*}
+ * @note 201-抬升	202-平移	203-伸缩	204-夹子	205-翻转	206-翻转	207-弹仓
 				临时测试，实际上可能不可取：复位后直接发0
-*************************************************************************************************/
-void ResetGrasp(Gr_t *Gr)
+ */
+void Reset_Grasp(Gr_t *Gr)
 {
 	static int16_t clock[7] = {0,0,0,0,0,0,0};
 	/*抬升电机复位*/
@@ -334,7 +336,7 @@ void ResetGrasp(Gr_t *Gr)
 	
 }
 
-void bulletSupply (Gr_t *Gr,Motor_t *Supply,int8_t dire) {
+void bullet_Supply (Gr_t *Gr,Motor_t *Supply,int8_t dire) {
 	static int8_t last_dire = 0; 
 	static uint8_t clock = 0 ;  
 	static uint8_t  lock =1 ;
@@ -374,13 +376,12 @@ void bulletSupply (Gr_t *Gr,Motor_t *Supply,int8_t dire) {
 }
 
 
-/*************************************************************************************************
-*名称:	Poweroff_Ctrl
-*功能:	断电控制
-*形参: 	Gr_t *Gr
-*返回:	无
-*说明:	201-抬升	202-平移	203-伸缩	204-夹子	205-翻转	206-翻转	207-弹仓
-*************************************************************************************************/
+
+/**
+ * @description: 夹取机构断电 
+ * @param {*}
+ * @return {*}
+ */
 void Poweroff_Ctrl(Gr_t *Gr)
 {
 	Gr->GraspMotor[0].Encoder->Init_Radian = Gr->GraspMotor[0].Encoder->Total_Radian;
@@ -392,5 +393,44 @@ void Poweroff_Ctrl(Gr_t *Gr)
 }
 
 
+
+
+/**
+ * @description: 计算函数
+ * @param {Gr_t} *Gr
+ * @return {*}
+ */
+void pid_Cala(Gr_t *Gr)
+{
+	u8 i = 0;
+
+	for (i = 0; i < 4; i++)
+	{
+		if (Gr->GraspMotor[i].state == DisFinish) //未完成跑速度环
+		{
+			PID_DEAL(&Gr->GraspMotor[i].SPID, Gr->GraspMotor[i].ExpSpeed, Gr->GraspMotor[i].Encoder->Speed[1]);
+		}
+		else if (Gr->GraspMotor[i].state == Finish) //否则跑位置环
+		{
+			PID_DEAL(&Gr->GraspMotor[i].PPID, Gr->GraspMotor[i].Encoder->Lock_Radian, Gr->GraspMotor[i].Encoder->Total_Radian); //外环
+			PID_DEAL(&Gr->GraspMotor[i].SPID, Gr->GraspMotor[i].PPID.Out, Gr->GraspMotor[i].Encoder->Speed[1]);					//内环
+		}
+		else
+		{
+			Gr->GraspMotor[i].SPID.Out = 0;
+		}
+	}
+	PID_DEAL(&Gr->GraspMotor[4].PPID, Gr->GraspMotor[4].ExpRadian, Gr->GraspMotor[4].Encoder->Total_Radian);
+	PID_DEAL(&Gr->GraspMotor[5].PPID, Gr->GraspMotor[5].ExpRadian, Gr->GraspMotor[5].Encoder->Total_Radian);
+	PID_DEAL(&Gr->GraspMotor[4].SPID, Gr->GraspMotor[4].PPID.Out, Gr->GraspMotor[4].Encoder->Speed[1]);
+	PID_DEAL(&Gr->GraspMotor[5].SPID, Gr->GraspMotor[5].PPID.Out, Gr->GraspMotor[5].Encoder->Speed[1]);
+
+	if(Gr->GraspMotor[7].state == DisFinish ) {
+		PID_DEAL(&Gr->GraspMotor[7].SPID, Gr->GraspMotor[7].ExpSpeed, Gr->GraspMotor[7].Encoder->Speed[1]);
+	}
+
+	Gr->Can_Send_Grasp_1(MotorOutput_201_204);
+	Gr->Can_Send_Grasp_2(MotorOutput_205_208);
+}
 
 

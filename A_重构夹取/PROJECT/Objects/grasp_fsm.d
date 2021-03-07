@@ -53,3 +53,4 @@
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Task\fsm.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Task\Grasp_Task.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Task\Grasp_Fsm.h
+.\objects\grasp_fsm.o: ..\USER\HeaderFile\Functional\getGold.h

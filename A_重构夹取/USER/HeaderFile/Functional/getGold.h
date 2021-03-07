@@ -5,5 +5,7 @@
 #include "GraspMotor.h"
 
 
+static void goldExchange(Gr_t *Gr) ;
+void Auto_Gold(Gr_t *Gr);
 #endif 
 

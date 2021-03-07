@@ -27,7 +27,22 @@ Project File Date:  01/19/2021
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-".\Objects\ENGINEERING2020.axf" - 0 Error(s), 0 Warning(s).
+compiling ChassisMotor.c...
+..\USER\HeaderFile\Lib\math.h(28): warning:  #47-D: incompatible redefinition of macro "__ARMCLIB_VERSION"  (declared at line 12 of "E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h")
+  #define __ARMCLIB_VERSION 5050157
+..\USER\SourceFile\Functional\ChassisMotor.c(217): warning:  #223-D: function "cos_calculate" declared implicitly
+  			X_IN = X_IN * float_abs( cos_calculate(-(C->gyro->Yaw_Var))  );
+..\USER\SourceFile\Functional\ChassisMotor.c(223): warning:  #223-D: function "cos_calculate" declared implicitly
+  			Y_IN = Y_IN * float_abs( cos_calculate (-(C->gyro->Yaw_Var)));
+..\USER\SourceFile\Functional\ChassisMotor.c(173): warning:  #550-D: variable "CurYaw"  was set but never used
+  		static float CurYaw =0 ;
+..\USER\SourceFile\Functional\ChassisMotor.c(407): warning:  #1-D: last line of file ends without a newline
+   
+..\USER\SourceFile\Functional\ChassisMotor.c: 5 warnings, 0 errors
+linking...
+Program Size: Code=21408 RO-data=4868 RW-data=224 ZI-data=81480  
+FromELF: creating hex file...
+".\Objects\ENGINEERING2020.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -40,7 +55,7 @@ Package Vendor: Keil
   E:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

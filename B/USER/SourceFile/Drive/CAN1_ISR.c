@@ -10,6 +10,8 @@ Encoder_t can1_encoder_202;
 Encoder_t can1_encoder_203;	
 Encoder_t can1_encoder_204;	
 Encoder_t can1_encoder_205;	
+Encoder_t can1_encoder_206;	
+
 
 /*************************************************************************************************
 *Ãû³Æ:	CAN1_RX0_IRQHandler
@@ -225,6 +227,10 @@ Encoder_t * Return_Can1_201_208_Encoder(u8 ch)
 		case 5:
 		{
 			return &can1_encoder_205;
+		}
+		case 6 :
+		{
+			return &can1_encoder_206;
 		}
 		default:
 			break;

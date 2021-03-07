@@ -4,7 +4,7 @@
 #include "Grasp_Fsm.h"
 #include "RobotAction.h" 
 #include "BoardCommuni.h"
-
+#include "getGold.h"
 
 
 /*夹取总结构体*/
@@ -21,6 +21,7 @@ typedef __packed struct
 	void (*Bullet_Supply) (Gr_t *Gr, Motor_t *motor, int8_t dire) ;
 	void (*RC_Ctrl)(Gr_t *Gr,RC_ctrl_t *rc);
 	void (*Send_Crtl)(int16_t ch0); 
+	void (*Get_Gold)(Gr_t *Gr); 
 }Grasp_t;
 
 void Grasp_Task(void *pvParameters);

@@ -29,18 +29,28 @@
 #define  RESCUE_P_P   0.0f
 #define  RESCUE_P_I   0.0f
 #define  RESCUE_P_D   0.0f
+
+/**底盘障碍块电机**/ 
+#define  BARRIER_S_P   4.0f
+#define  BARRIER_S_I   0.0f
+#define  BARRIER_S_D   1.0f
+#define  BARRIER_P_P   0.0f
+#define  BARRIER_P_I   0.0f
+#define  BARRIER_P_D   0.0f 
 /*Yaw闭环pid*/
 #define Yaw_P					40.0f
 #define Yaw_I					0.0f
 #define Yaw_D					10.0f
 /**************************************************速度定义**********************************/
-static const int16_t Rescue_Speed    =5500 ;   //救援电机速度
+static const int16_t Rescue_Speed    = 5500;   //救援电机速度
+static const int16_t Barrier_Speed   = 5500; 
 
 /*底盘结构体*/
 typedef __packed struct
 {
-	Motor_t WheelMotor[4];
+	Motor_t WheelMotor[6];
 	Motor_t	RescueMotor;
+	Motor_t BarrierMotor ;   //障碍块
 	PYR_t *gyro;
 	PID_t Yaw_Pid;
 	void (*Can_Send_Wheel)(int16_t,int16_t,int16_t,int16_t);
@@ -75,9 +85,15 @@ void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN);
 void Chassis_Poweroff_Drive(C_t *C);
 
 
+#if 0 
 /*救援电机初始化*/
 void Rescue_Motor_Init(C_t *C);
+#endif 
 	
 /*驱动救援电机*/
 void Chassis_Rescue(C_t *C ,int16_t dire) ;
+
+/*障碍块电机*/
+void Chassis_Barrier(C_t *C ,int16_t dire) ;
+
 #endif

@@ -13,6 +13,8 @@ Encoder_t can1_encoder_204;
 Encoder_t can1_encoder_205;
 Encoder_t can1_encoder_206;
 Encoder_t can1_encoder_207;
+Encoder_t can1_encoder_208;
+
 
 /*************************************************************************************************
 *Ãû³Æ:	CAN1_RX0_IRQHandler
@@ -85,6 +87,8 @@ void CAN1_RX0_IRQHandler(void)
 			{
 				can1_201_208_buffer[14] = (RxMessage.Data[0] << 8) | RxMessage.Data[1];
 				can1_201_208_buffer[15] = (RxMessage.Data[2] << 8) | RxMessage.Data[3];
+				CAN_DATA_Encoder_Deal(36,can1_201_208_buffer[14],can1_201_208_buffer[15],&can1_encoder_208);
+
 				break;
 			}		
 			case 0x301:
@@ -238,6 +242,10 @@ Encoder_t * Return_Can1_201_208_Encoder(u8 ch)
 		case 7:
 		{
 			return &can1_encoder_207;
+		}
+		case 8: 
+		{
+			return &can1_encoder_208;
 		}
 		default:
 			break;

@@ -51,6 +51,7 @@
 .\objects\grasp_task.o: ..\USER\HeaderFile\Functional\RobotAction.h
 .\objects\grasp_task.o: ..\USER\HeaderFile\Functional\MotorAction.h
 .\objects\grasp_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
+.\objects\grasp_task.o: ..\USER\HeaderFile\Functional\getGold.h
 .\objects\grasp_task.o: ..\FreeRTOS\include\FreeRTOS.h
 .\objects\grasp_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\grasp_task.o: ..\FreeRTOS\include\FreeRTOSConfig.h

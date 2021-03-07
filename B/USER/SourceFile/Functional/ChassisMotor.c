@@ -31,21 +31,21 @@ RC_Z-->ch2
 
 
 
-/*************************************************************************************************
-*名称:	Wheel_Motor_Init
-*功能:	底盘轮子电机初始化
-*形参: 	C_t *C
-*返回:	无
-*说明:	无
-*************************************************************************************************/
+/**
+ * @description: 底盘轮子电机初始化
+ * @param {C_t} *C 
+ * @return {*}
+ */
 void Wheel_Motor_Init(C_t *C)
 {		
-		u8 CMi = 0;
-		float Spid[4][3] = {
+		u8 i = 0;
+		float Spid[6][3] = {
 		{WHEEL_MOTOR1_P,WHEEL_MOTOR1_I,WHEEL_MOTOR1_D},
 		{WHEEL_MOTOR2_P,WHEEL_MOTOR2_I,WHEEL_MOTOR2_D},
 		{WHEEL_MOTOR3_P,WHEEL_MOTOR3_I,WHEEL_MOTOR3_D},
 		{WHEEL_MOTOR4_P,WHEEL_MOTOR4_I,WHEEL_MOTOR4_D},
+		{RESCUE_S_P,RESCUE_S_I,RESCUE_S_D},
+		{BARRIER_S_P,BARRIER_S_I,BARRIER_S_D} 
 		};
 			
 		/*函数映射*/
@@ -54,20 +54,20 @@ void Wheel_Motor_Init(C_t *C)
 		C->Get_Encoder				=	Return_Can1_201_208_Encoder;
 		C->Get_PYR_t					= Return_PYR_t;
 		
-		/*清零处理*/
-		MotorValZero(&C->WheelMotor[0]);
-		MotorValZero(&C->WheelMotor[1]);
-		MotorValZero(&C->WheelMotor[2]);
-		MotorValZero(&C->WheelMotor[3]);
 	
-		for(CMi = 0;CMi < 4;CMi ++)
+	
+		for(i = 0;i < 6;i ++)
 		{
-			C->WheelMotor[CMi].ID = CMi + 1;
-			C->WheelMotor[CMi].Encoder	=	C->Get_Encoder(CMi+1);
-			PID_INIT(&C->WheelMotor[CMi].SPID,Spid[CMi][0],Spid[CMi][1],Spid[CMi][2],15000,16000);	//速度环初始化
-			C->WheelMotor[CMi].MotorType = CHASSIS_M;																								//初始化电机种类
-			C->WheelMotor[CMi].Radio = 19;																													//初始化底盘电机减速比
+			MotorValZero(&C->WheelMotor[i]) ; 
+			C->WheelMotor[i].ID = i + 1;
+			C->WheelMotor[i].Encoder	=	C->Get_Encoder(i+1);
+			PID_INIT(&C->WheelMotor[i].SPID,Spid[i][0],Spid[i][1],Spid[i][2],15000,16000);	//速度环初始化
+			C->WheelMotor[i].MotorType = CHASSIS_M;																								//初始化电机种类
+			C->WheelMotor[i].Radio = 19;																													//初始化底盘电机减速比
 		}
+		
+		C->WheelMotor[4].Radio = 36; 
+		C->WheelMotor[5].Radio = 36; 
 		
 		/*获取底盘陀螺仪数据*/
 		C->gyro = C->Get_PYR_t();
@@ -87,7 +87,7 @@ void Wheel_Motor_Init(C_t *C)
 *************************************************************************************************/
 void Chassis_Indepen_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN,int16_t ExpRescue)
 {
-		u8 ID_C = 0;
+		u8 i = 0;
 		int16_t Val[4] = {0,0,0,0};
 		int16_t MAX = 0;
 		float SPID_OUT[4];
@@ -114,10 +114,10 @@ void Chassis_Indepen_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN,int16_t ExpRe
 		C->WheelMotor[3].ExpSpeed *= 10;
 	
 		/*PID处理*/
-		for(ID_C = 0;ID_C < 4;ID_C ++)
-	 {
-			SPID_OUT[ID_C] = PID_DEAL(&C->WheelMotor[ID_C].SPID , C->WheelMotor[ID_C].ExpSpeed , C->WheelMotor[ID_C].Encoder->Speed[1]);		//得到输出量
-			Val[ID_C] = C->WheelMotor[ID_C].Encoder->Speed[1];																														    							//记录电机实时速度值
+		for (i = 0; i < 4; i++)
+		{
+			SPID_OUT[i] = PID_DEAL(&C->WheelMotor[i].SPID, C->WheelMotor[i].ExpSpeed, C->WheelMotor[i].Encoder->Speed[1]);																						//得到输出量
+			Val[i] = C->WheelMotor[i].Encoder->Speed[1];																																							//记录电机实时速度值
 	 }
 	
 	/*底盘电机运动失真处理，处理的前提是将PID输出值与速度值认为有线性关系*/
@@ -150,12 +150,9 @@ void Chassis_Indepen_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN,int16_t ExpRe
 				C->WheelMotor[3].SPID.Out = SPID_OUT[3];
 	 }
 		
-	 C->RescueMotor.ExpSpeed = (float)ExpRescue * 5;
-	 PID_DEAL(&C->RescueMotor.SPID,C->RescueMotor.ExpSpeed,C->RescueMotor.Encoder->Speed[1]);
 	 
 	 /*CAN1通信发送执行*/
 	 C->Can_Send_Wheel(Wheel_Output);
-	 C->Can_Send_Rescue(Rescue_Output);
 }
 
 
@@ -240,10 +237,10 @@ void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN)
 	
 		/*PID处理*/
 		for(ID_C = 0;ID_C < 4;ID_C ++)
-	 {
+	 	{
 			SPID_OUT[ID_C] = PID_DEAL(&C->WheelMotor[ID_C].SPID , C->WheelMotor[ID_C].ExpSpeed , C->WheelMotor[ID_C].Encoder->Speed[1]);		//得到输出量
 			Val[ID_C] = C->WheelMotor[ID_C].Encoder->Speed[1];																														    							//记录电机实时速度值
-	 }
+	 	}
 	
 	/*底盘电机运动失真处理，处理的前提是将PID输出值与速度值认为有线性关系*/
 	 MAX = RETURN_MAX(Val,4);									//获取最大速度
@@ -326,30 +323,38 @@ void Chassis_Poweroff_Drive(C_t *C)
 
 
 
-/*************************************************************************************************
-*名称:	Rescue_Motor_Init
-*功能:	救援电机初始化
-*形参: 	C_t *C
-*返回:	无
-*说明:	无
-*************************************************************************************************/
+
+#if 0 
+/**
+ * @description: 救援电机 
+ * @param {C_t} *C 
+ * @return {*} 
+ */
 void Rescue_Motor_Init(C_t *C)
 {
 	MotorValZero(&C->RescueMotor);
-	C->RescueMotor.ID = 5;																//ID赋值
+	MotorValZero(&C->BarrierMotor);
+	
+	C->RescueMotor.ID  = 5;
+	C->BarrierMotor.ID = 6;																//ID赋值
 	
 	C->RescueMotor.Encoder = C->Get_Encoder(5);			//获取救援电机码盘结构体
+	C->RescueMotor.Encoder = C->Get_Encoder(6);			//获取救援电机码盘结构体
 	
+	
+
 	PID_INIT(&C->RescueMotor.PPID,RESCUE_P_P,RESCUE_P_I,RESCUE_P_D,0.0f,0.0f);																				//外环初始化
 	PID_INIT(&C->RescueMotor.SPID,RESCUE_S_P,RESCUE_S_I,RESCUE_S_D,0.0f,14700.0f);    																//内环初始化
-		
-	C->RescueMotor.ExpRadian						= C->RescueMotor.Encoder->Radian;					//初始化期望角度
+															//内环初始化
+
+	C->RescueMotor.ExpRadian			= C->RescueMotor.Encoder->Radian;					//初始化期望角度
 	C->RescueMotor.Encoder->Init_Radian = C->RescueMotor.Encoder->Radian;    			//初始码盘值赋值
 	C->RescueMotor.Encoder->Lock_Radian = C->RescueMotor.Encoder->Radian;	    		//初始化上锁角度
 		
 	C->RescueMotor.MotorType = RESCUE_M;																					//初始化电机种类
 	C->RescueMotor.Radio = 36;																										//初始化底盘电机减速比
 }
+#endif 
 
 
 
@@ -393,3 +398,10 @@ void Chassis_Rescue(C_t *C ,int16_t dire)
 	}
 	C->Can_Send_Rescue(Rescue_Output);
 }
+
+
+
+void Chassis_Barrier(C_t *C ,int16_t dire) {
+	Chassis_Rescue(C,dire) ;
+}
+ 

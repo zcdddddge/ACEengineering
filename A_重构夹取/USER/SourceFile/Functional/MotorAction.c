@@ -1,6 +1,6 @@
 /*
  * @Date: 2021-02-24 11:34:45
- * @LastEditTime: 2021-02-28 13:30:18
+ * @LastEditTime: 2021-03-06 10:10:18
  * @LastEditors: Please set LastEditors
  * @Description: 工程夹取单个电机的控制逻辑
  */
@@ -19,7 +19,7 @@
   * @param {u8} dire 1-前翻  2-后翻
   * @return {*}
   */
-void FLIP(Motor_t *filp1, Motor_t *filp2, float exp, float limit, u8 dire)
+void flip(Motor_t *filp1, Motor_t *filp2, float exp, float limit, u8 dire)
 {
 	static int16_t clock[2] = {0,0};
 	if(dire == 1)
@@ -86,13 +86,15 @@ void FLIP(Motor_t *filp1, Motor_t *filp2, float exp, float limit, u8 dire)
   * @param {u8} dire      : 1 夹紧   2 松开
   * @return {*}
   */
- void CLIP(Motor_t *clip,int16_t exp,u8 dire)
+ void clip(Motor_t *clip,int16_t exp,u8 dire)
 {
 	static int16_t clock = 0;
 	if(dire == 1 || dire == 2)
 	{
-		clip->ExpSpeed = (3 - dire*2)*exp;   
-		if(int16_t_abs(clip->Encoder->Speed[1]) <= 50){/*结束判断*/
+		clip->ExpSpeed = (3 - dire*2)*exp;
+		/*结束判断*/
+		if(int16_t_abs(clip->Encoder->Speed[1]) <= 50)
+		{
 			clock ++;
 			if(clock > 20)
 			{
@@ -113,7 +115,7 @@ void FLIP(Motor_t *filp1, Motor_t *filp2, float exp, float limit, u8 dire)
  * @param {float} limit   限制
  * @param {u8} dire       方向
  * @param {float} exp     期望角度
- * @note 最后可以封装为一个电机的位置环
+ * @note 最后可以封装为一个电机的位置环  未测试
  */
 void lift (Motor_t *lift, float limit, u8 dire, float exp ) 
 {
@@ -145,12 +147,14 @@ void lift (Motor_t *lift, float limit, u8 dire, float exp )
 	}
 }
 
+
+
 /**
  * @description: 抬升
  * @param {*Motor_t *uplift,u8 dire :1 抬升  2 放下}
  * @return {*}
  */
- void UPLIFT(Motor_t *uplift,VL53L0_t *vl53l0,float dis,u8 dire)
+ void uplift(Motor_t *uplift,VL53L0_t *vl53l0,float dis,u8 dire)
 {
 	
 	if(dire == 1)																													//向上
@@ -171,7 +175,7 @@ void lift (Motor_t *lift, float limit, u8 dire, float exp )
 			uplift->Encoder->Lock_Radian = uplift->Encoder->Total_Radian;
 		}
 	}
-	else//不明方向
+	else
 		uplift->ExpSpeed = 0;	
 }
 
@@ -183,25 +187,75 @@ void lift (Motor_t *lift, float limit, u8 dire, float exp )
  * @param {Motor_t} *telescoping
  * @param {u8} dire
  * @return {*}
+ * @note 靠堵转试试    2--前伸  1--后伸
  */ 
 void Telescoping(Motor_t *telescoping,u8 dire)
 {
+	static uint8_t clock=0 ;
 	if(dire == 1 || dire == 2)
 	{
 		telescoping->ExpSpeed = (dire*2 - 3)*Telescoping_Speed;
-		/*内环*/
-		PID_DEAL(&telescoping->SPID,telescoping->ExpSpeed,telescoping->Encoder->Speed[1]);
+		if (int16_t_abs(telescoping->Encoder->Speed[1]) <= 50)
+		{
+			clock++;
+			if (clock > 30)
+			{
+				clock = 0;
+				telescoping->Encoder->Lock_Radian = telescoping->Encoder->Radian;
+				telescoping->state = Finish;
+			}
+		}
 	}
 	else
 	{
-		/*外环*/
-		PID_DEAL_OVERSHOOT(&telescoping->PPID,telescoping->Encoder->Lock_Radian,telescoping->Encoder->Radian);
-		/*内环*/
-		PID_DEAL(&telescoping->SPID,telescoping->PPID.Out,telescoping->Encoder->Speed[1]);
+		telescoping->Encoder->Lock_Radian = telescoping->Encoder->Radian;
 	}
 }
 
 
 
+
+/**
+ * @description: 旋转电机
+ * @param {Motor_t} *rotate
+ * @return {*}
+ * @note 只跑速度环
+ */
+void rotate(Motor_t *rotate) {
+	
+	static uint16_t timer=0 ;
+	timer++ ;
+	rotate->ExpSpeed = Rotate_Speed; 
+	if(timer>=30000) {
+		rotate->state=Finish;
+	}
+
+}
+
+
+
+
+/*******************************************************************************************************************************
+*名称:	rail
+*功能:	导轨
+*形参: 	Motor_t *rall,u8 dire
+*返回:	无
+*说明:	LEFT	RIGHT
+*******************************************************************************************************************************/
+void rail(Motor_t *rall,Sensor_t*val,u8 dire)
+{
+	/*速度赋值*/
+	if(dire == 1 || dire == 2){
+		rall->ExpSpeed = (dire*2 - 3)*Rall_Speed;
+	}
+	else{
+		rall->SPID.Out = 0;
+	}
+	/*完成标志*/
+	if( (val->Smooth_L == 1) && (val->Smooth_R == 1) ){
+		rall->state = Finish;
+		rall->Encoder->Lock_Radian = rall->Encoder->Total_Radian;
+	}
+}
 
 

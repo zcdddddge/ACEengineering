@@ -43,7 +43,7 @@
 .\objects\getgold.o: ..\USER\HeaderFile\Functional\pid.h
 .\objects\getgold.o: ..\USER\HeaderFile\Lib\MathLib.h
 .\objects\getgold.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\getgold.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
 .\objects\getgold.o: ..\USER\HeaderFile\Functional\GraspMotor.h
 .\objects\getgold.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
-.\objects\getgold.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
 .\objects\getgold.o: ..\USER\HeaderFile\Lib\FilterLib.h

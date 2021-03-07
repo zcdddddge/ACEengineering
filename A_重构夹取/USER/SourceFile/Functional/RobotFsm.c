@@ -66,7 +66,7 @@ static void Lift_Prepare(Gr_t *Gr)
 }
 static void Lift_Action(Gr_t *Gr)
 {
-	//UPLIFT(&Gr->GraspMotor[0], Gr->vL53L0, 10.0f, 1);
+	//uplift(&Gr->GraspMotor[0], Gr->vL53L0, 10.0f, 1);
 }
 static void Lift_Exit(Gr_t *Gr)
 {
