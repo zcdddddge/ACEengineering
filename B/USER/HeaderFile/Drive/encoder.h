@@ -24,6 +24,7 @@ typedef __packed struct
 		STATE_e 			State;
 		float 				Radian;
 		float 				Init_Radian;
+		float         Total_Radian;
 	
 		int16_t				Speed[2];
 		int16_t				AccSpeed;

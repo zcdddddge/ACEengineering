@@ -15,7 +15,7 @@ void FSM_Deal(FSM_t *fsm, unsigned char s1 , unsigned char s2)
 
     if(fsm->State_Change(fsm->Last_State,fsm->Current_State)) 
     {
-        fsm->Current_State->State_Prepare() ;
+        fsm->Current_State->State_Prepare() ; //进入新状态，状态更新
     }
     fsm->Last_State =fsm->Current_State;
 

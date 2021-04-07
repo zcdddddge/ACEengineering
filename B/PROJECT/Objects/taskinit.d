@@ -12,9 +12,7 @@
 .\objects\taskinit.o: ..\FreeRTOS\include\task.h
 .\objects\taskinit.o: ..\FreeRTOS\include\list.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Task\Gimbal_Task.h
-.\objects\taskinit.o: ..\USER\HeaderFile\Task\Detect_Task.h
-.\objects\taskinit.o: ..\USER\HeaderFile\Task\Chassis_Task.h
-.\objects\taskinit.o: ..\USER\HeaderFile\Functional\ChassisMotor.h
+.\objects\taskinit.o: ..\USER\HeaderFile\Functional\GimbalMotor.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Functional\motor.h
 .\objects\taskinit.o: ..\CMSIS\stm32f4xx.h
 .\objects\taskinit.o: ..\CMSIS\core_cm4.h
@@ -54,6 +52,9 @@
 .\objects\taskinit.o: ..\USER\HeaderFile\Drive\encoder.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Functional\pid.h
+.\objects\taskinit.o: ..\USER\HeaderFile\Task\Detect_Task.h
+.\objects\taskinit.o: ..\USER\HeaderFile\Task\Chassis_Task.h
+.\objects\taskinit.o: ..\USER\HeaderFile\Functional\ChassisMotor.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Drive\PYR_ISR.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
 .\objects\taskinit.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h

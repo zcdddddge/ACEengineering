@@ -17,11 +17,12 @@
 #define BULLYSUPPLY     Gr->GraspMotor[6]
 #define ROTATE          Gr->GraspMotor[7]
 
+
 /****************************电机速度定义*****************************************/
 static const int16_t Cilp_Speed 				= 5500;
 static const int16_t Rall_Speed 				= 1000;
 static const int16_t UpLift_Speed 			= 3000;
-static const int16_t Telescoping_Speed	    = 3000;
+static const int16_t Telescoping_Speed	    = 4000;
 static const int16_t Rotate_Speed           = 2000 ;
 
 
@@ -32,8 +33,9 @@ void uplift(Motor_t *uplift,VL53L0_t *vl53l0,float dis,u8 dire);
 void Telescoping(Motor_t *telescoping,u8 dire);
 void flip(Motor_t *filp1,Motor_t *filp2,float exp,float limit,u8 dire);
 void clip(Motor_t *clip,int16_t exp,u8 dire);
-void rotate(Motor_t *rotate);
+void rotate(Motor_t *rotate,float exp, float limit );
 void rail(Motor_t *rall,Sensor_t*val,u8 dire); 
+void flip2(Motor_t *filp1, float exp, float limit, u8 dire);
 #endif 
 
 

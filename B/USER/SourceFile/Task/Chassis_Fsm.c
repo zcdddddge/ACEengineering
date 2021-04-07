@@ -2,6 +2,7 @@
 #include "Chassis_Task.h"
 #include "BoardCommuni.h"
 
+
 /*底盘控制总结构体*/
 extern Chassis_t Chassis;		
 /*电机动作宏定义*/
@@ -19,7 +20,7 @@ State_t INDEPEN;				/*独立模式*/
 State_t WIGGLE;					/*扭腰模式*/
 State_t KEYBOARD;				/*键盘模式*/
 State_t CTRL_GRASP;			/*控制夹取模式*/
-State_t RESCUE;           /*救援模式*/
+State_t RESCUE;          /*救援模式*/
 State_t Chassis_State_Table[State_Line][State_Column];			/*状态参数表*/
 
 /***************************OFFLINE******************************/
@@ -47,7 +48,8 @@ static void CTRL_GRASP_Prepare(void);			/*CTRL_GRASP状态准备函数*/
 static void Rescue_State(void);            /*救援状态处理*/
 static void Rescue_Prepare(void); 				/*救援状态准备*/
 static void Rescue_bhv(void) ;  					/*救援行为函数*/
-/****************************************************************/
+
+
 
 /*返回底盘状态机控制指针*/
 FSM_t *Return_Chassis_FSM(void)
@@ -91,11 +93,11 @@ void Chassis_FSM_Init(void)
 		
 	
 		/*底盘状态机初始化*/
-		Chassis_State_Table[0][0] = OFFLINE;     //s1=1 ,s2=1 底盘独立INDEPEN
-		Chassis_State_Table[0][2] = OFFLINE;      //s1=1  s2=3 扭腰WIGGLE
-		Chassis_State_Table[0][1] = OFFLINE;     //s1=1  s2=2 离线 
-		Chassis_State_Table[1][0] = OFFLINE;      //s1=2  s2=1 救援卡前伸
-		Chassis_State_Table[1][1] = OFFLINE;      //s1=2  s2=2 救援卡后缩
+		Chassis_State_Table[0][0] = INDEPEN;     //s1=1 ,s2=1 底盘独立INDEPEN
+		Chassis_State_Table[0][2] = WIGGLE;      //s1=1  s2=3 扭腰WIGGLE
+		Chassis_State_Table[0][1] = OFFLINE;     //s1=1  s2=2 离线
+		Chassis_State_Table[1][0] = RESCUE;	//s1=2  s2=1 RESCUE暂时--障碍块测试
+		Chassis_State_Table[1][1] = CTRL_GRASP;  //s1=2  s2=2 RESCUE 救援卡后缩
 		Chassis_State_Table[1][2] = CTRL_GRASP;  //s1=2  s2=3 夹取
 		Chassis_State_Table[2][0] = KEYBOARD;    //s1=3 s2=1  键盘
 		Chassis_State_Table[2][1] = CTRL_GRASP;  //s1=3 s2=2  夹取
@@ -115,9 +117,15 @@ static void Rescue_Prepare(void)
 }
 static void Rescue_bhv(void) 
 {
-	Chassis.Indepen(&Chassis.C,0,0,0,0);
+		float  s = ((float)(Chassis.RC->RC_ctrl->ch0) * 10.0f) ;  
+//	if(Chassis.RC->RC_ctrl->s2 ==0 ) 
+		Chassis.Barrier(&Chassis.C, s);
+//	else if  (Chassis.RC->RC_ctrl->s2 == 1)
+//		Chassis.Barrier(&Chassis.C, -1 );
+//	Chassis.Indepen(&Chassis.C,0,0,0,0);
+
+
 	
-	Chassis.Rescue(&Chassis.C, (Chassis.RC->RC_ctrl->s2 * 2 -3)); 
 }
 
 /***************************************OFFLINE**************************************/
@@ -155,6 +163,7 @@ static void Chassis_Normal_bhv(void)
 {
 	Electromagnet_On;
 	Chassis.Indepen(&Chassis.C,Chassis.RC->RC_X.Output,Chassis.RC->RC_Y.Output,Chassis.RC->RC_Z.Output,0);
+	
 }
 
 /*INDEPEN状态准备函数*/
@@ -174,8 +183,7 @@ static void Wiggle_State(void)
 /*正常扭腰运动行为函数*/
 static void Wiggle_Normal_bhv(void)
 {
-	Chassis.Straight_Drive(&Chassis.C,500) ;
-	//Chassis.Wiggle(&Chassis.C,Chassis.RC->RC_X.Output,Chassis.RC->RC_Y.Output,0.0f);
+	Chassis.Wiggle(&Chassis.C,Chassis.RC->RC_X.Output,Chassis.RC->RC_Y.Output,0.0f);
 }	
 
 /*Wiggle状态准备函数*/
@@ -263,3 +271,17 @@ static void CTRL_GRASP_Prepare(void)
 {
 	Chassis.Indepen(&Chassis.C,0,0,0,0);			//底盘速度为0
 }
+
+
+#if 0 
+static void Gimbal_State(void)
+{
+	Chassis_FSM.Current_State->Behavior_Process = Gimbal_bhv;
+}
+
+static void Gimbal_Prepare(void){
+}
+static void Gimbal_bhv(void) {
+		PY_Encoder_DRIVE(&Chassis.G, Chassis.RC->RC_X.Output,Chassis.RC->RC_Y.Output,Chassis.G.YawMotor.Encoder->Speed[1]);
+}
+#endif 

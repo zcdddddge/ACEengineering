@@ -20,5 +20,7 @@ void CAN1_To_Board(u8*CAN_DATA,int16_t stdid);
 
 /*返回Can1_205数据处理指针*/
 Encoder_t * Return_Can1_201_208_Encoder(u8 ch);
+
+void CAN1_SEND_6020_7(int16_t ESC_207); 
 	
 #endif

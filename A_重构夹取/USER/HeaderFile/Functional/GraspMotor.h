@@ -15,7 +15,7 @@
 /****************************发送电机数值*****************************************/
 #if 1
 #define MotorOutput_201_204		Gr->GraspMotor[0].SPID.Out,Gr->GraspMotor[1].SPID.Out,Gr->GraspMotor[2].SPID.Out,Gr->GraspMotor[3].SPID.Out
-#define MotorOutput_205_208		0,Gr->GraspMotor[5].SPID.Out,Gr->GraspMotor[6].SPID.Out,Gr->GraspMotor[7].SPID.Out
+#define MotorOutput_205_208		Gr->GraspMotor[4].SPID.Out,Gr->GraspMotor[5].SPID.Out,Gr->GraspMotor[6].SPID.Out,Gr->GraspMotor[7].SPID.Out
 #endif 
 
 
@@ -29,19 +29,19 @@ static const int16_t Supply_Speed	      = 1000;
 
 /*******************************电机pid***********************************************/
 /*翻转*/
-#define GRASP_SWING_S_P   	4.0f
-#define GRASP_SWING_S_I   	0.0f
-#define GRASP_SWING_S_D   	0.05f
-#define GRASP_SWING_P_P  		100.0f
-#define	GRASP_SWING_P_I   	0.0f
-#define GRASP_SWING_P_D   	50.0f
+#define GRASP_FLIP_S_P   	4.0f
+#define GRASP_FLIP_S_I   	0.0f
+#define GRASP_FLIP_S_D   	0.05f
+#define GRASP_FLIP_P_P  	100.0f
+#define	GRASP_FLIP_P_I   	0.0f
+#define GRASP_FLIP_P_D   	50.0f
 /*夹紧*/
-#define GRASP_CLAMP_S_P   	3.5f
-#define GRASP_CLAMP_S_I   	0.0f
-#define GRASP_CLAMP_S_D   	0.02f
-#define GRASP_CLAMP_P_P  		20.7f
-#define	GRASP_CLAMP_P_I   	0.0f
-#define GRASP_CLAMP_P_D   	10.0f
+#define GRASP_CLIP_S_P   	3.5f
+#define GRASP_CLIP_S_I   	0.0f
+#define GRASP_CLIP_S_D   	0.02f
+#define GRASP_CLIP_P_P  		20.7f
+#define	GRASP_CLIP_P_I   	0.0f
+#define GRASP_CLIP_P_D   	10.0f
 /*传送*/
 #define GRASP_TRANS_S_P   	1.22f
 #define GRASP_TRANS_S_I   	0.0f
@@ -50,19 +50,19 @@ static const int16_t Supply_Speed	      = 1000;
 #define	GRASP_TRANS_P_I   	0.0f
 #define GRASP_TRANS_P_D   	0.0f
 /*平移*/
-#define GRASP_SMOOTH_S_P   	4.2f
-#define GRASP_SMOOTH_S_I   	0.0f
-#define GRASP_SMOOTH_S_D   	0.01f
-#define GRASP_SMOOTH_P_P  	120.0f
-#define	GRASP_SMOOTH_P_I   	0.0f
-#define GRASP_SMOOTH_P_D   	20.0f
+#define GRASP_NOROATE_S_P   	4.2f
+#define GRASP_NOROATE_S_I   	0.0f
+#define GRASP_NOROATE_S_D   	0.01f
+#define GRASP_NOROATE_P_P  	120.0f
+#define	GRASP_NOROATE_P_I   	0.0f
+#define GRASP_NOROATE_P_D   	20.0f
 /*抬升*/
-#define GRASP_SLIDE_S_P   	4.0f
-#define GRASP_SLIDE_S_I   	0.0f
-#define GRASP_SLIDE_S_D   	0.2f
-#define GRASP_SLIDE_P_P  		350.5f
-#define	GRASP_SLIDE_P_I   	0.0f
-#define GRASP_SLIDE_P_D   	100.0f
+#define GRASP_UPLIFT_S_P   	4.0f
+#define GRASP_UPLIFT_S_I   	0.0f
+#define GRASP_UPLIFT_S_D   	0.2f
+#define GRASP_UPLIFT_P_P  	400.0f  // 350.5 
+#define	GRASP_UPLIFT_P_I   	0.0f
+#define GRASP_UPLIFT_P_D   	100.0f
 /*交接弹丸*/
 #define  GRASP_SUPPLY_S_P   1.22f
 #define  GRASP_SUPPLY_S_I   0.0f
@@ -79,7 +79,13 @@ static const int16_t Supply_Speed	      = 1000;
 #define GRASP_ROTATE_P_I   	0.0f
 #define GRASP_ROTATE_P_D   	0.0f
 
-
+/*归一*/
+#define GRASP_CENTER_S_P 1.22f
+#define GRASP_CENTER_S_I 0.0f
+#define GRASP_CENTER_S_D 0.2f
+#define GRASP_CENTER_P_P 100.0f
+#define GRASP_CENTER_P_I 0.0f
+#define GRASP_CENTER_P_D 0.0f
 
 /*夹取结构体*/
 typedef __packed struct

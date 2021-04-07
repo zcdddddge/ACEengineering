@@ -10,6 +10,8 @@
 static void Auto_One_Box(Gr_t *Gr);
 static void Auto_Two_Box(Gr_t *Gr);
 
+
+ 
 /**
  * @description: 自动夹取控制流程,重点整理状态 
  * @param {Gr_t} *Gr
@@ -87,7 +89,7 @@ void Auto_Ctrl(Gr_t *Gr,u8 box)
 	pid_Cala(Gr);
 }
 
-
+ 
 
 
 

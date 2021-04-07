@@ -138,9 +138,9 @@ I (..\FreeRTOS\include\mpu_wrappers.h)(0x5FD24228)
 I (..\FreeRTOS\include\task.h)(0x5FD24228)
 I (..\FreeRTOS\include\list.h)(0x5FD24228)
 I (..\USER\HeaderFile\Task\Detect_Task.h)(0x5FD24228)
-I (..\USER\HeaderFile\Task\Grasp_Task.h)(0x6042E288)
-I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x6042FA1D)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+I (..\USER\HeaderFile\Task\Grasp_Task.h)(0x606DAF49)
+I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x605EEFC1)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (..\CMSIS\core_cmInstr.h)(0x5FD24228)
@@ -186,13 +186,13 @@ I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Task\Grasp_Fsm.h)(0x6042E095)
 I (..\USER\HeaderFile\Task\fsm.h)(0x600117BC)
 I (..\USER\HeaderFile\Functional\RobotAction.h)(0x6042E5C4)
-I (..\USER\HeaderFile\Functional\MotorAction.h)(0x604348D2)
+I (..\USER\HeaderFile\Functional\MotorAction.h)(0x60650460)
 I (..\USER\HeaderFile\Functional\BoardCommuni.h)(0x6042E1AD)
-I (..\USER\HeaderFile\Functional\getGold.h)(0x6042E5C4)
+I (..\USER\HeaderFile\Functional\getGold.h)(0x606DAFAD)
 I (..\USER\HeaderFile\Task\Remote_Task.h)(0x60015A9A)
 I (..\USER\HeaderFile\Functional\RemoteDeal.h)(0x5FFEAE68)
 I (..\USER\HeaderFile\Task\Data_Task.h)(0x5FD24228)
-F (.\Listings\ENGINEERING2020.map)(0x60434927)()
+F (.\Listings\ENGINEERING2020.map)(0x606DADFD)()
 F (..\STARTUP\startup_stm32f40_41xxx.s)(0x6003F9B0)(--cpu Cortex-M4.fp.sp -g --apcs=interwork --pd "__MICROLIB SETA 1"-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 532" --pd "STM32F407xx SETA 1"--list .\listings\startup_stm32f40_41xxx.lst --xref -o .\objects\startup_stm32f40_41xxx.o --depend .\objects\startup_stm32f40_41xxx.d)
 F (..\FWLIB\src\misc.c)(0x5FD24228)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
 I (..\FWLIB\inc\misc.h)(0x5FD24228)
@@ -2080,9 +2080,9 @@ I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x5FFEC924)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
-F (..\USER\SourceFile\Functional\GraspMotor.c)(0x604342F2)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\graspmotor.o --omf_browse .\objects\graspmotor.crf --depend .\objects\graspmotor.d)
-I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x6042FA1D)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+F (..\USER\SourceFile\Functional\GraspMotor.c)(0x60650A94)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\graspmotor.o --omf_browse .\objects\graspmotor.crf --depend .\objects\graspmotor.d)
+I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x605EEFC1)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2127,7 +2127,7 @@ I (..\USER\HeaderFile\Drive\vL53L0.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\MathLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
 F (..\USER\SourceFile\Functional\motor.c)(0x60054CCA)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\motor.o --omf_browse .\objects\motor.crf --depend .\objects\motor.d)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2241,10 +2241,10 @@ I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\MathLib.h)(0x5FD24228)
-F (..\USER\SourceFile\Functional\RobotAction.c)(0x604335A7)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\robotaction.o --omf_browse .\objects\robotaction.crf --depend .\objects\robotaction.d)
+F (..\USER\SourceFile\Functional\RobotAction.c)(0x6065056E)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\robotaction.o --omf_browse .\objects\robotaction.crf --depend .\objects\robotaction.d)
 I (..\USER\HeaderFile\Functional\RobotAction.h)(0x6042E5C4)
-I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x6042FA1D)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x605EEFC1)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2288,10 +2288,10 @@ I (..\USER\HeaderFile\Drive\GPIO_DEAL.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\vL53L0.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\MathLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
-I (..\USER\HeaderFile\Functional\MotorAction.h)(0x604348D2)
-F (..\USER\SourceFile\Functional\MotorAction.c)(0x604343AF)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\motoraction.o --omf_browse .\objects\motoraction.crf --depend .\objects\motoraction.d)
-I (..\USER\HeaderFile\Functional\MotorAction.h)(0x604348D2)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+I (..\USER\HeaderFile\Functional\MotorAction.h)(0x60650460)
+F (..\USER\SourceFile\Functional\MotorAction.c)(0x606DAA46)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\motoraction.o --omf_browse .\objects\motoraction.crf --depend .\objects\motoraction.d)
+I (..\USER\HeaderFile\Functional\MotorAction.h)(0x60650460)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2333,10 +2333,10 @@ I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\MathLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\vL53L0.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\GPIO_DEAL.h)(0x5FD24228)
-F (..\USER\SourceFile\Functional\getGold.c)(0x60434921)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\getgold.o --omf_browse .\objects\getgold.crf --depend .\objects\getgold.d)
-I (..\USER\HeaderFile\Functional\getGold.h)(0x6042E5C4)
-I (..\USER\HeaderFile\Functional\MotorAction.h)(0x604348D2)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+F (..\USER\SourceFile\Functional\getGold.c)(0x606DB18E)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\getgold.o --omf_browse .\objects\getgold.crf --depend .\objects\getgold.d)
+I (..\USER\HeaderFile\Functional\getGold.h)(0x606DAFAD)
+I (..\USER\HeaderFile\Functional\MotorAction.h)(0x60650460)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2378,7 +2378,7 @@ I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\MathLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\vL53L0.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\GPIO_DEAL.h)(0x5FD24228)
-I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x6042FA1D)
+I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x605EEFC1)
 I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x5FFEC924)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
 F (..\USER\SourceFile\Task\Detect_Task.c)(0x60010588)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\detect_task.o --omf_browse .\objects\detect_task.crf --depend .\objects\detect_task.d)
@@ -2431,8 +2431,8 @@ I (..\USER\HeaderFile\Task\Remote_Task.h)(0x60015A9A)
 I (..\USER\HeaderFile\Functional\RemoteDeal.h)(0x5FFEAE68)
 I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x5FFEC924)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
-I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x6042FA1D)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x605EEFC1)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
@@ -2442,12 +2442,12 @@ I (..\USER\HeaderFile\Drive\vL53L0.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\MathLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\BoardCommuni.h)(0x6042E1AD)
 I (..\USER\HeaderFile\Functional\RobotAction.h)(0x6042E5C4)
-I (..\USER\HeaderFile\Functional\MotorAction.h)(0x604348D2)
+I (..\USER\HeaderFile\Functional\MotorAction.h)(0x60650460)
 I (..\USER\HeaderFile\Task\fsm.h)(0x600117BC)
-F (..\USER\SourceFile\Task\Grasp_Task.c)(0x6042F6B4)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\grasp_task.o --omf_browse .\objects\grasp_task.crf --depend .\objects\grasp_task.d)
-I (..\USER\HeaderFile\Task\Grasp_Task.h)(0x6042E288)
-I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x6042FA1D)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+F (..\USER\SourceFile\Task\Grasp_Task.c)(0x606DAF9A)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\grasp_task.o --omf_browse .\objects\grasp_task.crf --depend .\objects\grasp_task.d)
+I (..\USER\HeaderFile\Task\Grasp_Task.h)(0x606DAF49)
+I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x605EEFC1)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2494,9 +2494,9 @@ I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Task\Grasp_Fsm.h)(0x6042E095)
 I (..\USER\HeaderFile\Task\fsm.h)(0x600117BC)
 I (..\USER\HeaderFile\Functional\RobotAction.h)(0x6042E5C4)
-I (..\USER\HeaderFile\Functional\MotorAction.h)(0x604348D2)
+I (..\USER\HeaderFile\Functional\MotorAction.h)(0x60650460)
 I (..\USER\HeaderFile\Functional\BoardCommuni.h)(0x6042E1AD)
-I (..\USER\HeaderFile\Functional\getGold.h)(0x6042E5C4)
+I (..\USER\HeaderFile\Functional\getGold.h)(0x606DAFAD)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5F63877C)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x5FD24228)
@@ -2507,7 +2507,7 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x5FD24228)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x5FD24228)
 I (..\FreeRTOS\include\task.h)(0x5FD24228)
 I (..\FreeRTOS\include\list.h)(0x5FD24228)
-F (..\USER\SourceFile\Task\Remote_Task.c)(0x6042F6B4)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\remote_task.o --omf_browse .\objects\remote_task.crf --depend .\objects\remote_task.d)
+F (..\USER\SourceFile\Task\Remote_Task.c)(0x6065151C)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\remote_task.o --omf_browse .\objects\remote_task.crf --depend .\objects\remote_task.d)
 I (..\USER\HeaderFile\Task\Remote_Task.h)(0x60015A9A)
 I (..\USER\HeaderFile\Functional\RemoteDeal.h)(0x5FFEAE68)
 I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x5FFEC924)
@@ -2546,8 +2546,8 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
-I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x6042FA1D)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x605EEFC1)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
@@ -2557,7 +2557,7 @@ I (..\USER\HeaderFile\Drive\vL53L0.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\MathLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\BoardCommuni.h)(0x6042E1AD)
 I (..\USER\HeaderFile\Functional\RobotAction.h)(0x6042E5C4)
-I (..\USER\HeaderFile\Functional\MotorAction.h)(0x604348D2)
+I (..\USER\HeaderFile\Functional\MotorAction.h)(0x60650460)
 I (..\USER\HeaderFile\Task\fsm.h)(0x600117BC)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5F63877C)
@@ -2569,13 +2569,13 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x5FD24228)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x5FD24228)
 I (..\FreeRTOS\include\task.h)(0x5FD24228)
 I (..\FreeRTOS\include\list.h)(0x5FD24228)
-I (..\USER\HeaderFile\Task\Grasp_Task.h)(0x6042E288)
+I (..\USER\HeaderFile\Task\Grasp_Task.h)(0x606DAF49)
 I (..\USER\HeaderFile\Task\Grasp_Fsm.h)(0x6042E095)
-I (..\USER\HeaderFile\Functional\getGold.h)(0x6042E5C4)
+I (..\USER\HeaderFile\Functional\getGold.h)(0x606DAFAD)
 F (..\USER\SourceFile\Task\Data_Task.c)(0x600145D7)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\data_task.o --omf_browse .\objects\data_task.crf --depend .\objects\data_task.d)
 I (..\USER\HeaderFile\Task\Data_Task.h)(0x5FD24228)
-I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x6042FA1D)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x605EEFC1)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2630,7 +2630,7 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x5FD24228)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x5FD24228)
 I (..\FreeRTOS\include\task.h)(0x5FD24228)
 I (..\FreeRTOS\include\list.h)(0x5FD24228)
-F (..\USER\SourceFile\Task\Grasp_Fsm.c)(0x6042E2BA)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\grasp_fsm.o --omf_browse .\objects\grasp_fsm.crf --depend .\objects\grasp_fsm.d)
+F (..\USER\SourceFile\Task\Grasp_Fsm.c)(0x606DAF4D)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\grasp_fsm.o --omf_browse .\objects\grasp_fsm.crf --depend .\objects\grasp_fsm.d)
 I (..\USER\HeaderFile\Task\Remote_Task.h)(0x60015A9A)
 I (..\USER\HeaderFile\Functional\RemoteDeal.h)(0x5FFEAE68)
 I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x5FFEC924)
@@ -2669,8 +2669,8 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
-I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x6042FA1D)
-I (..\USER\HeaderFile\Functional\motor.h)(0x6035B968)
+I (..\USER\HeaderFile\Functional\GraspMotor.h)(0x605EEFC1)
+I (..\USER\HeaderFile\Functional\motor.h)(0x604628E4)
 I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
@@ -2680,11 +2680,11 @@ I (..\USER\HeaderFile\Drive\vL53L0.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\MathLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\BoardCommuni.h)(0x6042E1AD)
 I (..\USER\HeaderFile\Functional\RobotAction.h)(0x6042E5C4)
-I (..\USER\HeaderFile\Functional\MotorAction.h)(0x604348D2)
+I (..\USER\HeaderFile\Functional\MotorAction.h)(0x60650460)
 I (..\USER\HeaderFile\Task\fsm.h)(0x600117BC)
-I (..\USER\HeaderFile\Task\Grasp_Task.h)(0x6042E288)
+I (..\USER\HeaderFile\Task\Grasp_Task.h)(0x606DAF49)
 I (..\USER\HeaderFile\Task\Grasp_Fsm.h)(0x6042E095)
-I (..\USER\HeaderFile\Functional\getGold.h)(0x6042E5C4)
+I (..\USER\HeaderFile\Functional\getGold.h)(0x606DAFAD)
 F (..\USER\SourceFile\Task\fms.c)(0x6035C81B)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\fms.o --omf_browse .\objects\fms.crf --depend .\objects\fms.d)
 I (..\USER\HeaderFile\Task\fsm.h)(0x600117BC)
 F (..\USER\SourceFile\Lib\FilterLib.c)(0x5FD24228)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\filterlib.o --omf_browse .\objects\filterlib.crf --depend .\objects\filterlib.d)

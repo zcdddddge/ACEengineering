@@ -48,6 +48,7 @@
 .\objects\detect_task.o: ..\USER\HeaderFile\Lib\FilterLib.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Task\Chassis_Fsm.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Task\fsm.h
+.\objects\detect_task.o: ..\USER\HeaderFile\Functional\GimbalMotor.h
 .\objects\detect_task.o: ..\FreeRTOS\include\FreeRTOS.h
 .\objects\detect_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\detect_task.o: ..\FreeRTOS\include\FreeRTOSConfig.h

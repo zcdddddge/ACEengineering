@@ -3,14 +3,14 @@
 
 PYR_t PYR;
 
-/*返回底盘PYR数据指针*/
+/*返回底盘陀螺仪数据指针*/
 PYR_t* Return_PYR_t(void)
 {
 	return &PYR;
 }
 
 
-/*底盘PYR数据处理函数*/
+/*底盘陀螺仪数据处理函数*/
 static void PYR_Deal(u8 num)
 {
 	u8 i;

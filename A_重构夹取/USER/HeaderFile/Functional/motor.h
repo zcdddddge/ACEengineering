@@ -53,6 +53,8 @@ typedef __packed struct
 	Encoder_t*Encoder;		//码盘
 	MotorType_e MotorType;//电机种类
 	uint8_t ResetFlag;
+	uint8_t debug;
+	
 }Motor_t;
 
 

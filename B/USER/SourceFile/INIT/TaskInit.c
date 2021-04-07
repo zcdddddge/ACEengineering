@@ -53,7 +53,7 @@ void TaskInit(void)
 			(TaskHandle_t*  )&Chassis_Handler);
 		#endif
 			
-		#if 0
+		#if 1
 		xTaskCreate((TaskFunction_t )Gimbal_Task,			
 			(const char*    )"Gimbal_Task",                  
 			(uint16_t       )Gimbal_Size,                           

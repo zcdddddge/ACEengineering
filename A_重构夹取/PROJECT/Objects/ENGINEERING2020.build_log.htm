@@ -27,7 +27,13 @@ Project File Date:  02/24/2021
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-".\Objects\ENGINEERING2020.axf" - 0 Error(s), 0 Warning(s).
+compiling getGold.c...
+..\USER\SourceFile\Functional\getGold.c(156): error:  #147-D: declaration is incompatible with "void Pick_Gold(Gr_t *, uint8_t)"  (declared at line 10 of "..\USER\HeaderFile\Functional\getGold.h")
+  void Pick_Gold(Gr_t *Gr)
+..\USER\SourceFile\Functional\getGold.c(340): warning:  #1-D: last line of file ends without a newline
+  #endif 
+..\USER\SourceFile\Functional\getGold.c: 1 warning, 1 error
+".\Objects\ENGINEERING2020.axf" - 1 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -40,7 +46,8 @@ Package Vendor: Keil
   E:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Target not created.
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

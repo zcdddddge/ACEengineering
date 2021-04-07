@@ -47,6 +47,7 @@
 .\objects\chassis_task.o: ..\USER\HeaderFile\Lib\FilterLib.h
 .\objects\chassis_task.o: ..\USER\HeaderFile\Task\Chassis_Fsm.h
 .\objects\chassis_task.o: ..\USER\HeaderFile\Task\fsm.h
+.\objects\chassis_task.o: ..\USER\HeaderFile\Functional\GimbalMotor.h
 .\objects\chassis_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\chassis_task.o: ..\FreeRTOS\include\FreeRTOS.h
 .\objects\chassis_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

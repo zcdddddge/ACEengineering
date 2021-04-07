@@ -13,6 +13,8 @@ void Detect_Task(void *pvParameters)
 	//vTaskDelay(200);
 	while(1)
 	{
+		
+		
 		if(Chassis.RC->RC_ctrl->ch0 >= -660 && Chassis.RC->RC_ctrl->ch0 <= 660)
 		{
 			feed ++;
@@ -47,9 +49,8 @@ void Detect_Task(void *pvParameters)
 			IWDG_ReloadCounter();
 			feed = 0;
 		}
-		else
-		{
-		}
+		
+		
 		GPIO_ToggleBits(GPIOE,GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4);
 		GPIO_ToggleBits(GPIOB,GPIO_Pin_7);
 		vTaskDelay(200);

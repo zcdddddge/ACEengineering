@@ -8,43 +8,41 @@
 
 #include "GraspMotor.h"
 
-
+#define up  0  
 /**
  * @description: 夹取主部分初始化
  * @param {Gr_t} *Gr
  * @return {*}
- * @note 201-抬升	202-平移	203-伸缩	204-夹子	205-翻转	206-翻转	207-弹仓  208-旋转
+ * @note 201-抬升	202-归一	203-伸缩	204-夹子	205-翻转	206-对位旋转	207-弹仓  208-旋转
  */
 void Grasp_Motor_Init(Gr_t *Gr)
 {		
 		u8 i = 0;
 		float Spid[8][3] = {
-			{GRASP_SLIDE_S_P,GRASP_SLIDE_S_I,GRASP_SLIDE_S_D},
-			{GRASP_SMOOTH_S_P,GRASP_SMOOTH_S_I,GRASP_SMOOTH_S_D},
-			{GRASP_TRANS_S_P,GRASP_TRANS_S_I,GRASP_TRANS_S_D},
-			{GRASP_CLAMP_S_P,GRASP_CLAMP_S_I,GRASP_CLAMP_S_D},			
-			{GRASP_SWING_S_P,GRASP_SWING_S_I,GRASP_SWING_S_D},  
-		    {GRASP_SWING_S_P,GRASP_SWING_S_I,GRASP_SWING_S_D},
-			{GRASP_SUPPLY_S_P,GRASP_SUPPLY_S_I,GRASP_SUPPLY_S_D},
-			{GRASP_ROTATE_S_P,GRASP_ROTATE_S_I,GRASP_ROTATE_S_D}
-		};
+			{GRASP_UPLIFT_S_P, GRASP_UPLIFT_S_I, GRASP_UPLIFT_S_D},
+			{GRASP_CENTER_S_P, GRASP_CENTER_S_I, GRASP_CENTER_S_D},
+			{GRASP_TRANS_S_P, GRASP_TRANS_S_I, GRASP_TRANS_S_D},
+			{GRASP_CLIP_S_P, GRASP_CLIP_S_I, GRASP_CLIP_S_D},
+			{GRASP_FLIP_S_P, GRASP_FLIP_S_I, GRASP_FLIP_S_D},
+			{GRASP_NOROATE_S_P, GRASP_NOROATE_S_I, GRASP_NOROATE_S_D},
+			{GRASP_SUPPLY_S_P, GRASP_SUPPLY_S_I, GRASP_SUPPLY_S_D},
+			{GRASP_ROTATE_S_P, GRASP_ROTATE_S_I, GRASP_ROTATE_S_D}};
 		float Ppid[8][3] = {
-			{GRASP_SLIDE_P_P,GRASP_SLIDE_P_I,GRASP_SLIDE_P_D},
-			{GRASP_SMOOTH_P_P,GRASP_SMOOTH_S_I,GRASP_SMOOTH_P_D},
-			{GRASP_TRANS_P_P,GRASP_TRANS_P_I,GRASP_TRANS_P_D},
-			{GRASP_CLAMP_P_P,GRASP_CLAMP_P_I,GRASP_CLAMP_P_D},			
-			{GRASP_SWING_P_P,GRASP_SWING_P_I,GRASP_SWING_P_D},  
-		  {GRASP_SWING_P_P,GRASP_SWING_P_I,GRASP_SWING_P_D},
-			{GRASP_SUPPLY_P_P,GRASP_SUPPLY_P_I,GRASP_SUPPLY_P_D},
-			{GRASP_ROTATE_P_P,GRASP_ROTATE_P_I,GRASP_ROTATE_P_D}
-   };
-		
+			{GRASP_UPLIFT_P_P, GRASP_UPLIFT_P_I, GRASP_UPLIFT_P_D},
+			{GRASP_CENTER_P_P, GRASP_CENTER_S_I, GRASP_CENTER_P_D},
+			{GRASP_TRANS_P_P, GRASP_TRANS_P_I, GRASP_TRANS_P_D},
+			{GRASP_CLIP_P_P, GRASP_CLIP_P_I, GRASP_CLIP_P_D},
+			{GRASP_FLIP_P_P, GRASP_FLIP_P_I, GRASP_FLIP_P_D},
+			{GRASP_NOROATE_P_P, GRASP_NOROATE_P_I, GRASP_NOROATE_P_D},
+			{GRASP_SUPPLY_P_P, GRASP_SUPPLY_P_I, GRASP_SUPPLY_P_D},
+			{GRASP_ROTATE_P_P, GRASP_ROTATE_P_I, GRASP_ROTATE_P_D}};
+
 		/*函数映射*/
 		Gr->Can_Send_Grasp_1			= CAN1_201_To_204_SEND;
 		Gr->Can_Send_Grasp_2	 		= CAN1_205_To_208_SEND;
 		Gr->Get_Encoder						=	Return_Can1_201_208_Encoder;
 		Gr->Get_Sensor_t					= Return_Sensor_t;
-	  Gr->Get_VL53L0_t					= Return_VL53L0_t;
+	    Gr->Get_VL53L0_t					= Return_VL53L0_t;
 		
 		for(i = 0;i < 8;i ++)
 		{	
@@ -62,6 +60,7 @@ void Grasp_Motor_Init(Gr_t *Gr)
 				Gr->GraspMotor[i].Encoder->Total_Radian = Gr->GraspMotor[i].Encoder->Radian;	    			//初始化总角度
 				Gr->GraspMotor[i].Radio = 19;																														//初始化夹取电机减速比
 				Gr->GraspMotor[i].ResetFlag =DisFinish ;
+				Gr->GraspMotor[i].debug = 0;
 		}
 				PID_INIT(&Gr->GraspMotor[2].PPID,Ppid[2][0],Ppid[2][1],Ppid[2][2],0,14700);							//位置环初始化
 				PID_INIT(&Gr->GraspMotor[6].PPID,Ppid[6][0],Ppid[6][1],Ppid[6][2],0,14700);							//位置环初始化
@@ -93,9 +92,10 @@ void Grasp_Motor_Init(Gr_t *Gr)
 /**
  * @description: 遥控控制
  * @param {Gr_t} *Gr
- * @param {RC_ctrl_t} *rc
+ * @param {RC_ctrl_t} *r
  * @return {*}
- * @note 201-抬升	202-平移	203-伸缩	204-夹子	205-翻转	206-翻转	207-弹仓
+ * @note 201-抬升	202-对位归一	203-伸缩	204-夹子	205-翻转	206-对位归一	207-弹仓
+ *	 0 抬升   1归一   2 伸缩  3 夹子   4 翻转   5对位旋转    6 供弹  8 旋转  
  */
 void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 {
@@ -103,17 +103,21 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 	static int8_t dire = 0;
 	static int8_t lock = 1;
 
-	Gr->GraspMotor[0].ExpSpeed   = ((float)(rc->ch1) * 10.0f);
-	Gr->GraspMotor[1].ExpSpeed   = ((float)(rc->ch0) * 10.0f);
-	//Gr->GraspMotor[2].ExpSpeed   = ((float)(rc->ch3) * 10.0f);
-  Gr->GraspMotor[3].ExpSpeed   = ((float)(rc->ch2) * 10.0f);
-	Gr->GraspMotor[4].ExpRadian += ((float)(rc->sw) / 800.0f);
-	Gr->GraspMotor[5].ExpRadian += ((float)(-rc->sw) / 800.0f);
-	Gr->GraspMotor[6].ExpSpeed  = ((float)(rc->ch3) * 10.0f);
+	Gr->GraspMotor[6].ExpSpeed   = ((float)(rc->ch1) * 10.0f);// 弹仓 
+	Gr->GraspMotor[0].ExpSpeed   = ((float)(rc->ch0) * 10.0f); // 抬升
+//Gr->GraspMotor[7].ExpSpeed   = ((float)(rc->ch0) * 10.0f); // 伸缩
+  Gr->GraspMotor[3].ExpSpeed   = ((float)(rc->ch2) * 10.0f); // 夹子
+	Gr->GraspMotor[4].ExpRadian += ((float)(rc->sw) / 800.0f); // 翻转
 	
+	#if up 
+	Gr->GraspMotor[5].ExpSpeed   = ((float)(rc->ch1) * 10.0f);
+	Gr->GraspMotor[6].ExpSpeed   = ((float)(rc->ch0) * 10.0f);
+	Gr->GraspMotor[7].ExpSpeed   = ((float)(rc->ch3) * 10.0f);
+  Gr->GraspMotor[8].ExpSpeed   = ((float)(rc->ch2) * 10.0f);
+	#endif 
 	
 	/****************************抬升***************************/
-	if(Gr->GraspMotor[0].ExpSpeed == 0)
+	if(Gr->GraspMotor[0].ExpSpeed == 0) 
 	{
 		/*外环*/
 		PID_DEAL(&Gr->GraspMotor[0].PPID,Gr->GraspMotor[0].Encoder->Init_Radian,Gr->GraspMotor[0].Encoder->Total_Radian);
@@ -122,11 +126,11 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 	}
 	else
 	{
-			PID_DEAL(&Gr->GraspMotor[0].SPID,Gr->GraspMotor[0].ExpSpeed,Gr->GraspMotor[0].Encoder->Speed[1]);
-			Gr->GraspMotor[0].Encoder->Init_Radian = Gr->GraspMotor[0].Encoder->Total_Radian;
+		PID_DEAL(&Gr->GraspMotor[0].SPID,Gr->GraspMotor[0].ExpSpeed,Gr->GraspMotor[0].Encoder->Speed[1]);
+		Gr->GraspMotor[0].Encoder->Init_Radian = Gr->GraspMotor[0].Encoder->Total_Radian;
 	}
 	
-	/***************************平移**************************/
+	/***************************对位**************************/
 	if(Gr->GraspMotor[1].ExpSpeed == 0)
 	{
 		/*外环*/
@@ -208,14 +212,38 @@ void RC_Ctrl(Gr_t *Gr,RC_ctrl_t *rc)
 	PID_DEAL(&Gr->GraspMotor[4].PPID,Gr->GraspMotor[4].ExpRadian,Gr->GraspMotor[4].Encoder->Total_Radian);
 	/*内环*/
 	PID_DEAL(&Gr->GraspMotor[4].SPID,Gr->GraspMotor[4].PPID.Out,Gr->GraspMotor[4].Encoder->Speed[1]);
-	/*外环*/
-	PID_DEAL(&Gr->GraspMotor[5].PPID,Gr->GraspMotor[5].ExpRadian,Gr->GraspMotor[5].Encoder->Total_Radian);
-	/*内环*/
-	PID_DEAL(&Gr->GraspMotor[5].SPID,Gr->GraspMotor[5].PPID.Out,Gr->GraspMotor[5].Encoder->Speed[1]);
+		
+		/***************************伸缩**************************/
+	if(Gr->GraspMotor[5].ExpSpeed == 0)
+	{
+		/*外环*/
+		PID_DEAL(&Gr->GraspMotor[5].PPID,Gr->GraspMotor[5].Encoder->Init_Radian,Gr->GraspMotor[5].Encoder->Total_Radian);
+		/*内环*/
+		PID_DEAL(&Gr->GraspMotor[5].SPID,Gr->GraspMotor[5].PPID.Out,Gr->GraspMotor[5].Encoder->Speed[1]);
+	}
+	else
+	{
+			PID_DEAL(&Gr->GraspMotor[5].SPID,Gr->GraspMotor[5].ExpSpeed,Gr->GraspMotor[5].Encoder->Speed[1]);
+			Gr->GraspMotor[5].Encoder->Init_Radian = Gr->GraspMotor[5].Encoder->Total_Radian;
+	}
 	
-	Gr->GraspMotor[4].SPID.Out=0;
+	
+		if(Gr->GraspMotor[7].ExpSpeed == 0)
+	{
+		/*外环*/
+		PID_DEAL(&Gr->GraspMotor[7].PPID,Gr->GraspMotor[7].Encoder->Init_Radian,Gr->GraspMotor[7].Encoder->Total_Radian);
+		/*内环*/
+		PID_DEAL(&Gr->GraspMotor[7].SPID,Gr->GraspMotor[7].PPID.Out,Gr->GraspMotor[7].Encoder->Speed[1]);
+	}
+	else
+	{
+			PID_DEAL(&Gr->GraspMotor[7].SPID,Gr->GraspMotor[7].ExpSpeed,Gr->GraspMotor[7].Encoder->Speed[1]);
+			Gr->GraspMotor[7].Encoder->Init_Radian = Gr->GraspMotor[7].Encoder->Total_Radian;
+	}
+	
 	Gr->Can_Send_Grasp_1(MotorOutput_201_204);
 	Gr->Can_Send_Grasp_2(MotorOutput_205_208);
+	
 }
 
 
@@ -421,12 +449,16 @@ void pid_Cala(Gr_t *Gr)
 		}
 	}
 	PID_DEAL(&Gr->GraspMotor[4].PPID, Gr->GraspMotor[4].ExpRadian, Gr->GraspMotor[4].Encoder->Total_Radian);
-	PID_DEAL(&Gr->GraspMotor[5].PPID, Gr->GraspMotor[5].ExpRadian, Gr->GraspMotor[5].Encoder->Total_Radian);
 	PID_DEAL(&Gr->GraspMotor[4].SPID, Gr->GraspMotor[4].PPID.Out, Gr->GraspMotor[4].Encoder->Speed[1]);
-	PID_DEAL(&Gr->GraspMotor[5].SPID, Gr->GraspMotor[5].PPID.Out, Gr->GraspMotor[5].Encoder->Speed[1]);
 
+	//  旋转 
 	if(Gr->GraspMotor[7].state == DisFinish ) {
 		PID_DEAL(&Gr->GraspMotor[7].SPID, Gr->GraspMotor[7].ExpSpeed, Gr->GraspMotor[7].Encoder->Speed[1]);
+	}else if (Gr->GraspMotor[7].state == Finish ){
+				PID_DEAL(&Gr->GraspMotor[i].PPID, Gr->GraspMotor[i].Encoder->Lock_Radian, Gr->GraspMotor[i].Encoder->Total_Radian); //外环
+			PID_DEAL(&Gr->GraspMotor[i].SPID, Gr->GraspMotor[i].PPID.Out, Gr->GraspMotor[i].Encoder->Speed[1]);					//内环
+	}else {
+			Gr->GraspMotor[7].SPID.Out = 0;
 	}
 
 	Gr->Can_Send_Grasp_1(MotorOutput_201_204);

@@ -17,7 +17,8 @@ static void Grasp_Init(void)
 	Grasp.Bullet_Supply       = bullet_Supply;
 	Grasp.RC_Ctrl             = RC_Ctrl;
 	Grasp.Send_Crtl           = Send_Crtl_To_Board; 
-	Grasp.Get_Gold      			= Auto_Gold; 
+	Grasp.Change_Gold      		= Change_Gold; 
+	Grasp.Pick_Gold           = Pick_Gold;
 	
 	/*数据初始化*/
 	Grasp.Motor_Init(&Grasp.Gr);	//夹取电机初始化

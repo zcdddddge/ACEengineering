@@ -7,12 +7,12 @@ typedef __packed struct
 {
 	Motor_t PitchMotor;
 	Motor_t YawMotor;
-	Motor_t	AmmunitiMotor;
+	
 	void (*Can_Send_Gimbal)(int16_t,int16_t,int16_t,int16_t);
-	Encoder_t*(*Get_Pitch_Encoder)(void);
-	Encoder_t*(*Get_Yaw_Encoder)(void);
-	Encoder_t*(*Get_Ammuniti_Encoder)(void);
+	void (*Can_Send_Y)(int16_t );
 }G_t;
+
+
 
 
 

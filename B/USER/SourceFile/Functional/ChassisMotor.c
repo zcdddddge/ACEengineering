@@ -28,6 +28,7 @@ RC_Z-->ch2
 #include "ChassisMotor.h"
 #include "MathLib.h"
 
+#define RescueMotor   C->WheelMotor[4]
 
 
 
@@ -49,7 +50,7 @@ void Wheel_Motor_Init(C_t *C)
 		};
 			
 		/*函数映射*/
-		C->Can_Send_Rescue 		= CAN1_205_To_208_SEND;
+		C->Can_Send_205_208 		= CAN1_205_To_208_SEND;
 		C->Can_Send_Wheel	 		= CAN1_201_To_204_SEND;
 		C->Get_Encoder				=	Return_Can1_201_208_Encoder;
 		C->Get_PYR_t					= Return_PYR_t;
@@ -62,15 +63,18 @@ void Wheel_Motor_Init(C_t *C)
 			C->WheelMotor[i].ID = i + 1;
 			C->WheelMotor[i].Encoder	=	C->Get_Encoder(i+1);
 			PID_INIT(&C->WheelMotor[i].SPID,Spid[i][0],Spid[i][1],Spid[i][2],15000,16000);	//速度环初始化
-			C->WheelMotor[i].MotorType = CHASSIS_M;																								//初始化电机种类
 			C->WheelMotor[i].Radio = 19;																													//初始化底盘电机减速比
 		}
+		// 障碍块
+		C->WheelMotor[5].ExpRadian = C->WheelMotor[5].Encoder->Init_Radian = C->WheelMotor[5].Encoder->Radian; //初始化期望角度												   //初始码盘值赋值
+		C->WheelMotor[5].Encoder->Lock_Radian = C->WheelMotor[5].Encoder->Radian; //初始化上锁角度
+		C->WheelMotor[5].Encoder->Total_Radian= C->WheelMotor[5].Encoder->Radian;
+
+		C->WheelMotor[4].Radio = 36;   //救援卡 5 
 		
-		C->WheelMotor[4].Radio = 36; 
-		C->WheelMotor[5].Radio = 36; 
 		
 		/*获取底盘陀螺仪数据*/
-		C->gyro = C->Get_PYR_t();
+		C->gyro = C->Get_PYR_t(); 
 		
 		/*初始化底盘Yaw轴pid*/
 		PID_INIT(&C->Yaw_Pid,Yaw_P,Yaw_I,Yaw_D,0,660);
@@ -358,6 +362,8 @@ void Rescue_Motor_Init(C_t *C)
 
 
 
+
+
 /**
  * @description: 底盘救援电机  s1=2  s2=1   救援卡前伸 s1=2  s2=2 	救援卡后缩
  * @param {C_t} *C
@@ -366,13 +372,12 @@ void Rescue_Motor_Init(C_t *C)
  * 说明:2020-11-19第二版：增加缩回去的功能，形参判断
  *               本函数只做堵转和速度环处理，由形参决定方向  
  */
-void Chassis_Rescue(C_t *C ,int16_t dire) 
+void Chassis_Rescue(C_t *C ,int16_t dire ) 
 {
 	static int16_t clock =0;
 	static int8_t  lock =1; 
 	static int8_t  last_dire= 0; 
-	if( (dire!=-1) && (dire!=1))
-		return ;
+
 	
 	if(last_dire==0) {
 		last_dire = dire ;
@@ -382,8 +387,11 @@ void Chassis_Rescue(C_t *C ,int16_t dire)
 		clock =0;
 		last_dire = dire;
 	}
-	C->RescueMotor.ExpSpeed = dire * Rescue_Speed; 
-	if(C->RescueMotor.Encoder->Speed[1]<=100 &&C->RescueMotor.Encoder->Speed[1]>=-100)  
+	if(last_dire==0) {
+		last_dire = dire ;
+	}
+	RescueMotor.ExpSpeed = dire * Rescue_Speed; 
+	if(RescueMotor.Encoder->Speed[1]<=100 &&RescueMotor.Encoder->Speed[1]>=-100)  
 	{
 		clock++;
 		if(clock>=60){
@@ -391,17 +399,76 @@ void Chassis_Rescue(C_t *C ,int16_t dire)
 		}
 	}
 	if(lock==2){
-		  C->RescueMotor.SPID.Out = 0; // 直接让他停下来 
+		 RescueMotor.SPID.Out = 0; // 直接让他停下来 
 	}
 	else if(lock==1){
-		PID_DEAL(&C->RescueMotor.SPID,C->RescueMotor.ExpSpeed,C->RescueMotor.Encoder->Speed[1] ) ;
+		PID_DEAL(&RescueMotor.SPID,RescueMotor.ExpSpeed,RescueMotor.Encoder->Speed[1] ) ;
 	}
-	C->Can_Send_Rescue(Rescue_Output);
+	C->Can_Send_205_208(Can_205_208_Out_Put);
 }
 
 
+/**
+ * @description: 使用键盘测试 
+ * @param {C_t} *C
+ * @param {int16_t} dire
+ * @return {*}
+ */
+void Chassis_Barrier(C_t *C ,int16_t dire){
+	C->WheelMotor[5].ExpSpeed = dire*10 ;
+	if (C->WheelMotor[5].ExpSpeed == 0)
+	{
+		/*外环*/
+		PID_DEAL(&C->WheelMotor[5].PPID, C->WheelMotor[5].Encoder->Init_Radian, C->WheelMotor[5].Encoder->Total_Radian);
+		/*内环*/
+		PID_DEAL(&C->WheelMotor[5].SPID, C->WheelMotor[5].PPID.Out, C->WheelMotor[5].Encoder->Speed[1]);
+	}
+	else
+	{
+		PID_DEAL(&C->WheelMotor[5].SPID, C->WheelMotor[5].ExpSpeed, C->WheelMotor[5].Encoder->Speed[1]);
+		C->WheelMotor[5].Encoder->Init_Radian = C->WheelMotor[5].Encoder->Total_Radian;
+	}
 
-void Chassis_Barrier(C_t *C ,int16_t dire) {
-	Chassis_Rescue(C,dire) ;
+#if 0 
+	static uint8_t clock =0 ;
+	static int8_t  lock =1;
+	static int8_t last_dire = 0;
+
+	if (last_dire == 0)
+	{
+		last_dire = dire;
+	}
+	if (last_dire != dire)
+	{ //当前要求方向和上一次方向不同，状态值复位
+		lock = 1;
+		clock = 0;
+		last_dire = dire;
+	}
+	if (last_dire == 0)
+	{
+		last_dire = dire;
+	}
+
+	C->WheelMotor[5].ExpSpeed = dire*Barrier_Speed;
+	if(C->WheelMotor[5].Encoder->Speed[1]<=100 &&C->WheelMotor[5].Encoder->Speed[1]>=-100)  
+	{
+		clock++;
+		if(clock>=60){
+			lock=2;  
+			C->WheelMotor[5].Encoder->Lock_Radian = C->WheelMotor[5].Encoder->Total_Radian; 
+		}
+	}
+	if(lock==2){
+		PID_DEAL(&C->WheelMotor[5].PPID,C->WheelMotor[5].Encoder->Lock_Radian,C->WheelMotor[5].Encoder->Radian ) ;
+		PID_DEAL(&C->WheelMotor[5].SPID, C->WheelMotor[5].PPID.Out, C->WheelMotor[5].Encoder->Speed[1]);
+	}
+	else {
+	PID_DEAL(&C->WheelMotor[5].SPID,C->WheelMotor[5].ExpSpeed,C->WheelMotor[5].Encoder->Speed[1] ) ;
+	}
+#endif 
+	C->Can_Send_205_208(Can_205_208_Out_Put);
+	
 }
+ 
+ 
  

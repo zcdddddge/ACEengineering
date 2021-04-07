@@ -47,4 +47,5 @@
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Lib\FilterLib.h
+.\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\GimbalMotor.h
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\BoardCommuni.h

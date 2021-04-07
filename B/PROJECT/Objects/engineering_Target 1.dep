@@ -124,7 +124,7 @@ I (..\USER\HeaderFile\Hardware\USART.h)(0x5FD24228)
 I (..\USER\HeaderFile\Hardware\TIM.h)(0x5FD24228)
 I (..\USER\HeaderFile\Hardware\GPIO.h)(0x5FD24228)
 I (..\USER\HeaderFile\Hardware\IWDG.h)(0x5FD24228)
-F (..\USER\SourceFile\INIT\TaskInit.c)(0x5FD24228)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\taskinit.o --omf_browse .\objects\taskinit.crf --depend .\objects\taskinit.d)
+F (..\USER\SourceFile\INIT\TaskInit.c)(0x60570A7C)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\taskinit.o --omf_browse .\objects\taskinit.crf --depend .\objects\taskinit.d)
 I (..\USER\HeaderFile\INIT\TaskInit.h)(0x5FD24228)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5F63877C)
@@ -137,11 +137,9 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x5FD24228)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x5FD24228)
 I (..\FreeRTOS\include\task.h)(0x5FD24228)
 I (..\FreeRTOS\include\list.h)(0x5FD24228)
-I (..\USER\HeaderFile\Task\Gimbal_Task.h)(0x5FD24228)
-I (..\USER\HeaderFile\Task\Detect_Task.h)(0x5FD24228)
-I (..\USER\HeaderFile\Task\Chassis_Task.h)(0x60078E95)
-I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60448832)
-I (..\USER\HeaderFile\Functional\motor.h)(0x5FD24228)
+I (..\USER\HeaderFile\Task\Gimbal_Task.h)(0x60570A9C)
+I (..\USER\HeaderFile\Functional\GimbalMotor.h)(0x605EE76A)
+I (..\USER\HeaderFile\Functional\motor.h)(0x605C969A)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (..\CMSIS\core_cmInstr.h)(0x5FD24228)
@@ -175,10 +173,13 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x605EE731)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
+I (..\USER\HeaderFile\Task\Detect_Task.h)(0x5FD24228)
+I (..\USER\HeaderFile\Task\Chassis_Task.h)(0x605F2E1E)
+I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60650A7F)
 I (..\USER\HeaderFile\Drive\PYR_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\RemoteDeal.h)(0x604484A7)
 I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x6003E4FB)
@@ -1780,8 +1781,8 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-F (..\USER\SourceFile\Drive\CAN1_ISR.c)(0x60447ED1)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\can1_isr.o --omf_browse .\objects\can1_isr.crf --depend .\objects\can1_isr.d)
-I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
+F (..\USER\SourceFile\Drive\CAN1_ISR.c)(0x605EE1F2)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\can1_isr.o --omf_browse .\objects\can1_isr.crf --depend .\objects\can1_isr.d)
+I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x605EE731)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -1816,7 +1817,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 F (..\USER\SourceFile\Drive\CAN2_ISR.c)(0x60052D07)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\can2_isr.o --omf_browse .\objects\can2_isr.crf --depend .\objects\can2_isr.d)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
@@ -1853,9 +1854,9 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 F (..\USER\SourceFile\Drive\encoder.c)(0x5FD24228)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\encoder.o --omf_browse .\objects\encoder.crf --depend .\objects\encoder.d)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2074,7 +2075,7 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
 I (..\USER\HeaderFile\Hardware\USART.h)(0x5FD24228)
-F (..\USER\SourceFile\Drive\PYR_ISR.c)(0x5FFE50E2)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\pyr_isr.o --omf_browse .\objects\pyr_isr.crf --depend .\objects\pyr_isr.d)
+F (..\USER\SourceFile\Drive\PYR_ISR.c)(0x604DBB3F)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\pyr_isr.o --omf_browse .\objects\pyr_isr.crf --depend .\objects\pyr_isr.d)
 I (..\USER\HeaderFile\Drive\PYR_ISR.h)(0x5FD24228)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
@@ -2189,10 +2190,10 @@ I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x6003E4FB)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
-F (..\USER\SourceFile\Functional\ChassisMotor.c)(0x604489B7)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\chassismotor.o --omf_browse .\objects\chassismotor.crf --depend .\objects\chassismotor.d)
-I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60448832)
-I (..\USER\HeaderFile\Functional\motor.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
+F (..\USER\SourceFile\Functional\ChassisMotor.c)(0x605F321D)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\chassismotor.o --omf_browse .\objects\chassismotor.crf --depend .\objects\chassismotor.d)
+I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60650A7F)
+I (..\USER\HeaderFile\Functional\motor.h)(0x605C969A)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2227,16 +2228,16 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x605EE731)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\PYR_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Lib\MathLib.h)(0x5FFD4731)
 I (..\USER\HeaderFile\Lib\math.h)(0x5FD24228)
-F (..\USER\SourceFile\Functional\GimbalMotor.c)(0x5FD24228)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\gimbalmotor.o --omf_browse .\objects\gimbalmotor.crf --depend .\objects\gimbalmotor.d)
-I (..\USER\HeaderFile\Functional\GimbalMotor.h)(0x5FD24228)
-I (..\USER\HeaderFile\Functional\motor.h)(0x5FD24228)
+F (..\USER\SourceFile\Functional\GimbalMotor.c)(0x605EE797)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\gimbalmotor.o --omf_browse .\objects\gimbalmotor.crf --depend .\objects\gimbalmotor.d)
+I (..\USER\HeaderFile\Functional\GimbalMotor.h)(0x605EE76A)
+I (..\USER\HeaderFile\Functional\motor.h)(0x605C969A)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2271,12 +2272,12 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x605EE731)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
 F (..\USER\SourceFile\Functional\motor.c)(0x5FD24228)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\motor.o --omf_browse .\objects\motor.crf --depend .\objects\motor.d)
-I (..\USER\HeaderFile\Functional\motor.h)(0x5FD24228)
+I (..\USER\HeaderFile\Functional\motor.h)(0x605C969A)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2311,11 +2312,11 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x605EE731)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
-F (..\USER\SourceFile\Functional\pid.c)(0x5FD24228)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\pid.o --omf_browse .\objects\pid.crf --depend .\objects\pid.d)
+F (..\USER\SourceFile\Functional\pid.c)(0x606031A6)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\pid.o --omf_browse .\objects\pid.crf --depend .\objects\pid.d)
 I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
@@ -2432,10 +2433,10 @@ I (..\USER\HeaderFile\Hardware\USART.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\crc.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5F63877C)
 I (E:\Keil_v5\ARM\ARMCC\include\rt_heap.h)(0x5F63877C)
-F (..\USER\SourceFile\Task\Chassis_Task.c)(0x60448840)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\chassis_task.o --omf_browse .\objects\chassis_task.crf --depend .\objects\chassis_task.d)
-I (..\USER\HeaderFile\Task\Chassis_Task.h)(0x60078E95)
-I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60448832)
-I (..\USER\HeaderFile\Functional\motor.h)(0x5FD24228)
+F (..\USER\SourceFile\Task\Chassis_Task.c)(0x605F2E41)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\chassis_task.o --omf_browse .\objects\chassis_task.crf --depend .\objects\chassis_task.d)
+I (..\USER\HeaderFile\Task\Chassis_Task.h)(0x605F2E1E)
+I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60650A7F)
+I (..\USER\HeaderFile\Functional\motor.h)(0x605C969A)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2470,8 +2471,8 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x605EE731)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\PYR_ISR.h)(0x5FD24228)
@@ -2480,6 +2481,7 @@ I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x6003E4FB)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Task\Chassis_Fsm.h)(0x5FD24228)
 I (..\USER\HeaderFile\Task\fsm.h)(0x5FD24228)
+I (..\USER\HeaderFile\Functional\GimbalMotor.h)(0x605EE76A)
 I (..\USER\HeaderFile\Functional\BoardCommuni.h)(0x60053D73)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5F63877C)
@@ -2491,12 +2493,12 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x5FD24228)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x5FD24228)
 I (..\FreeRTOS\include\task.h)(0x5FD24228)
 I (..\FreeRTOS\include\list.h)(0x5FD24228)
-F (..\USER\SourceFile\Task\Chassis_Fsm.c)(0x604487E2)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\chassis_fsm.o --omf_browse .\objects\chassis_fsm.crf --depend .\objects\chassis_fsm.d)
+F (..\USER\SourceFile\Task\Chassis_Fsm.c)(0x605F3324)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\chassis_fsm.o --omf_browse .\objects\chassis_fsm.crf --depend .\objects\chassis_fsm.d)
 I (..\USER\HeaderFile\Task\Chassis_Fsm.h)(0x5FD24228)
 I (..\USER\HeaderFile\Task\fsm.h)(0x5FD24228)
-I (..\USER\HeaderFile\Task\Chassis_Task.h)(0x60078E95)
-I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60448832)
-I (..\USER\HeaderFile\Functional\motor.h)(0x5FD24228)
+I (..\USER\HeaderFile\Task\Chassis_Task.h)(0x605F2E1E)
+I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60650A7F)
+I (..\USER\HeaderFile\Functional\motor.h)(0x605C969A)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2531,14 +2533,15 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x605EE731)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\PYR_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\RemoteDeal.h)(0x604484A7)
 I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x6003E4FB)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
+I (..\USER\HeaderFile\Functional\GimbalMotor.h)(0x605EE76A)
 I (..\USER\HeaderFile\Functional\BoardCommuni.h)(0x60053D73)
 F (..\USER\SourceFile\Task\Communi_Task.c)(0x5FFE50E2)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\communi_task.o --omf_browse .\objects\communi_task.crf --depend .\objects\communi_task.d)
 I (..\USER\HeaderFile\Task\Communi_Task.h)(0x5FD24228)
@@ -2590,11 +2593,11 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x5FD24228)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x5FD24228)
 I (..\FreeRTOS\include\task.h)(0x5FD24228)
 I (..\FreeRTOS\include\list.h)(0x5FD24228)
-F (..\USER\SourceFile\Task\Detect_Task.c)(0x5FFE50E2)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\detect_task.o --omf_browse .\objects\detect_task.crf --depend .\objects\detect_task.d)
+F (..\USER\SourceFile\Task\Detect_Task.c)(0x604CC1B0)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\detect_task.o --omf_browse .\objects\detect_task.crf --depend .\objects\detect_task.d)
 I (..\USER\HeaderFile\Task\Detect_Task.h)(0x5FD24228)
-I (..\USER\HeaderFile\Task\Chassis_Task.h)(0x60078E95)
-I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60448832)
-I (..\USER\HeaderFile\Functional\motor.h)(0x5FD24228)
+I (..\USER\HeaderFile\Task\Chassis_Task.h)(0x605F2E1E)
+I (..\USER\HeaderFile\Functional\ChassisMotor.h)(0x60650A7F)
+I (..\USER\HeaderFile\Functional\motor.h)(0x605C969A)
 I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
 I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
@@ -2629,8 +2632,8 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x5FD24228)
-I (..\USER\HeaderFile\Drive\encoder.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x605EE731)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
 I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
 I (..\USER\HeaderFile\Drive\PYR_ISR.h)(0x5FD24228)
@@ -2639,6 +2642,7 @@ I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x6003E4FB)
 I (..\USER\HeaderFile\Lib\FilterLib.h)(0x5FD24228)
 I (..\USER\HeaderFile\Task\Chassis_Fsm.h)(0x5FD24228)
 I (..\USER\HeaderFile\Task\fsm.h)(0x5FD24228)
+I (..\USER\HeaderFile\Functional\GimbalMotor.h)(0x605EE76A)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5F63877C)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x5FD24228)
@@ -2649,11 +2653,50 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x5FD24228)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x5FD24228)
 I (..\FreeRTOS\include\task.h)(0x5FD24228)
 I (..\FreeRTOS\include\list.h)(0x5FD24228)
-F (..\USER\SourceFile\Task\Gimbal_Task.c)(0x5FFE50E2)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\gimbal_task.o --omf_browse .\objects\gimbal_task.crf --depend .\objects\gimbal_task.d)
-I (..\USER\HeaderFile\Task\Gimbal_Task.h)(0x5FD24228)
-I (..\FreeRTOS\include\FreeRTOS.h)(0x5FD24228)
-I (E:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5F63877C)
+F (..\USER\SourceFile\Task\Gimbal_Task.c)(0x605EE038)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\gimbal_task.o --omf_browse .\objects\gimbal_task.crf --depend .\objects\gimbal_task.d)
+I (..\USER\HeaderFile\Task\Gimbal_Task.h)(0x60570A9C)
+I (..\USER\HeaderFile\Functional\GimbalMotor.h)(0x605EE76A)
+I (..\USER\HeaderFile\Functional\motor.h)(0x605C969A)
+I (..\CMSIS\stm32f4xx.h)(0x5FD24228)
+I (..\CMSIS\core_cm4.h)(0x5FD24228)
 I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5F63877C)
+I (..\CMSIS\core_cmInstr.h)(0x5FD24228)
+I (..\CMSIS\core_cmFunc.h)(0x5FD24228)
+I (..\CMSIS\core_cm4_simd.h)(0x5FD24228)
+I (..\CMSIS\system_stm32f4xx.h)(0x5FD24228)
+I (..\CMSIS\stm32f4xx_conf.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_adc.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_crc.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_dbgmcu.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_dma.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_exti.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_flash.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_gpio.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_i2c.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_iwdg.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_pwr.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_rcc.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_rtc.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_sdio.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_spi.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_syscfg.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_tim.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_usart.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_wwdg.h)(0x5FD24228)
+I (..\FWLIB\inc\misc.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_cryp.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_hash.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_rng.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_can.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5FD24228)
+I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5FD24228)
+I (..\USER\HeaderFile\Drive\CAN1_ISR.h)(0x605EE731)
+I (..\USER\HeaderFile\Drive\encoder.h)(0x605C969B)
+I (..\USER\HeaderFile\Drive\CAN2_ISR.h)(0x5FD24228)
+I (..\USER\HeaderFile\Functional\pid.h)(0x5FD24228)
+I (..\FreeRTOS\include\FreeRTOS.h)(0x5FD24228)
+I (E:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x5F63877C)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x5FD24228)
 I (..\FreeRTOS\include\projdefs.h)(0x5FD24228)
 I (..\FreeRTOS\include\portable.h)(0x5FD24228)
@@ -2662,7 +2705,7 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x5FD24228)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x5FD24228)
 I (..\FreeRTOS\include\task.h)(0x5FD24228)
 I (..\FreeRTOS\include\list.h)(0x5FD24228)
-F (..\USER\SourceFile\Task\Remote_Task.c)(0x5FFE50E2)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\remote_task.o --omf_browse .\objects\remote_task.crf --depend .\objects\remote_task.d)
+F (..\USER\SourceFile\Task\Remote_Task.c)(0x60570A65)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\FWLIB\inc -I ..\CMSIS -I ..\USER -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FreeRTOS\include -I ..\USER\HeaderFile\Hardware -I ..\USER\HeaderFile\Drive -I ..\USER\HeaderFile\INIT -I ..\USER\HeaderFile\Functional -I ..\USER\HeaderFile\Task -I ..\USER\HeaderFile\Lib -I ..\USER\REFEREE-IE:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IE:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="532" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -DA_BOARD -DTextMode -DRcMode -DContextMode --C99-o .\objects\remote_task.o --omf_browse .\objects\remote_task.crf --depend .\objects\remote_task.d)
 I (..\USER\HeaderFile\Task\Remote_Task.h)(0x5FD24228)
 I (..\USER\HeaderFile\Functional\RemoteDeal.h)(0x604484A7)
 I (..\USER\HeaderFile\Drive\REMOTE_ISR.h)(0x6003E4FB)

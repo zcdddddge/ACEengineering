@@ -27,24 +27,26 @@ static void Chassis_Init(void)
 	Chassis.Wiggle										=	Chassis_Wiggle_Drive;
 	Chassis.Poweroff									= Chassis_Poweroff_Drive;
 	Chassis.Rescue                    = Chassis_Rescue;
+	Chassis.Barrier                   = Chassis_Barrier ; 
 	/*新增功能*/
 	Chassis.Straight_Drive            = Chassis_Straight_Drive; 
 	Chassis.BoardCommuni_Update       = BoardCommuni_DataUpdate;
+	
 	
 	/*数据初始化*/
 	Chassis.RC = Return_RemoteDeal_Point();										//Chassis的获取Remote数据指针
 	Chassis.Wheel_Init(&Chassis.C);														//Chassis的轮子初始化
 	Chassis.Fsm	= Return_Chassis_FSM();												//Chassis获取状态机数据指针
-	Chassis.Fsm_Init();																				//底盘状态机初始化
+	Chassis.Fsm_Init();		//底盘状态机初始化
+	
 	BoardCommuni_Init();  
+	
 }
 
 void Chassis_Task(void *pvParameters)
 {
 	//vTaskDelay(500);
 	Chassis_Init();
-
-	
 	while(1)
 	{
 		FSM_Deal(Chassis.Fsm,Chassis.RC->RC_ctrl->s1,Chassis.RC->RC_ctrl->s2);
