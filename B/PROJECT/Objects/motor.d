@@ -2,7 +2,7 @@
 .\objects\motor.o: ..\USER\HeaderFile\Functional\motor.h
 .\objects\motor.o: ..\CMSIS\stm32f4xx.h
 .\objects\motor.o: ..\CMSIS\core_cm4.h
-.\objects\motor.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\motor.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\motor.o: ..\CMSIS\core_cmInstr.h
 .\objects\motor.o: ..\CMSIS\core_cmFunc.h
 .\objects\motor.o: ..\CMSIS\core_cm4_simd.h

@@ -2,7 +2,7 @@
 .\objects\encoder.o: ..\USER\HeaderFile\Drive\encoder.h
 .\objects\encoder.o: ..\CMSIS\stm32f4xx.h
 .\objects\encoder.o: ..\CMSIS\core_cm4.h
-.\objects\encoder.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\encoder.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\encoder.o: ..\CMSIS\core_cmInstr.h
 .\objects\encoder.o: ..\CMSIS\core_cmFunc.h
 .\objects\encoder.o: ..\CMSIS\core_cm4_simd.h

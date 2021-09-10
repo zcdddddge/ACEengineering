@@ -11,34 +11,56 @@
 #include "FilterLib.h"
 
 /* ----------------------- PC Key Definition-------------------------------- */
-#define KEY_PRESSED_OFFSET_W ((uint16_t)0x01<<0) 														
-#define KEY_PRESSED_OFFSET_S ((uint16_t)0x01<<1) 														
-#define KEY_PRESSED_OFFSET_A ((uint16_t)0x01<<2)
-#define KEY_PRESSED_OFFSET_D ((uint16_t)0x01<<3)
-#define KEY_PRESSED_OFFSET_SHIFT ((uint16_t)0x01<<4)
-#define KEY_PRESSED_OFFSET_CTRL ((uint16_t)0x01<<5)
-#define KEY_PRESSED_OFFSET_Q ((uint16_t)0x01<<6)
-#define KEY_PRESSED_OFFSET_E ((uint16_t)0x01<<7)
-#define KEY_PRESSED_OFFSET_R ((uint16_t)0x01<<8)
-#define KEY_PRESSED_OFFSET_F ((uint16_t)0x01<<9)
-#define KEY_PRESSED_OFFSET_G ((uint16_t)0x01<<10)
-#define KEY_PRESSED_OFFSET_Z ((uint16_t)0x01<<11)
-#define KEY_PRESSED_OFFSET_X ((uint16_t)0x01<<12)
-#define KEY_PRESSED_OFFSET_C ((uint16_t)0x01<<13)
-#define KEY_PRESSED_OFFSET_V ((uint16_t)0x01<<14)
-#define KEY_PRESSED_OFFSET_B ((uint16_t)0x01<<15)
+#define KEY_PRESSED_OFFSET_W ((uint16_t)0x01 << 0)
+#define KEY_PRESSED_OFFSET_S ((uint16_t)0x01 << 1)
+#define KEY_PRESSED_OFFSET_A ((uint16_t)0x01 << 2)
+#define KEY_PRESSED_OFFSET_D ((uint16_t)0x01 << 3)
+#define KEY_PRESSED_OFFSET_SHIFT ((uint16_t)0x01 << 4)
+#define KEY_PRESSED_OFFSET_CTRL ((uint16_t)0x01 << 5)
+#define KEY_PRESSED_OFFSET_Q ((uint16_t)0x01 << 6)
+#define KEY_PRESSED_OFFSET_E ((uint16_t)0x01 << 7)
+#define KEY_PRESSED_OFFSET_R ((uint16_t)0x01 << 8)
+#define KEY_PRESSED_OFFSET_F ((uint16_t)0x01 << 9)
+#define KEY_PRESSED_OFFSET_G ((uint16_t)0x01 << 10)
+#define KEY_PRESSED_OFFSET_Z ((uint16_t)0x01 << 11)
+#define KEY_PRESSED_OFFSET_X ((uint16_t)0x01 << 12)
+#define KEY_PRESSED_OFFSET_C ((uint16_t)0x01 << 13)
+#define KEY_PRESSED_OFFSET_V ((uint16_t)0x01 << 14)
+#define KEY_PRESSED_OFFSET_B ((uint16_t)0x01 << 15)
 /* ----------------------- PC Key Definition-------------------------------- */
 
 /****************键盘控制状态结构体**************************/
 typedef __packed struct
 {
-	unsigned char Electromagnet : 1;
-	unsigned char RFID : 1;
-	unsigned char Magazine : 1;
-	unsigned char Clip     :1 ;
-	unsigned char Auto_Clamp : 1;
-	unsigned char Barrier    :1 ; 
-}KeyBoard_State_t;
+	unsigned char Electromagnet : 1; //电磁铁
+	unsigned char Magazine : 1;		 //弹仓
+	unsigned char Clip : 1;			 //A板
+	unsigned char Auto_Clamp : 1;	 //自动夹取
+	unsigned char Up_motor : 1;		 //抬升电机
+	unsigned char Flex_motor : 1;	 //伸缩电机
+	unsigned char Flip_motor : 1;	 //翻转电机
+	unsigned char Clamp_motor : 1;	 //夹子电机
+
+	/* -----------------------------以下为新结构体------------------------ */
+
+	/* ----------------------------底盘状态 -------------------------------*/
+	unsigned char Rotation : 2;	   //大陀螺
+	unsigned char Wiggle : 2;	   //扭腰
+	unsigned char Auto_Run : 2;	   //自动夹取
+	unsigned char Independent : 2; //独立行走
+
+	/* ----------------------------上装状态------------------------------- */
+	unsigned char Clap_Init : 1;	  //夹取抬升初始化
+	unsigned char Auto_One_Box : 2;	  //夹取一箱
+	unsigned char Auto_Two_Box : 2;	  //夹取两箱
+	unsigned char Auto_Three_Box : 2; //夹取三箱
+	unsigned char Flip_Reset : 2;	  //翻转电机复位
+	unsigned char All_Reset : 2;	  //上装复位
+
+	/*-----------------------------底盘功能状态----------------------------*/
+	unsigned char RFID : 1;	   //救援卡
+	unsigned char Barrier : 1; //救援爪
+} KeyBoard_State_t;
 
 /*Remote结构体*/
 typedef __packed struct
@@ -51,19 +73,15 @@ typedef __packed struct
 	First_Order_t KM_Y;
 	First_Order_t KM_Z;
 	KeyBoard_State_t state;
-}REMOTE_t;
-
+} REMOTE_t;
 
 /*Remote结构体初始化*/
 void Remote_Data_Init(void);
 
-
 /*Remote数据处理*/
 void Remote_Data_Deal(void);
 
-
 /*返回Remote数据指针*/
 REMOTE_t *Return_RemoteDeal_Point(void);
-
 
 #endif

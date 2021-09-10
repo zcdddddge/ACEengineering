@@ -4,16 +4,14 @@
 
 G_t  G ;
 
-
 void Gimbal_Task(void *pvParameters)
 {
-	vTaskDelay(500);
-	PY_Motor_Init(&G);
-	while(1)
-	{		
+    vTaskDelay(500);
+    PY_Motor_Init(&G);
 
-		//PY_Encoder_DRIVE(&G,100,100,100) ;
-		//G->Can_Send_Gimbal(100,100,100,100);
-		vTaskDelay(2);
-	}
+    while(1)
+    {
+        PY_Motor(&G);
+        vTaskDelay(2);
+    }
 }

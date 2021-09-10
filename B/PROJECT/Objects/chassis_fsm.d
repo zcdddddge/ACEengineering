@@ -6,7 +6,7 @@
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\motor.h
 .\objects\chassis_fsm.o: ..\CMSIS\stm32f4xx.h
 .\objects\chassis_fsm.o: ..\CMSIS\core_cm4.h
-.\objects\chassis_fsm.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\chassis_fsm.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\chassis_fsm.o: ..\CMSIS\core_cmInstr.h
 .\objects\chassis_fsm.o: ..\CMSIS\core_cmFunc.h
 .\objects\chassis_fsm.o: ..\CMSIS\core_cm4_simd.h
@@ -44,8 +44,8 @@
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\pid.h
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Drive\PYR_ISR.h
-.\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
+.\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
+.\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Lib\FilterLib.h
 .\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\GimbalMotor.h
-.\objects\chassis_fsm.o: ..\USER\HeaderFile\Functional\BoardCommuni.h

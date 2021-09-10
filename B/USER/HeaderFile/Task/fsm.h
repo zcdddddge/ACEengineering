@@ -29,5 +29,4 @@ typedef struct _fsm
 void FSM_Deal(FSM_t *fsm, unsigned char s1, unsigned char s2);
 /*×´Ì¬±ä¸üº¯Êý*/
 unsigned char StateChange(State_t *L_Sta,State_t *C_Sta);
-
 #endif

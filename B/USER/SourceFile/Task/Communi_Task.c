@@ -7,17 +7,17 @@ Communi_t Communi;
 /*Communi_Task初始化*/
 static void Communi_Init(void)
 {
-		
-	
+
+
 }
 
 void Communi_Task(void *pvParameters)
 {
-	//vTaskDelay(500);
-	Communi_Init();
-	
-	while(1)
-	{
+    //vTaskDelay(500);
+    Communi_Init();
+
+    while(1)
+    {
 //		if(Communi.Remote_C->CtrlGraspState == Ctrl_Grasp_On)
 //		{
 //			/*板子情况未知则发送ready信号*/
@@ -58,8 +58,8 @@ void Communi_Task(void *pvParameters)
 //		}
 //		else
 //		{
-//			
+//
 //		}
-		vTaskDelay(2);
-	}
+        vTaskDelay(2);
+    }
 }

@@ -4,7 +4,7 @@
 .\objects\gimbal_task.o: ..\USER\HeaderFile\Functional\motor.h
 .\objects\gimbal_task.o: ..\CMSIS\stm32f4xx.h
 .\objects\gimbal_task.o: ..\CMSIS\core_cm4.h
-.\objects\gimbal_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gimbal_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\gimbal_task.o: ..\CMSIS\core_cmInstr.h
 .\objects\gimbal_task.o: ..\CMSIS\core_cmFunc.h
 .\objects\gimbal_task.o: ..\CMSIS\core_cm4_simd.h
@@ -41,8 +41,11 @@
 .\objects\gimbal_task.o: ..\USER\HeaderFile\Drive\encoder.h
 .\objects\gimbal_task.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\gimbal_task.o: ..\USER\HeaderFile\Functional\pid.h
+.\objects\gimbal_task.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
+.\objects\gimbal_task.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
+.\objects\gimbal_task.o: ..\USER\HeaderFile\Lib\FilterLib.h
 .\objects\gimbal_task.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\gimbal_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\gimbal_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\gimbal_task.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 .\objects\gimbal_task.o: ..\FreeRTOS\include\projdefs.h
 .\objects\gimbal_task.o: ..\FreeRTOS\include\portable.h

@@ -2,7 +2,7 @@
 .\objects\stm32f4xx_fsmc.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 .\objects\stm32f4xx_fsmc.o: ..\CMSIS\stm32f4xx.h
 .\objects\stm32f4xx_fsmc.o: ..\CMSIS\core_cm4.h
-.\objects\stm32f4xx_fsmc.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\stm32f4xx_fsmc.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\stm32f4xx_fsmc.o: ..\CMSIS\core_cmInstr.h
 .\objects\stm32f4xx_fsmc.o: ..\CMSIS\core_cmFunc.h
 .\objects\stm32f4xx_fsmc.o: ..\CMSIS\core_cm4_simd.h

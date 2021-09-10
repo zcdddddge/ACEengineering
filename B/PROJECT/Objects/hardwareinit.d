@@ -3,7 +3,7 @@
 .\objects\hardwareinit.o: ..\USER\HeaderFile\Hardware\CAN.h
 .\objects\hardwareinit.o: ..\CMSIS\stm32f4xx.h
 .\objects\hardwareinit.o: ..\CMSIS\core_cm4.h
-.\objects\hardwareinit.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\hardwareinit.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\hardwareinit.o: ..\CMSIS\core_cmInstr.h
 .\objects\hardwareinit.o: ..\CMSIS\core_cmFunc.h
 .\objects\hardwareinit.o: ..\CMSIS\core_cm4_simd.h

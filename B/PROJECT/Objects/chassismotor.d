@@ -3,7 +3,7 @@
 .\objects\chassismotor.o: ..\USER\HeaderFile\Functional\motor.h
 .\objects\chassismotor.o: ..\CMSIS\stm32f4xx.h
 .\objects\chassismotor.o: ..\CMSIS\core_cm4.h
-.\objects\chassismotor.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\chassismotor.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\chassismotor.o: ..\CMSIS\core_cmInstr.h
 .\objects\chassismotor.o: ..\CMSIS\core_cmFunc.h
 .\objects\chassismotor.o: ..\CMSIS\core_cm4_simd.h
@@ -41,5 +41,8 @@
 .\objects\chassismotor.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\chassismotor.o: ..\USER\HeaderFile\Functional\pid.h
 .\objects\chassismotor.o: ..\USER\HeaderFile\Drive\PYR_ISR.h
+.\objects\chassismotor.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
+.\objects\chassismotor.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
+.\objects\chassismotor.o: ..\USER\HeaderFile\Lib\triangles.h
 .\objects\chassismotor.o: ..\USER\HeaderFile\Lib\MathLib.h
 .\objects\chassismotor.o: ..\USER\HeaderFile\Lib\math.h

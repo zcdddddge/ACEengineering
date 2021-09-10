@@ -2,7 +2,7 @@
 .\objects\tim_isr.o: ..\USER\HeaderFile\Drive\TIM_ISR.h
 .\objects\tim_isr.o: ..\CMSIS\stm32f4xx.h
 .\objects\tim_isr.o: ..\CMSIS\core_cm4.h
-.\objects\tim_isr.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tim_isr.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tim_isr.o: ..\CMSIS\core_cmInstr.h
 .\objects\tim_isr.o: ..\CMSIS\core_cmFunc.h
 .\objects\tim_isr.o: ..\CMSIS\core_cm4_simd.h

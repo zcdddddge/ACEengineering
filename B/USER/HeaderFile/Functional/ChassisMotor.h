@@ -2,11 +2,11 @@
 #define __CHASSISMOTOR_H_
 #include "motor.h"
 #include "PYR_ISR.h"
-
+#include "BoardCommuni.h"
 
 /**********************************Can发送数值************************************************/
-//#define Wheel_Output	 C->WheelMotor[0].SPID.Out,C->WheelMotor[1].SPID.Out,C->WheelMotor[2].SPID.Out,C->WheelMotor[3].SPID.Out
-#define Wheel_Output	 0,0,0,0
+#define Wheel_Output	 C->WheelMotor[0].SPID.Out,C->WheelMotor[1].SPID.Out,C->WheelMotor[2].SPID.Out,C->WheelMotor[3].SPID.Out
+//#define Wheel_Output	 0,0,0,0
 #define Can_205_208_Out_Put C->WheelMotor[4].SPID.Out, C->WheelMotor[5].SPID.Out, 0, 0
 //#define Wheel_Output	 0,0,0,0
 /*********************************底盘电机pid**************************************************/
@@ -24,19 +24,19 @@
 #define WHEEL_MOTOR4_I   	0.0f
 #define WHEEL_MOTOR4_D   0.02f
 /*底盘救援电机参数*/
-#define  RESCUE_S_P   4.0f
+#define  RESCUE_S_P   10.0f
 #define  RESCUE_S_I   0.0f
 #define  RESCUE_S_D   1.0f
-#define  RESCUE_P_P   0.0f
+#define  RESCUE_P_P   10.0f
 #define  RESCUE_P_I   0.0f
 #define  RESCUE_P_D   0.0f
 
-/**底盘障碍块电机**/ 
-#define  BARRIER_S_P   4.0f
+/**底盘救援爪电机**/ 
+#define  BARRIER_S_P   100.0f
 #define  BARRIER_S_I   0.0f
 #define  BARRIER_S_D   1.0f
 #define  BARRIER_P_P   10.0f
-#define  BARRIER_P_I   8.0f
+#define  BARRIER_P_I   0.0f
 #define  BARRIER_P_D   1.0f 
 
 
@@ -46,8 +46,8 @@
 #define Yaw_I					0.0f
 #define Yaw_D					10.0f
 /**************************************************速度定义**********************************/
-static const int16_t Rescue_Speed    = 5500;   //救援电机速度
-static const int16_t Barrier_Speed   = 5500; 
+static const int16_t Rescue_Speed    = 2400;   //救援电机速度
+static const int16_t Barrier_Speed   = 2400; 
 
 /*底盘结构体*/
 typedef __packed struct
@@ -58,7 +58,7 @@ typedef __packed struct
 	PID_t Yaw_Pid;
 	void (*Can_Send_Wheel)(int16_t,int16_t,int16_t,int16_t);
 	void (*Can_Send_205_208)(int16_t,int16_t,int16_t,int16_t );
-	Encoder_t*(*Get_Encoder)(u8 ch);
+	Encoder_t*(*Get_Encoder)(uint8_t  ch);
 	PYR_t* (*Get_PYR_t)(void);
 }C_t;
 
@@ -80,14 +80,25 @@ void Chassis_Indepen_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN,int16_t ExpRe
 void Chassis_Straight_Drive(C_t *C,int16_t speed);
 
 
+/*底盘跟随模式*/
+void Chassis_Follow_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN);
+
+
+/*底盘大陀螺模式*/
+void Chassis_Rotation_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN);
+
+
 /*底盘扭腰模式*/
 void Chassis_Wiggle_Drive(C_t *C,float X_IN,float Y_IN,float Z_IN);
 
+/*底盘自动模式*/
+void Chassis_Auto_Drive(C_t *C, float X_IN, float Y_IN, float Z_IN);
 
 /*底盘断电*/
 void Chassis_Poweroff_Drive(C_t *C);
 
-void Chassis_Barrier(C_t *C ,int16_t dire);
+/*驱动救援爪*/
+void Chassis_Barrier(C_t *C, int16_t dire);
 
 	
 /*驱动救援电机*/

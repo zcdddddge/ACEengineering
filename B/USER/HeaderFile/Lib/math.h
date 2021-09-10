@@ -25,7 +25,7 @@
 
 #ifndef __math_h
 #define __math_h
-#define __ARMCLIB_VERSION 5050157
+//#define __ARMCLIB_VERSION 5050157
 
 #if defined(__clang__) || (defined(__ARMCC_VERSION) && !defined(__STRICT_ANSI__))
   /* armclang and non-strict armcc allow 'long long' in system headers */

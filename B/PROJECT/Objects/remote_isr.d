@@ -2,7 +2,7 @@
 .\objects\remote_isr.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
 .\objects\remote_isr.o: ..\CMSIS\stm32f4xx.h
 .\objects\remote_isr.o: ..\CMSIS\core_cm4.h
-.\objects\remote_isr.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\remote_isr.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\remote_isr.o: ..\CMSIS\core_cmInstr.h
 .\objects\remote_isr.o: ..\CMSIS\core_cmFunc.h
 .\objects\remote_isr.o: ..\CMSIS\core_cm4_simd.h

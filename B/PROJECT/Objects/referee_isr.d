@@ -2,7 +2,7 @@
 .\objects\referee_isr.o: ..\USER\HeaderFile\Hardware\USART.h
 .\objects\referee_isr.o: ..\CMSIS\stm32f4xx.h
 .\objects\referee_isr.o: ..\CMSIS\core_cm4.h
-.\objects\referee_isr.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\referee_isr.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\referee_isr.o: ..\CMSIS\core_cmInstr.h
 .\objects\referee_isr.o: ..\CMSIS\core_cmFunc.h
 .\objects\referee_isr.o: ..\CMSIS\core_cm4_simd.h

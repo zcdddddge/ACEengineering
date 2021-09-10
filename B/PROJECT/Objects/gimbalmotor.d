@@ -3,7 +3,7 @@
 .\objects\gimbalmotor.o: ..\USER\HeaderFile\Functional\motor.h
 .\objects\gimbalmotor.o: ..\CMSIS\stm32f4xx.h
 .\objects\gimbalmotor.o: ..\CMSIS\core_cm4.h
-.\objects\gimbalmotor.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gimbalmotor.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\gimbalmotor.o: ..\CMSIS\core_cmInstr.h
 .\objects\gimbalmotor.o: ..\CMSIS\core_cmFunc.h
 .\objects\gimbalmotor.o: ..\CMSIS\core_cm4_simd.h
@@ -40,3 +40,8 @@
 .\objects\gimbalmotor.o: ..\USER\HeaderFile\Drive\encoder.h
 .\objects\gimbalmotor.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\gimbalmotor.o: ..\USER\HeaderFile\Functional\pid.h
+.\objects\gimbalmotor.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
+.\objects\gimbalmotor.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
+.\objects\gimbalmotor.o: ..\USER\HeaderFile\Lib\FilterLib.h
+.\objects\gimbalmotor.o: ..\USER\HeaderFile\Lib\MathLib.h
+.\objects\gimbalmotor.o: ..\USER\HeaderFile\Lib\math.h

@@ -23,8 +23,8 @@ static void PYR_Deal(u8 num)
 			if(PYR.data[i+23] == 0x53)
 			{
 				n = i+22;		//重置坐标
-				sum = 0x55 + 0x53 + PYR.data[n+2] + PYR.data[n+3] + PYR.data[n+4] + \
-				PYR.data[n+5] + PYR.data[n+6] + PYR.data[n+7] + PYR.data[n+8] \
+				sum = 0x55 + 0x53 + PYR.data[n+2] + PYR.data[n+3] + PYR.data[n+4] + 
+				PYR.data[n+5] + PYR.data[n+6] + PYR.data[n+7] + PYR.data[n+8] 
 				+ PYR.data[n+9];
 				if(PYR.data[n+10] != sum)	//检查校验和
 				return;

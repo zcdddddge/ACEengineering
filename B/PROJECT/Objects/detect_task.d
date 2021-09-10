@@ -5,7 +5,7 @@
 .\objects\detect_task.o: ..\USER\HeaderFile\Functional\motor.h
 .\objects\detect_task.o: ..\CMSIS\stm32f4xx.h
 .\objects\detect_task.o: ..\CMSIS\core_cm4.h
-.\objects\detect_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\detect_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\detect_task.o: ..\CMSIS\core_cmInstr.h
 .\objects\detect_task.o: ..\CMSIS\core_cmFunc.h
 .\objects\detect_task.o: ..\CMSIS\core_cm4_simd.h
@@ -43,14 +43,15 @@
 .\objects\detect_task.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Functional\pid.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Drive\PYR_ISR.h
-.\objects\detect_task.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
+.\objects\detect_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
+.\objects\detect_task.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Lib\FilterLib.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Task\Chassis_Fsm.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Task\fsm.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Functional\GimbalMotor.h
 .\objects\detect_task.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\detect_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\detect_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\detect_task.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 .\objects\detect_task.o: ..\FreeRTOS\include\projdefs.h
 .\objects\detect_task.o: ..\FreeRTOS\include\portable.h

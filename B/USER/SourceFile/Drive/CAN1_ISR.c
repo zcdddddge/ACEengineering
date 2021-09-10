@@ -73,7 +73,7 @@ void CAN1_RX0_IRQHandler(void)
 			{
 				can1_205_208_buffer[2] = (RxMessage.Data[0] << 8) | RxMessage.Data[1];
 				can1_205_208_buffer[3] = (RxMessage.Data[2] << 8) | RxMessage.Data[3];
-				CAN_DATA_Encoder_Deal(19,can1_205_208_buffer[2],can1_205_208_buffer[3],&can1_encoder_206);
+				CAN_DATA_Encoder_Deal(36,can1_205_208_buffer[2],can1_205_208_buffer[3],&can1_encoder_206);
 
 				break;
 			}	
@@ -85,11 +85,11 @@ void CAN1_RX0_IRQHandler(void)
 
 				break;	
 			}	
-			case 0x20C:        
+			case 0x208:        
 			{
 				can1_205_208_buffer[6] = (RxMessage.Data[0] << 8) | RxMessage.Data[1];
 				can1_205_208_buffer[7] = (RxMessage.Data[2] << 8) | RxMessage.Data[3];
-				CAN_DATA_Encoder_Deal(19,can1_205_208_buffer[6],can1_205_208_buffer[7],&can1_encoder_208);
+				CAN_DATA_Encoder_Deal(36,can1_205_208_buffer[6],can1_205_208_buffer[7],&can1_encoder_208);
 
 				break;
 			}		
@@ -185,7 +185,7 @@ void CAN1_SEND_6020_7(int16_t ESC_207)
 	u8 mbox;
 	u16 i=0;
 	CanTxMsg TxMessage;
-	TxMessage.StdId=0x2ff;	 // 标准标识符为0x2ff
+	TxMessage.StdId=0x2FF;	 // 标准标识符为0x2ff
 	TxMessage.IDE=0;		     // 使用扩展标识符
 	TxMessage.RTR=0;		     // 消息类型为数据帧，一帧8位
 	TxMessage.DLC=8;		     // 发送两帧信息

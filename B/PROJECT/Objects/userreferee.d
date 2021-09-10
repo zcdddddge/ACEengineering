@@ -2,7 +2,7 @@
 .\objects\userreferee.o: ..\USER\HeaderFile\Functional\UserReferee.h
 .\objects\userreferee.o: ..\CMSIS\stm32f4xx.h
 .\objects\userreferee.o: ..\CMSIS\core_cm4.h
-.\objects\userreferee.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\userreferee.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\userreferee.o: ..\CMSIS\core_cmInstr.h
 .\objects\userreferee.o: ..\CMSIS\core_cmFunc.h
 .\objects\userreferee.o: ..\CMSIS\core_cm4_simd.h
@@ -38,5 +38,5 @@
 .\objects\userreferee.o: ..\USER\HeaderFile\Drive\REFEREE_ISR.h
 .\objects\userreferee.o: ..\USER\HeaderFile\Hardware\USART.h
 .\objects\userreferee.o: ..\USER\HeaderFile\Drive\crc.h
-.\objects\userreferee.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\userreferee.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\rt_heap.h
+.\objects\userreferee.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\userreferee.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\rt_heap.h

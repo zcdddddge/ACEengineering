@@ -4,7 +4,7 @@
 .\objects\remote_task.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
 .\objects\remote_task.o: ..\CMSIS\stm32f4xx.h
 .\objects\remote_task.o: ..\CMSIS\core_cm4.h
-.\objects\remote_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\remote_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\remote_task.o: ..\CMSIS\core_cmInstr.h
 .\objects\remote_task.o: ..\CMSIS\core_cmFunc.h
 .\objects\remote_task.o: ..\CMSIS\core_cm4_simd.h
@@ -39,7 +39,7 @@
 .\objects\remote_task.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Lib\FilterLib.h
 .\objects\remote_task.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\remote_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\remote_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\remote_task.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 .\objects\remote_task.o: ..\FreeRTOS\include\projdefs.h
 .\objects\remote_task.o: ..\FreeRTOS\include\portable.h
@@ -48,3 +48,11 @@
 .\objects\remote_task.o: ..\FreeRTOS\include\mpu_wrappers.h
 .\objects\remote_task.o: ..\FreeRTOS\include\task.h
 .\objects\remote_task.o: ..\FreeRTOS\include\list.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Functional\ChassisMotor.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Functional\motor.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Drive\CAN1_ISR.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Drive\encoder.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Functional\pid.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Drive\PYR_ISR.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h

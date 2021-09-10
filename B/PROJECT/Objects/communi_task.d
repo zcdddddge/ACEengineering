@@ -3,7 +3,7 @@
 .\objects\communi_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\communi_task.o: ..\CMSIS\stm32f4xx.h
 .\objects\communi_task.o: ..\CMSIS\core_cm4.h
-.\objects\communi_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\communi_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\communi_task.o: ..\CMSIS\core_cmInstr.h
 .\objects\communi_task.o: ..\CMSIS\core_cmFunc.h
 .\objects\communi_task.o: ..\CMSIS\core_cm4_simd.h
@@ -40,7 +40,7 @@
 .\objects\communi_task.o: ..\USER\HeaderFile\Functional\RemoteDeal.h
 .\objects\communi_task.o: ..\USER\HeaderFile\Lib\FilterLib.h
 .\objects\communi_task.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\communi_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\communi_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\communi_task.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 .\objects\communi_task.o: ..\FreeRTOS\include\projdefs.h
 .\objects\communi_task.o: ..\FreeRTOS\include\portable.h

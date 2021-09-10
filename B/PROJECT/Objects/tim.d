@@ -2,7 +2,7 @@
 .\objects\tim.o: ..\USER\HeaderFile\Hardware\TIM.h
 .\objects\tim.o: ..\CMSIS\stm32f4xx.h
 .\objects\tim.o: ..\CMSIS\core_cm4.h
-.\objects\tim.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tim.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tim.o: ..\CMSIS\core_cmInstr.h
 .\objects\tim.o: ..\CMSIS\core_cmFunc.h
 .\objects\tim.o: ..\CMSIS\core_cm4_simd.h

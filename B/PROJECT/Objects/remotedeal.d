@@ -3,7 +3,7 @@
 .\objects\remotedeal.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
 .\objects\remotedeal.o: ..\CMSIS\stm32f4xx.h
 .\objects\remotedeal.o: ..\CMSIS\core_cm4.h
-.\objects\remotedeal.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\remotedeal.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\remotedeal.o: ..\CMSIS\core_cmInstr.h
 .\objects\remotedeal.o: ..\CMSIS\core_cmFunc.h
 .\objects\remotedeal.o: ..\CMSIS\core_cm4_simd.h
