@@ -6,8 +6,8 @@
 
 
 static void goldExchange(Gr_t *Gr) ;
-void Change_Gold(Gr_t *Gr);
-void Pick_Gold(Gr_t *Gr);
+void change_Gold(Gr_t *Gr);
+void pick_Gold(Gr_t *Gr);
 
 #endif 
 

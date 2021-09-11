@@ -4,7 +4,7 @@
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
 .\objects\grasp_fsm.o: ..\CMSIS\stm32f4xx.h
 .\objects\grasp_fsm.o: ..\CMSIS\core_cm4.h
-.\objects\grasp_fsm.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\grasp_fsm.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\grasp_fsm.o: ..\CMSIS\core_cmInstr.h
 .\objects\grasp_fsm.o: ..\CMSIS\core_cmFunc.h
 .\objects\grasp_fsm.o: ..\CMSIS\core_cm4_simd.h
@@ -44,12 +44,12 @@
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Drive\encoder.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Functional\pid.h
-.\objects\grasp_fsm.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
-.\objects\grasp_fsm.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\grasp_fsm.o: ..\USER\HeaderFile\Functional\MotorAction.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Lib\MathLib.h
+.\objects\grasp_fsm.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\grasp_fsm.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Functional\RobotAction.h
-.\objects\grasp_fsm.o: ..\USER\HeaderFile\Functional\MotorAction.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Task\fsm.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Task\Grasp_Task.h
 .\objects\grasp_fsm.o: ..\USER\HeaderFile\Task\Grasp_Fsm.h

@@ -1,7 +1,7 @@
 .\objects\main.o: ..\USER\main.c
 .\objects\main.o: ..\CMSIS\stm32f4xx.h
 .\objects\main.o: ..\CMSIS\core_cm4.h
-.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: ..\CMSIS\core_cmInstr.h
 .\objects\main.o: ..\CMSIS\core_cmFunc.h
 .\objects\main.o: ..\CMSIS\core_cm4_simd.h
@@ -37,7 +37,7 @@
 .\objects\main.o: ..\USER\HeaderFile\INIT\HardwareInit.h
 .\objects\main.o: ..\USER\HeaderFile\INIT\TaskInit.h
 .\objects\main.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\main.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\main.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 .\objects\main.o: ..\FreeRTOS\include\projdefs.h
 .\objects\main.o: ..\FreeRTOS\include\portable.h
@@ -46,3 +46,5 @@
 .\objects\main.o: ..\FreeRTOS\include\mpu_wrappers.h
 .\objects\main.o: ..\FreeRTOS\include\task.h
 .\objects\main.o: ..\FreeRTOS\include\list.h
+.\objects\main.o: ..\USER\HeaderFile\Drive\CAN1_ISR.h
+.\objects\main.o: ..\USER\HeaderFile\Drive\encoder.h

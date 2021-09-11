@@ -2,7 +2,7 @@
 .\objects\vl53l0.o: ..\USER\HeaderFile\Drive\vL53L0.h
 .\objects\vl53l0.o: ..\CMSIS\stm32f4xx.h
 .\objects\vl53l0.o: ..\CMSIS\core_cm4.h
-.\objects\vl53l0.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\vl53l0.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\vl53l0.o: ..\CMSIS\core_cmInstr.h
 .\objects\vl53l0.o: ..\CMSIS\core_cmFunc.h
 .\objects\vl53l0.o: ..\CMSIS\core_cm4_simd.h

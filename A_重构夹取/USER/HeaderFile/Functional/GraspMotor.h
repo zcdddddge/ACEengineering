@@ -1,6 +1,7 @@
 #ifndef __GRASPMOTOR_H_
 #define __GRASPMOTOR_H_
 #include "motor.h"
+#include "MotorAction.h"
 #include "REMOTE_ISR.h"
 #include "GPIO_DEAL.h"
 #include "vL53L0.h"
@@ -21,7 +22,7 @@
 
 #if 0
 #define MotorOutput_201_204		0,0,0,0
-//#define MotorOutput_205_208		0,0,0,0
+#define MotorOutput_205_208		0,0,0,0
 #endif 
 
 static const int16_t Supply_Speed	      = 1000;
@@ -36,12 +37,12 @@ static const int16_t Supply_Speed	      = 1000;
 #define	GRASP_FLIP_P_I   	0.0f
 #define GRASP_FLIP_P_D   	50.0f
 /*¼Ð½ô*/
-#define GRASP_CLIP_S_P   	3.5f
+#define GRASP_CLIP_S_P   	30.5f
 #define GRASP_CLIP_S_I   	0.0f
 #define GRASP_CLIP_S_D   	0.02f
-#define GRASP_CLIP_P_P  		20.7f
+#define GRASP_CLIP_P_P  	20.7f
 #define	GRASP_CLIP_P_I   	0.0f
-#define GRASP_CLIP_P_D   	10.0f
+#define GRASP_CLIP_P_D   	0.0f
 /*´«ËÍ*/
 #define GRASP_TRANS_S_P   	1.22f
 #define GRASP_TRANS_S_I   	0.0f

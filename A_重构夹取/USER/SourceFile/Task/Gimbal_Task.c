@@ -4,10 +4,11 @@
 
 void Gimbal_Task(void *pvParameters)
 {
-	vTaskDelay(500);
-	while(1)
-	{
-		
-		vTaskDelay(2);
-	}
+    vTaskDelay(500);
+
+    while(1)
+    {
+
+        vTaskDelay(2);
+    }
 }

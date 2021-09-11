@@ -3,7 +3,7 @@
 .\objects\graspmotor.o: ..\USER\HeaderFile\Functional\motor.h
 .\objects\graspmotor.o: ..\CMSIS\stm32f4xx.h
 .\objects\graspmotor.o: ..\CMSIS\core_cm4.h
-.\objects\graspmotor.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\graspmotor.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\graspmotor.o: ..\CMSIS\core_cmInstr.h
 .\objects\graspmotor.o: ..\CMSIS\core_cmFunc.h
 .\objects\graspmotor.o: ..\CMSIS\core_cm4_simd.h
@@ -40,8 +40,9 @@
 .\objects\graspmotor.o: ..\USER\HeaderFile\Drive\encoder.h
 .\objects\graspmotor.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\graspmotor.o: ..\USER\HeaderFile\Functional\pid.h
-.\objects\graspmotor.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
-.\objects\graspmotor.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
-.\objects\graspmotor.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\graspmotor.o: ..\USER\HeaderFile\Functional\MotorAction.h
 .\objects\graspmotor.o: ..\USER\HeaderFile\Lib\MathLib.h
+.\objects\graspmotor.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\graspmotor.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
+.\objects\graspmotor.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
 .\objects\graspmotor.o: ..\USER\HeaderFile\Lib\FilterLib.h

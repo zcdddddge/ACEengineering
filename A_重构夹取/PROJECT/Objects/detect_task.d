@@ -1,8 +1,8 @@
 .\objects\detect_task.o: ..\USER\SourceFile\Task\Detect_Task.c
 .\objects\detect_task.o: ..\USER\HeaderFile\Task\Detect_Task.h
 .\objects\detect_task.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\detect_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\objects\detect_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\detect_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\detect_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\detect_task.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 .\objects\detect_task.o: ..\FreeRTOS\include\projdefs.h
 .\objects\detect_task.o: ..\FreeRTOS\include\portable.h
@@ -55,10 +55,10 @@
 .\objects\detect_task.o: ..\USER\HeaderFile\Drive\encoder.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Functional\pid.h
-.\objects\detect_task.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
-.\objects\detect_task.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\detect_task.o: ..\USER\HeaderFile\Functional\MotorAction.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Lib\MathLib.h
+.\objects\detect_task.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\detect_task.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Functional\RobotAction.h
-.\objects\detect_task.o: ..\USER\HeaderFile\Functional\MotorAction.h
 .\objects\detect_task.o: ..\USER\HeaderFile\Task\fsm.h

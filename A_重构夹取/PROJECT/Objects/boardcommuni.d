@@ -2,7 +2,7 @@
 .\objects\boardcommuni.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\boardcommuni.o: ..\CMSIS\stm32f4xx.h
 .\objects\boardcommuni.o: ..\CMSIS\core_cm4.h
-.\objects\boardcommuni.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\boardcommuni.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\boardcommuni.o: ..\CMSIS\core_cmInstr.h
 .\objects\boardcommuni.o: ..\CMSIS\core_cmFunc.h
 .\objects\boardcommuni.o: ..\CMSIS\core_cm4_simd.h
@@ -36,4 +36,5 @@
 .\objects\boardcommuni.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 .\objects\boardcommuni.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 .\objects\boardcommuni.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
+.\objects\boardcommuni.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
 .\objects\boardcommuni.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h

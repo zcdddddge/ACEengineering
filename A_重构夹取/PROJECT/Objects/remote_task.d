@@ -4,7 +4,7 @@
 .\objects\remote_task.o: ..\USER\HeaderFile\Drive\REMOTE_ISR.h
 .\objects\remote_task.o: ..\CMSIS\stm32f4xx.h
 .\objects\remote_task.o: ..\CMSIS\core_cm4.h
-.\objects\remote_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\remote_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\remote_task.o: ..\CMSIS\core_cmInstr.h
 .\objects\remote_task.o: ..\CMSIS\core_cmFunc.h
 .\objects\remote_task.o: ..\CMSIS\core_cm4_simd.h
@@ -44,15 +44,15 @@
 .\objects\remote_task.o: ..\USER\HeaderFile\Drive\encoder.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Drive\CAN2_ISR.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Functional\pid.h
-.\objects\remote_task.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
-.\objects\remote_task.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Functional\MotorAction.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Lib\MathLib.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Drive\vL53L0.h
+.\objects\remote_task.o: ..\USER\HeaderFile\Drive\GPIO_DEAL.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Functional\BoardCommuni.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Functional\RobotAction.h
-.\objects\remote_task.o: ..\USER\HeaderFile\Functional\MotorAction.h
 .\objects\remote_task.o: ..\USER\HeaderFile\Task\fsm.h
 .\objects\remote_task.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\remote_task.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\remote_task.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\remote_task.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 .\objects\remote_task.o: ..\FreeRTOS\include\projdefs.h
 .\objects\remote_task.o: ..\FreeRTOS\include\portable.h
@@ -61,6 +61,3 @@
 .\objects\remote_task.o: ..\FreeRTOS\include\mpu_wrappers.h
 .\objects\remote_task.o: ..\FreeRTOS\include\task.h
 .\objects\remote_task.o: ..\FreeRTOS\include\list.h
-.\objects\remote_task.o: ..\USER\HeaderFile\Task\Grasp_Task.h
-.\objects\remote_task.o: ..\USER\HeaderFile\Task\Grasp_Fsm.h
-.\objects\remote_task.o: ..\USER\HeaderFile\Functional\getGold.h

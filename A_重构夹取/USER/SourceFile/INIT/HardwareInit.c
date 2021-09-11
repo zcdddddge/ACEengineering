@@ -16,13 +16,14 @@ static Hardware_t Hardware;
 /*Ó²¼þ³õÊ¼»¯Ó³Éä*/
 static void HardwareMapping(void)
 {
-	Hardware.LED_Init  	= LED_Init;
+	Hardware.SENSOR_Init= SENSOR_Init;
+	Hardware.LED_Init  	= Led_Init;
 	Hardware.TIM3_Init 	= TIM3_Init;
 	Hardware.CAN1_Init 	= CAN1_Init_GPIOD_IO0_IO1;
 	Hardware.CAN2_Init 	= CAN2_Init_GPIOB_IO5_IO6;
 	Hardware.RC_Init	 	= USART1_RC_INIT_PA10_RX;
 	Hardware.VL53L0			= USART6_VL53L0_INIT_PC7_RX_PC6_TX;
-	Hardware.Iwdg				= IWDG_Init;
+//	Hardware.Iwdg				= IWDG_Init;
 }
 
 
@@ -30,7 +31,7 @@ static void HardwareMapping(void)
 void HardwareInit(void)
 {
 	HardwareMapping();
-	
+	Hardware.SENSOR_Init();
 	Hardware.LED_Init();
 	Hardware.RC_Init();
 	Hardware.VL53L0();

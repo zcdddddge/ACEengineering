@@ -10,7 +10,7 @@
 *说明:	无
 *************************************************************************************************/
 #define GPIO_PIN GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4
-void LED_Init(void)
+void Led_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
@@ -37,7 +37,7 @@ void LED_Init(void)
 *功能:	传感器初始化配置
 *形参: 	无
 *返回:	无
-*说明:	PA-1	9
+*说明:	PA-6	7
 *************************************************************************************************/
 void SENSOR_Init(void)
 {
@@ -47,9 +47,9 @@ void SENSOR_Init(void)
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;								
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;								
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;						
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;								
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;								
 		
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_9;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 

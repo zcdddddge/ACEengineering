@@ -2,7 +2,7 @@
 .\objects\usart.o: ..\USER\HeaderFile\Hardware\USART.h
 .\objects\usart.o: ..\CMSIS\stm32f4xx.h
 .\objects\usart.o: ..\CMSIS\core_cm4.h
-.\objects\usart.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\usart.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\usart.o: ..\CMSIS\core_cmInstr.h
 .\objects\usart.o: ..\CMSIS\core_cmFunc.h
 .\objects\usart.o: ..\CMSIS\core_cm4_simd.h

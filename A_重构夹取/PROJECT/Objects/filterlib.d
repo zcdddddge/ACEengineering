@@ -2,7 +2,7 @@
 .\objects\filterlib.o: ..\USER\HeaderFile\Lib\FilterLib.h
 .\objects\filterlib.o: ..\CMSIS\stm32f4xx.h
 .\objects\filterlib.o: ..\CMSIS\core_cm4.h
-.\objects\filterlib.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\filterlib.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\filterlib.o: ..\CMSIS\core_cmInstr.h
 .\objects\filterlib.o: ..\CMSIS\core_cmFunc.h
 .\objects\filterlib.o: ..\CMSIS\core_cm4_simd.h

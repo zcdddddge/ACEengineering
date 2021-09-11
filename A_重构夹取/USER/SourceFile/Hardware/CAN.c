@@ -90,13 +90,13 @@ void CAN1_Init_GPIOD_IO0_IO1(uint8_t tsjw, uint8_t tbs1, uint8_t tbs2, uint16_t 
 		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;	
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;						
 		GPIO_InitStructure.GPIO_OType=  GPIO_OType_PP;
-		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 		GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 		GPIO_Init(GPIOD, &GPIO_InitStructure);
 
 		
 		NVIC_InitStructure.NVIC_IRQChannel = CAN1_RX0_IRQn;				
-		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;   	
+		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 4;   	
 		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 		NVIC_Init(&NVIC_InitStructure);
     
@@ -104,7 +104,7 @@ void CAN1_Init_GPIOD_IO0_IO1(uint8_t tsjw, uint8_t tbs1, uint8_t tbs2, uint16_t 
     CAN_StructInit(&CAN_InitStructure);      						//用它的默认值填充每个CAN_InitStructure成员
     /************CAN总线的配置*******************/
     CAN_InitStructure.CAN_TTCM = DISABLE;								//非时间触发通信模式
-    CAN_InitStructure.CAN_ABOM = DISABLE;								//软件自动离线管理模式
+    CAN_InitStructure.CAN_ABOM = ENABLE;								//软件自动离线管理模式
     CAN_InitStructure.CAN_AWUM = DISABLE;								//自动唤醒模式，睡眠模式通过软件唤醒(清除CAN->MCR的SLEEP位)
     CAN_InitStructure.CAN_NART = DISABLE;								//非自动重传输模式，禁止报文自动传送 
     CAN_InitStructure.CAN_RFLM = DISABLE;								//接收FIFO锁定模式，报文不锁定,新的覆盖旧的 

@@ -11,7 +11,6 @@ TaskHandle_t 					Remote_Handler;
 #define Remote_Size		256
 #define Remote_Prio		7
 
-
 /*ºÏ≤‚»ŒŒÒ*/
 TaskHandle_t 					Detect_Handler;
 #define Detect_Size		256
@@ -68,3 +67,5 @@ void TaskInit(void)
 		#endif
 		
 }
+
+

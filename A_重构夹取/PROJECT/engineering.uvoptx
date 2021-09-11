@@ -119,6 +119,16 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>DLGDARM</Key>
+          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>CMSIS_AGDI</Key>
+          <Name>-X"" -O206 -S8 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F407VETx$CMSIS\Flash\STM32F4xx_512.FLM)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>DLGUARM</Key>
           <Name></Name>
         </SetRegEntry>
@@ -135,7 +145,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ARMDBGFLAGS</Key>
-          <Name></Name>
+          <Name>-T0</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -153,22 +163,17 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Grasp,0x0A</ItemText>
+          <ItemText>dire,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>dire,0x0A</ItemText>
+          <ItemText>Grasp,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TxMessage</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>TxMessage</ItemText>
+          <ItemText>clock,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -184,7 +189,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>0</aLwin>
+        <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -300,7 +305,7 @@
 
   <Group>
     <GroupName>STARTUP</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -748,7 +753,7 @@
 
   <Group>
     <GroupName>CMSIS</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1144,6 +1149,18 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>8</GroupNumber>
+      <FileNumber>72</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\USER\SourceFile\Functional\FlipMotor.c</PathWithFileName>
+      <FilenameWithoutPath>FlipMotor.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
@@ -1154,7 +1171,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>72</FileNumber>
+      <FileNumber>73</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1166,7 +1183,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>73</FileNumber>
+      <FileNumber>74</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1178,7 +1195,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>74</FileNumber>
+      <FileNumber>75</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1190,7 +1207,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>75</FileNumber>
+      <FileNumber>76</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1202,7 +1219,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>76</FileNumber>
+      <FileNumber>77</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1214,7 +1231,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>77</FileNumber>
+      <FileNumber>78</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1234,7 +1251,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>10</GroupNumber>
-      <FileNumber>78</FileNumber>
+      <FileNumber>79</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1246,7 +1263,7 @@
     </File>
     <File>
       <GroupNumber>10</GroupNumber>
-      <FileNumber>79</FileNumber>
+      <FileNumber>80</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

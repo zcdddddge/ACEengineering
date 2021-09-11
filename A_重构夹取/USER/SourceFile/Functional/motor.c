@@ -1,5 +1,5 @@
 /*
- * 
+ *
  * ¡¡¡¡©³©·¡¡¡¡¡¡©³©·+ +
  * ¡¡©³©¿©ß©¥©¥©¥©¿©ß©· + +
  * ¡¡©§¡¡¡¡¡¡¡¡¡¡¡¡¡¡©§ ¡¡
@@ -21,7 +21,7 @@
  * ¡¡¡¡¡¡©»©·©·©³©¥©×©·©³©¿ + + + +
  * ¡¡¡¡¡¡¡¡©§©Ï©Ï¡¡©§©Ï©Ï
  * ¡¡¡¡¡¡¡¡©»©ß©¿¡¡©»©ß©¿+ + + +
- * 
+ *
  */
 
 
@@ -33,14 +33,14 @@
  */
 void MotorValZero(Motor_t *motor)
 {
-		motor->ID = motor->Pos_Lock = motor->Radio = 0;
-		motor->ExpSpeed 	= 0;
-		motor->ExpRadian 	= 0;
-		motor->state			= 0;
-		PID_INIT(&motor->SPID,0,0,0,0,0);
-		PID_INIT(&motor->PPID,0,0,0,0,0);
-		EncoderValZero(motor->Encoder);
-		motor->MotorType = CURRENCY_M;
-		motor->ResetFlag =0;
-		//motor->clock = motor->lock = motor->dire=0 ;
+    motor->ID = motor->Pos_Lock = motor->Radio = 0;
+    motor->ExpSpeed 	= 0;
+    motor->ExpRadian 	= 0;
+    motor->state			= 0;
+    PID_INIT(&motor->SPID, 0, 0, 0, 0, 0);
+    PID_INIT(&motor->PPID, 0, 0, 0, 0, 0);
+    EncoderValZero(motor->Encoder);
+    motor->MotorType = CURRENCY_M;
+    motor->ResetFlag = 0;
+    //motor->clock = motor->lock = motor->dire=0 ;
 }

@@ -19,7 +19,7 @@
 
 #ifndef __string_h
 #define __string_h
-#define __ARMCLIB_VERSION 5050157
+#define __ARMCLIB_VERSION 5060037
 
 #define _ARMABI __declspec(__nothrow)
 

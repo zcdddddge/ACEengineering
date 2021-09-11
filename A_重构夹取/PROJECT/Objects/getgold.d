@@ -4,7 +4,7 @@
 .\objects\getgold.o: ..\USER\HeaderFile\Functional\motor.h
 .\objects\getgold.o: ..\CMSIS\stm32f4xx.h
 .\objects\getgold.o: ..\CMSIS\core_cm4.h
-.\objects\getgold.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\getgold.o: D:\STM32study\MDK5\ARM\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\getgold.o: ..\CMSIS\core_cmInstr.h
 .\objects\getgold.o: ..\CMSIS\core_cmFunc.h
 .\objects\getgold.o: ..\CMSIS\core_cm4_simd.h

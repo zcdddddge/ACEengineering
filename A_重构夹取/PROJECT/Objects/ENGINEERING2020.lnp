@@ -69,6 +69,7 @@
 ".\objects\robotaction.o"
 ".\objects\motoraction.o"
 ".\objects\getgold.o"
+".\objects\flipmotor.o"
 ".\objects\detect_task.o"
 ".\objects\grasp_task.o"
 ".\objects\remote_task.o"

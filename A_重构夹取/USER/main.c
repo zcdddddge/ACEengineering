@@ -1,7 +1,7 @@
 #include "stm32f4xx.h"
 #include "HardwareInit.h"
 #include "TaskInit.h"
-
+#include "CAN1_ISR.h"
 
 /*开始任务句柄*/
 static TaskHandle_t Start_Handler;
@@ -19,9 +19,12 @@ static void Start_Task(void *pvParameters)
 
 
 int main()
- {
+
+{
 	HardwareInit();
-//	while(1);
+//	while(1){
+//		CAN1_201_To_204_SEND(500,500,500,500);
+//	CAN1_205_To_208_SEND(500,500,500,500);}
 	xTaskCreate((TaskFunction_t )Start_Task,            	//任务函数
 			(const char*    )"Start_Task",                    //任务名称
 			(uint16_t       )256,                  						//任务堆栈大小

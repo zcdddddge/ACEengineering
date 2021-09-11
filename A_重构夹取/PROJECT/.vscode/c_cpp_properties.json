@@ -3,28 +3,29 @@
         {
             "name": "Target 1",
             "includePath": [
-                "d:\\RMware\\A_重构夹取\\FWLIB\\inc",
-                "d:\\RMware\\A_重构夹取\\CMSIS",
-                "d:\\RMware\\A_重构夹取\\USER",
-                "d:\\RMware\\A_重构夹取\\FreeRTOS\\portable\\RVDS\\ARM_CM4F",
-                "d:\\RMware\\A_重构夹取\\FreeRTOS\\include",
-                "d:\\RMware\\A_重构夹取\\USER\\HeaderFile\\INIT",
-                "d:\\RMware\\A_重构夹取\\USER\\HeaderFile\\Hardware",
-                "d:\\RMware\\A_重构夹取\\USER\\HeaderFile\\Drive",
-                "d:\\RMware\\A_重构夹取\\USER\\HeaderFile\\Functional",
-                "d:\\RMware\\A_重构夹取\\USER\\HeaderFile\\Task",
-                "d:\\RMware\\A_重构夹取\\USER\\HeaderFile\\Lib",
-                "d:\\RMware\\A_重构夹取\\USER\\SourceFile\\INIT",
-                "d:\\RMware\\A_重构夹取\\PROJECT\\Listings",
-                "d:\\RMware\\A_重构夹取\\STARTUP",
-                "d:\\RMware\\A_重构夹取\\FWLIB\\src",
-                "d:\\RMware\\A_重构夹取\\FreeRTOS",
-                "d:\\RMware\\A_重构夹取\\FreeRTOS\\portable\\MemMang",
-                "d:\\RMware\\A_重构夹取\\USER\\SourceFile\\Hardware",
-                "d:\\RMware\\A_重构夹取\\USER\\SourceFile\\Drive",
-                "d:\\RMware\\A_重构夹取\\USER\\SourceFile\\Functional",
-                "d:\\RMware\\A_重构夹取\\USER\\SourceFile\\Task",
-                "d:\\RMware\\A_重构夹取\\USER\\SourceFile\\Lib"
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\FWLIB\\inc",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\CMSIS",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\FreeRTOS\\portable\\RVDS\\ARM_CM4F",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\FreeRTOS\\include",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\HeaderFile\\INIT",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\HeaderFile\\Hardware",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\HeaderFile\\Drive",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\HeaderFile\\Functional",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\HeaderFile\\Task",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\HeaderFile\\Lib",
+                "D:\\STM32study\\MDK5\\ARM\\ARMCC\\include",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\SourceFile\\INIT",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\PROJECT\\Listings",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\STARTUP",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\FWLIB\\src",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\FreeRTOS",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\FreeRTOS\\portable\\MemMang",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\SourceFile\\Hardware",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\SourceFile\\Drive",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\SourceFile\\Functional",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\SourceFile\\Task",
+                "d:\\ACE ROBOMASTER\\ACE2021engineering-ace_edddddge\\工程2021\\A_重构夹取\\USER\\SourceFile\\Lib"
             ],
             "defines": [
                 "STM32F40_41xxx",
@@ -106,7 +107,8 @@
                 "__yield()=",
                 "__vfp_status(x,y)=0"
             ],
-            "intelliSenseMode": "${default}"
+            "intelliSenseMode": "${default}",
+            "compilerPath": "D:\\DEV-Cpp"
         }
     ],
     "version": 4
